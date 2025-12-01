@@ -17,7 +17,10 @@ defmodule CadenBartonShowcaseWeb.Router do
   scope "/", CadenBartonShowcaseWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", HomeLive, :index
+    live "/how-i-work", HowIWorkLive, :show
+    live "/builds", BuildsLive, :index
+    live "/builds/:slug", BuildShowLive, :show
   end
 
   # Other scopes may use custom stacks.
