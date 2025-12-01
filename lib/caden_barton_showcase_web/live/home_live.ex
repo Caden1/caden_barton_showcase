@@ -27,13 +27,19 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
             observability, and reducing maintenance drag.
           </p>
           <div class="flex flex-wrap gap-3">
-            <a class="group inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:bg-emerald-400">
+            <.link
+              navigate={~p"/how-i-work"}
+              class="group inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:bg-emerald-400"
+            >
               See how I work
               <span class="transition-transform group-hover:translate-x-1">→</span>
-            </a>
-            <a class="inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200">
+            </.link>
+            <.link
+              navigate={~p"/builds"}
+              class="inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200"
+            >
               Recent builds
-            </a>
+            </.link>
           </div>
         </div>
 
