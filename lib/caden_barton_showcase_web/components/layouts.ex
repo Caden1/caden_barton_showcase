@@ -35,30 +35,25 @@ defmodule CadenBartonShowcaseWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    <header class="navbar px-4 sm:px-6 lg:px-8">
-      <div class="flex-1">
-        <a href="/" class="flex-1 flex w-fit items-center gap-2">
-          <img src={~p"/images/logo.svg"} width="36" />
-          <span class="text-sm font-semibold">v{Application.spec(:phoenix, :vsn)}</span>
-        </a>
-      </div>
-      <div class="flex-none">
-        <ul class="flex flex-column px-1 space-x-4 items-center">
-          <li>
-            <a href="https://phoenixframework.org/" class="btn btn-ghost">Website</a>
-          </li>
-          <li>
-            <a href="https://github.com/phoenixframework/phoenix" class="btn btn-ghost">GitHub</a>
-          </li>
-          <li>
-            <.theme_toggle />
-          </li>
-          <li>
-            <a href="https://hexdocs.pm/phoenix/overview.html" class="btn btn-primary">
-              Get Started <span aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
-        </ul>
+    <header class="px-4 py-6 sm:px-6 lg:px-8">
+      <div class="mx-auto flex max-w-6xl items-center justify-between">
+        <.link navigate={~p"/"} class="flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">CB</span>
+          <span>Caden Barton</span>
+        </.link>
+
+        <nav class="flex items-center gap-4 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+          <.link navigate={~p"/"} class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300">
+            Home
+          </.link>
+          <.link navigate={~p"/how-i-work"} class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300">
+            How I work
+          </.link>
+          <.link navigate={~p"/builds"} class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300">
+            Builds
+          </.link>
+          <.theme_toggle />
+        </nav>
       </div>
     </header>
 
