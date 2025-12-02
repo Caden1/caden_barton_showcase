@@ -20,7 +20,7 @@ defmodule CadenBartonShowcaseWeb.HowIWorkLive do
               Steady delivery · Reliable systems
             </p>
             <div class="space-y-3">
-              <h1 class="text-4xl font-bold leading-tight">How I work</h1>
+              <h1 id="how-i-work-heading" class="text-4xl font-bold leading-tight">How I work</h1>
               <p class="text-lg text-zinc-200">
                 I ship resilient backends, thoughtful frontends, and maintainable codebases with Phoenix and LiveView.
               </p>
@@ -34,7 +34,7 @@ defmodule CadenBartonShowcaseWeb.HowIWorkLive do
         </div>
 
         <div class="grid gap-6 md:grid-cols-2">
-          <section class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
+          <section id="principles-section" class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
             <div class="flex items-center justify-between">
               <h2 class="text-xl font-semibold text-emerald-200">Principles</h2>
               <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">Guardrails first</span>
@@ -71,7 +71,7 @@ defmodule CadenBartonShowcaseWeb.HowIWorkLive do
             </ul>
           </section>
 
-          <section class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
+          <section id="engagement-section" class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
             <div class="flex items-center justify-between">
               <h2 class="text-xl font-semibold text-emerald-200">Engagement</h2>
               <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">Shipping rhythm</span>
@@ -84,7 +84,7 @@ defmodule CadenBartonShowcaseWeb.HowIWorkLive do
           </section>
         </div>
 
-        <section class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
+        <section id="tooling-section" class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
           <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold text-emerald-200">Tooling</h2>
             <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">Built for speed &amp; signal</span>
