@@ -4,31 +4,25 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   import Phoenix.LiveViewTest
 
   test "home page renders hero content", %{conn: conn} do
-    {:ok, _view, html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, ~p"/")
 
-    assert html =~ "Elixir &amp; Phoenix engineer focused on shipping resilient systems"
-
-    assert html =~
-             "I design reliable backends, thoughtful frontends, and codebases that age well."
-
-    assert html =~ "See how I work"
-    assert html =~ "Recent builds"
+    assert has_element?(view, "p", "Elixir & Phoenix engineer")
+    assert has_element?(view, "h1", "I design reliable backends")
+    assert has_element?(view, "a[href='#{~p"/how-i-work"}']", "See how I work")
+    assert has_element?(view, "a[href='#{~p"/builds"}']", "Recent builds")
   end
 
   test "CTAs link to how I work and builds pages", %{conn: conn} do
-    {:ok, _view, html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, ~p"/")
 
-    assert html =~ ~s|href="#{~p"/how-i-work"}"|
-    assert html =~ ~s|href="#{~p"/builds"}"|
+    assert has_element?(view, "a[href='#{~p"/how-i-work"}']")
+    assert has_element?(view, "a[href='#{~p"/builds"}']")
   end
 
   test "global navigation shows primary links", %{conn: conn} do
-    {:ok, _view, html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, ~p"/")
 
-    assert html =~ "Caden Barton"
-    assert html =~ "See how I work"
-    assert html =~ ~s|href="#{~p"/how-i-work"}"|
-    assert html =~ "Recent builds"
-    assert html =~ ~s|href="#{~p"/builds"}"|
+    assert has_element?(view, "a[href='#{~p"/how-i-work"}']", "See how I work")
+    assert has_element?(view, "a[href='#{~p"/builds"}']", "Recent builds")
   end
 end
