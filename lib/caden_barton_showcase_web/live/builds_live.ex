@@ -13,13 +13,14 @@ defmodule CadenBartonShowcaseWeb.BuildsLive do
       <section class="space-y-8 text-zinc-50">
         <div class="space-y-3">
           <p class="text-sm uppercase tracking-[0.2em] text-emerald-200">Portfolio</p>
-          <h1 class="text-4xl font-bold leading-tight">Recent builds</h1>
+          <h1 id="builds-heading" class="text-4xl font-bold leading-tight">Recent builds</h1>
           <p class="text-zinc-200">Phoenix and LiveView work that pairs resilient backends with usable frontends.</p>
         </div>
 
-        <div class="space-y-6">
+        <div id="builds-list" class="space-y-6">
           <article
             :for={project <- @projects}
+            data-role="build-card"
             class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/60"
           >
             <div class="flex flex-wrap items-start justify-between gap-3">
