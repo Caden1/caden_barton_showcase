@@ -1,8 +1,10 @@
 defmodule CadenBartonShowcaseWeb.BuildsLive do
   use CadenBartonShowcaseWeb, :live_view
 
+  alias CadenBartonShowcaseWeb.BuildsContent
+
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, projects: projects())}
+    {:ok, assign(socket, projects: BuildsContent.projects())}
   end
 
   def render(assigns) do
@@ -51,34 +53,5 @@ defmodule CadenBartonShowcaseWeb.BuildsLive do
       </section>
     </Layouts.app>
     """
-  end
-
-  defp projects do
-    [
-      %{
-        slug: "realtime-ops-console",
-        name: "Real-time Ops Console",
-        summary: "LiveView console for fleet health with streaming telemetry and guardrails.",
-        role: "Technical lead across Phoenix, LiveView UX, and rollout safety.",
-        problem: "Oncall teams lacked a unified view of deploy state, incidents, and service health.",
-        outcome: "Reduced mean time to respond by 35% with actionable alerts and drill-downs."
-      },
-      %{
-        slug: "event-pipeline",
-        name: "Event Pipeline & Analytics",
-        summary: "Redpanda + ClickHouse pipeline ingesting billions of events per day.",
-        role: "Architected ingestion, schemas, and back-pressure controls; built observability.",
-        problem: "Legacy pipeline dropped events under burst load and lacked cost controls.",
-        outcome: "Handles bursty traffic without loss; analytics queries 10x faster and cheaper."
-      },
-      %{
-        slug: "multitenant-api",
-        name: "Multi-tenant API Platform",
-        summary: "Phoenix contexts with strict tenancy and reversible migrations.",
-        role: "Led API design, tenancy enforcement, and feature-flagged releases.",
-        problem: "Shared data models risked cross-tenant leakage and painful deploys.",
-        outcome: "Zero tenant leaks post-migration and boring deploys with reversible changes."
-      }
-    ]
   end
 end
