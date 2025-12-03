@@ -19,6 +19,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
             <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
             Elixir &amp; Phoenix engineer focused on shipping resilient systems
           </p>
+          <p class="mb-3 text-xs font-semibold tracking-[0.25em] text-emerald-400 uppercase">Caden Barton</p>
           <h1 class="text-4xl font-bold leading-tight sm:text-5xl">
             I design reliable backends, thoughtful frontends, and codebases that age well.
           </h1>
@@ -47,6 +48,20 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold text-emerald-200">Engineering signals</h2>
             <span class="rounded-full bg-zinc-800 px-3 py-1 text-xs text-zinc-300">Built for longevity</span>
+          </div>
+          <div class="flex items-center gap-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-5">
+            <div class="h-16 w-16 rounded-2xl overflow-hidden border border-emerald-500/40 shadow-lg shadow-emerald-500/20">
+              <img
+                src={~p"/images/caden-barton.jpeg"}
+                alt="Portrait of Caden Barton"
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-semibold text-slate-50">Caden Barton</p>
+              <p class="text-xs uppercase tracking-[0.2em] text-emerald-400">Elixir &amp; Phoenix engineer</p>
+              <p class="text-xs text-slate-400">Shipping resilient products with clarity, telemetry, and calm delivery.</p>
+            </div>
           </div>
           <div class="grid gap-4 sm:grid-cols-2">
             <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">

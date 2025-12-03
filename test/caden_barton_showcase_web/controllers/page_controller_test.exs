@@ -3,6 +3,6 @@ defmodule CadenBartonShowcaseWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")
-    assert html_response(conn, 200) =~ "Peace of mind from prototype to production"
+    assert html_response(conn, 200) =~ "I design reliable backends, thoughtful frontends, and codebases that age well."
   end
 end
