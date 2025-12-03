@@ -45,42 +45,44 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </div>
         </div>
 
-        <div class="w-full max-w-xl space-y-4 rounded-2xl border border-zinc-800 bg-zinc-900/80 p-6 shadow-xl shadow-black/30 backdrop-blur">
-          <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-emerald-200">Engineering signals</h2>
-            <span class="rounded-full bg-zinc-800 px-3 py-1 text-xs text-zinc-300">Built for longevity</span>
-          </div>
-          <div class="flex items-center gap-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-5">
-            <div class="h-16 w-16 rounded-2xl overflow-hidden border border-emerald-500/40 shadow-lg shadow-emerald-500/20">
-              <img
-                src={~p"/images/caden-barton.jpeg"}
-                alt="Portrait of Caden Barton"
-                class="h-full w-full object-cover"
-              />
+        <div class="w-full max-w-xl bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 p-[1px] rounded-3xl">
+          <div class="space-y-4 rounded-3xl border border-zinc-800 bg-zinc-900/80 p-6 shadow-xl shadow-black/30 backdrop-blur">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold text-emerald-200">Engineering signals</h2>
+              <span class="rounded-full bg-zinc-800 px-3 py-1 text-xs text-zinc-300">Built for longevity</span>
             </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-50">Caden Barton</p>
-              <p class="text-xs uppercase tracking-[0.2em] text-emerald-400">Elixir &amp; Phoenix engineer</p>
-              <p class="text-xs text-slate-400">Shipping resilient products with clarity, telemetry, and calm delivery.</p>
+            <div class="flex items-center gap-4 rounded-3xl border border-slate-800 bg-slate-900/70 p-5">
+              <div class="h-16 w-16 rounded-2xl overflow-hidden border border-emerald-500/40 shadow-lg shadow-emerald-500/20">
+                <img
+                  src={~p"/images/caden-barton.jpeg"}
+                  alt="Portrait of Caden Barton"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-slate-50">Caden Barton</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-emerald-400">ELIXIR &amp; PHOENIX ENGINEER · AI CONDUCTOR</p>
+                <p class="text-xs text-slate-400">Shipping resilient products with observability, telemetry, and AI-assisted delivery.</p>
+              </div>
             </div>
-          </div>
-          <div class="grid gap-4 sm:grid-cols-2">
-            <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
-              <p class="text-sm font-semibold text-emerald-200">Code quality</p>
-              <p class="text-sm text-zinc-200">Domain-driven modules, crisp boundaries, and guardrails in pipelines and contexts.</p>
-            </article>
-            <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
-              <p class="text-sm font-semibold text-emerald-200">Technical debt prevention</p>
-              <p class="text-sm text-zinc-200">Readable patterns, instrumentation first, and migrations that keep rollbacks safe.</p>
-            </article>
-            <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
-              <p class="text-sm font-semibold text-emerald-200">Testing discipline</p>
-              <p class="text-sm text-zinc-200">Unit, LiveView, and property-style tests tied to behaviors and observability hooks.</p>
-            </article>
-            <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
-              <p class="text-sm font-semibold text-emerald-200">AI-assisted workflow</p>
-              <p class="text-sm text-zinc-200">ChatGPT for ideation, CODEX for flow, CodeRabbit reviews on GitHub to keep rigor high.</p>
-            </article>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
+                <p class="text-sm font-semibold text-emerald-200">AI team orchestration</p>
+                <p class="text-sm text-zinc-200">ChatGPT as PM, CODEX as pair engineer, CodeRabbit as reviewer. I break work into small branches and prompts so each agent stays focused and hallucinations stay low.</p>
+              </article>
+              <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
+                <p class="text-sm font-semibold text-emerald-200">Production-grade Elixir systems</p>
+                <p class="text-sm text-zinc-200">Phoenix &amp; LiveView backends on Redpanda, ClickHouse, and multi-tenant Postgres, designed for clarity, predictable latency, and safe rollbacks.</p>
+              </article>
+              <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
+                <p class="text-sm font-semibold text-emerald-200">Testing &amp; CI you can trust</p>
+                <p class="text-sm text-zinc-200">Unit, LiveView, and property-style tests owned by me—not AI—plus GitHub Actions that run <code class="text-xs">mix test</code> on every PR.</p>
+              </article>
+              <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
+                <p class="text-sm font-semibold text-emerald-200">Technical debt prevention</p>
+                <p class="text-sm text-zinc-200">Domain-driven contexts, explicit boundaries, and migrations planned with guardrails so future changes stay boring and safe.</p>
+              </article>
+            </div>
           </div>
         </div>
       </div>
