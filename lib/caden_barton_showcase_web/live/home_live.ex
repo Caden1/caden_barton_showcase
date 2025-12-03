@@ -229,6 +229,56 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </p>
       </section>
 
+      <section id="ai-case-study" class="relative mx-auto max-w-6xl px-6 pb-16">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">CASE STUDY</p>
+          <h2 class="text-3xl font-bold sm:text-4xl text-zinc-50">This site, built with an AI team</h2>
+          <p class="text-zinc-200">
+            This portfolio is a live example of how I combine Elixir, Phoenix, and AI tools into a safe, repeatable workflow.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <h3 class="text-xl font-semibold text-zinc-50">CodeRabbit in the loop</h3>
+            <ul class="mt-4 space-y-2 text-sm text-zinc-200">
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                Every pull request runs through CodeRabbit for review.
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                I have conversations with it just like I would with a human engineer.
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                Example review implemented here:
+                <a href="https://github.com/Caden1/caden_barton_showcase/pull/7" class="text-emerald-300 underline underline-offset-4">
+                  https://github.com/Caden1/caden_barton_showcase/pull/7
+                </a>
+              </li>
+            </ul>
+          </article>
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <h3 class="text-xl font-semibold text-zinc-50">CI, tests, and AI limits</h3>
+            <ul class="mt-4 space-y-2 text-sm text-zinc-200">
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                GitHub Actions runs <code class="text-xs">mix test</code> on every PR create/update so broken changes can’t be merged.
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                AI tools are bad at understanding test intent, so I write and own my unit and LiveView tests.
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                At the bottom of each CodeRabbit review, I use the “Prompt for AI Agents” output as input to ChatGPT and CODEX to safely apply its suggestions.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <div class="relative mx-auto max-w-6xl px-6 pb-20">
         <div class="grid gap-10 lg:grid-cols-3">
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
