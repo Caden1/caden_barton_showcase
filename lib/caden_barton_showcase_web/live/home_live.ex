@@ -282,35 +282,35 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
       <div class="relative mx-auto max-w-6xl px-6 pb-20">
         <div class="grid gap-10 lg:grid-cols-3">
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
-            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Projects</p>
-            <h3 class="mt-3 text-xl font-semibold">Production systems I’ve shipped</h3>
+            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">PROJECTS</p>
+            <h3 class="mt-3 text-xl font-semibold">Production systems I've shipped</h3>
             <ul class="mt-4 space-y-3 text-sm text-zinc-200">
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                Real-time analytics with Redpanda &amp; ClickHouse (billions of events/day).
+                Real-time analytics pipelines on Redpanda &amp; ClickHouse, ingesting billions of telemetry events per day.
               </li>
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                LiveView operational console with streaming updates and guardrails.
+                LiveView operational consoles with streaming updates, backpressure-aware subscriptions, and guardrails for operators.
               </li>
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                Multi-tenant Postgres APIs with strict tenancy and rollout safety.
+                Multi-tenant Postgres APIs with strict tenancy, reversible migrations, and safe rollout patterns.
               </li>
             </ul>
           </div>
 
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
-            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">How I keep code clean</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">HOW I KEEP CODE CLEAN</p>
             <h3 class="mt-3 text-xl font-semibold">Principles that prevent debt</h3>
             <ul class="mt-4 space-y-3 text-sm text-zinc-200">
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                Clear ownership: contexts as seams, boundary modules, zero “god modules.”
+                Clear ownership: contexts as seams, no "god modules".
               </li>
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                Observability-first: telemetry events, structured logs, budgeted latencies.
+                Observability-first: telemetry events, structured logs, and budgeted latencies for critical paths.
               </li>
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
@@ -320,20 +320,20 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </div>
 
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
-            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Testing &amp; AI</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">TESTING &amp; AI</p>
             <h3 class="mt-3 text-xl font-semibold">Proof over promise</h3>
             <ul class="mt-4 space-y-3 text-sm text-zinc-200">
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                Unit and LiveView tests around behaviors, not implementation details.
+                Unit, LiveView, and property-style tests around behaviors, not implementation details.
               </li>
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                CI gates with coverage on critical paths; lazy HTML selectors to keep tests resilient.
+                GitHub Actions CI gate that runs <code class="text-xs">mix test</code> on every PR and blocks merges on failures.
               </li>
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                AI stack: ChatGPT for ideas, CODEX for shipping flow, CodeRabbit for PR rigor on GitHub.
+                AI tools help with implementation, but I write and review the tests myself and use CodeRabbit as a second pair of eyes.
               </li>
             </ul>
           </div>
