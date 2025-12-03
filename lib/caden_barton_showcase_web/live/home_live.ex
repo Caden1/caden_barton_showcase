@@ -20,7 +20,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
             ELIXIR &amp; PHOENIX · AI-ASSISTED DELIVERY
           </p>
           <p class="mb-3 text-xs font-semibold tracking-[0.25em] text-emerald-400 uppercase">Caden Barton</p>
-          <h1 class="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+          <h1 class="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
             I conduct <span class="bg-gradient-to-r from-emerald-400 via-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">AI-powered</span> engineering teams that ship resilient systems.
           </h1>
           <p class="text-lg text-zinc-200">
@@ -31,7 +31,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           <div class="flex flex-wrap gap-3">
             <.link
               navigate={~p"/#ai-conductor-workflow"}
-              class="group inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:bg-emerald-400"
+              class="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 via-cyan-500 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:from-emerald-400 hover:via-cyan-400 hover:to-fuchsia-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
             >
               See AI conductor workflow
               <span class="transition-transform group-hover:translate-x-1">→</span>
@@ -89,7 +89,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
 
       <section id="ai-team" class="relative mx-auto max-w-6xl px-6 pb-16">
         <div class="space-y-4">
-          <h2 class="text-3xl font-bold sm:text-4xl text-zinc-50">My AI team on this project</h2>
+          <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">My AI team on this project</h2>
           <p class="text-zinc-200">
             I treat AI tools as collaborators, not replacements. For this site, I assembled a small AI team:
           </p>
@@ -133,7 +133,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
       <section id="ai-conductor-workflow" class="relative mx-auto max-w-6xl px-6 pb-20">
         <div class="space-y-3">
           <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">WORKFLOW</p>
-          <h2 class="text-3xl font-bold sm:text-4xl text-zinc-50">AI conductor workflow</h2>
+          <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">AI conductor workflow</h2>
           <p class="text-zinc-200">
             How I built this site by orchestrating ChatGPT, CODEX, and CodeRabbit on small, safe branches.
           </p>
@@ -142,7 +142,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         <ol class="mt-8 space-y-4">
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">1</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">1</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Research &amp; requirements with ChatGPT</p>
                 <p class="text-sm text-zinc-200">I explore options, gather context, and refine the requirements into a clear, scoped task.</p>
@@ -151,7 +151,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </li>
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">2</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">2</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Turn the requirements into a CODEX prompt</p>
                 <p class="text-sm text-zinc-200">ChatGPT helps me phrase the prompt so CODEX can focus on one change at a time.</p>
@@ -160,7 +160,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </li>
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">3</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">3</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Create a small Git branch for the task</p>
                 <p class="text-sm text-zinc-200">e.g., <code class="text-xs">feature/home-hero-ai-conductor</code>.</p>
@@ -169,7 +169,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </li>
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">4</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">4</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Feed the prompt to CODEX and implement</p>
                 <p class="text-sm text-zinc-200">I review the diff and run the app locally to make sure behavior matches expectations.</p>
@@ -178,7 +178,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </li>
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">5</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">5</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Open a pull request</p>
                 <p class="text-sm text-zinc-200">Every branch goes through a PR, even for small changes.</p>
@@ -187,7 +187,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </li>
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">6</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">6</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Let CodeRabbit review the PR</p>
                 <p class="text-sm text-zinc-200">I talk to it like a human reviewer about tradeoffs, naming, and edge cases.</p>
@@ -196,7 +196,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </li>
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">7</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">7</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Use CodeRabbit’s “Prompt for AI Agents” output</p>
                 <p class="text-sm text-zinc-200">I paste that into ChatGPT to refine, then into CODEX to apply follow-up changes.</p>
@@ -205,7 +205,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </li>
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">8</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">8</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Once everything looks good, squash &amp; merge</p>
                 <p class="text-sm text-zinc-200">I delete the feature branch on GitHub to keep the repo clean.</p>
@@ -214,7 +214,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </li>
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
-              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">9</span>
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">9</span>
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-emerald-200">Deploy and verify in higher environments</p>
                 <p class="text-sm text-zinc-200">I keep AI away from production knobs and rely on observability to watch the system.</p>
@@ -232,7 +232,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
       <section id="ai-case-study" class="relative mx-auto max-w-6xl px-6 pb-16">
         <div class="space-y-3">
           <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">CASE STUDY</p>
-          <h2 class="text-3xl font-bold sm:text-4xl text-zinc-50">This site, built with an AI team</h2>
+          <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">This site, built with an AI team</h2>
           <p class="text-zinc-200">
             This portfolio is a live example of how I combine Elixir, Phoenix, and AI tools into a safe, repeatable workflow.
           </p>
@@ -240,7 +240,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
 
         <div class="mt-8 grid gap-6 sm:grid-cols-2">
           <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
-            <h3 class="text-xl font-semibold text-zinc-50">CodeRabbit in the loop</h3>
+            <h3 class="font-display text-xl font-semibold text-zinc-50">CodeRabbit in the loop</h3>
             <ul class="mt-4 space-y-2 text-sm text-zinc-200">
               <li class="flex gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
@@ -260,7 +260,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
             </ul>
           </article>
           <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
-            <h3 class="text-xl font-semibold text-zinc-50">CI, tests, and AI limits</h3>
+            <h3 class="font-display text-xl font-semibold text-zinc-50">CI, tests, and AI limits</h3>
             <ul class="mt-4 space-y-2 text-sm text-zinc-200">
               <li class="flex gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
@@ -283,7 +283,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         <div class="grid gap-10 lg:grid-cols-3">
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
             <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">PROJECTS</p>
-            <h3 class="mt-3 text-xl font-semibold">Production systems I've shipped</h3>
+            <h3 class="mt-3 text-xl font-semibold font-display">Production systems I've shipped</h3>
             <ul class="mt-4 space-y-3 text-sm text-zinc-200">
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
@@ -302,7 +302,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
 
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
             <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">HOW I KEEP CODE CLEAN</p>
-            <h3 class="mt-3 text-xl font-semibold">Principles that prevent debt</h3>
+            <h3 class="mt-3 text-xl font-semibold font-display">Principles that prevent debt</h3>
             <ul class="mt-4 space-y-3 text-sm text-zinc-200">
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
@@ -321,7 +321,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
 
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
             <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">TESTING &amp; AI</p>
-            <h3 class="mt-3 text-xl font-semibold">Proof over promise</h3>
+            <h3 class="mt-3 text-xl font-semibold font-display">Proof over promise</h3>
             <ul class="mt-4 space-y-3 text-sm text-zinc-200">
               <li class="flex items-start gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
