@@ -17,22 +17,23 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         <div class="flex-1 space-y-6">
           <p class="inline-flex items-center gap-2 rounded-full bg-zinc-800/70 px-3 py-1 text-sm font-medium text-zinc-100 ring-1 ring-zinc-700/60 backdrop-blur transition hover:-translate-y-0.5 hover:ring-zinc-500/60">
             <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Elixir &amp; Phoenix engineer focused on shipping resilient systems
+            ELIXIR &amp; PHOENIX · AI-ASSISTED DELIVERY
           </p>
           <p class="mb-3 text-xs font-semibold tracking-[0.25em] text-emerald-400 uppercase">Caden Barton</p>
-          <h1 class="text-4xl font-bold leading-tight sm:text-5xl">
-            I design reliable backends, thoughtful frontends, and codebases that age well.
+          <h1 class="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            I conduct <span class="bg-gradient-to-r from-emerald-400 via-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">AI-powered</span> engineering teams that ship resilient systems.
           </h1>
           <p class="text-lg text-zinc-200">
-            I build production systems with Phoenix, LiveView, Redpanda, ClickHouse, and Postgres. My work centers on clarity,
-            observability, and reducing maintenance drag.
+            I build production systems with Elixir, Phoenix, LiveView, Redpanda, ClickHouse, and Postgres. I orchestrate ChatGPT,
+            CODEX, and CodeRabbit as an AI team—while I own architecture, testing, and shipping—to keep codebases clear,
+            observable, and low-maintenance.
           </p>
           <div class="flex flex-wrap gap-3">
             <.link
-              navigate={~p"/how-i-work"}
+              navigate={~p"/#ai-conductor-workflow"}
               class="group inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:bg-emerald-400"
             >
-              See how I work
+              See AI conductor workflow
               <span class="transition-transform group-hover:translate-x-1">→</span>
             </.link>
             <.link
