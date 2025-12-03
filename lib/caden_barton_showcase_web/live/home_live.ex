@@ -130,6 +130,105 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </div>
       </section>
 
+      <section id="ai-conductor-workflow" class="relative mx-auto max-w-6xl px-6 pb-20">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">WORKFLOW</p>
+          <h2 class="text-3xl font-bold sm:text-4xl text-zinc-50">AI conductor workflow</h2>
+          <p class="text-zinc-200">
+            How I built this site by orchestrating ChatGPT, CODEX, and CodeRabbit on small, safe branches.
+          </p>
+        </div>
+
+        <ol class="mt-8 space-y-4">
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">1</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Research &amp; requirements with ChatGPT</p>
+                <p class="text-sm text-zinc-200">I explore options, gather context, and refine the requirements into a clear, scoped task.</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">2</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Turn the requirements into a CODEX prompt</p>
+                <p class="text-sm text-zinc-200">ChatGPT helps me phrase the prompt so CODEX can focus on one change at a time.</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">3</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Create a small Git branch for the task</p>
+                <p class="text-sm text-zinc-200">e.g., <code class="text-xs">feature/home-hero-ai-conductor</code>.</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">4</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Feed the prompt to CODEX and implement</p>
+                <p class="text-sm text-zinc-200">I review the diff and run the app locally to make sure behavior matches expectations.</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">5</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Open a pull request</p>
+                <p class="text-sm text-zinc-200">Every branch goes through a PR, even for small changes.</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">6</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Let CodeRabbit review the PR</p>
+                <p class="text-sm text-zinc-200">I talk to it like a human reviewer about tradeoffs, naming, and edge cases.</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">7</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Use CodeRabbit’s “Prompt for AI Agents” output</p>
+                <p class="text-sm text-zinc-200">I paste that into ChatGPT to refine, then into CODEX to apply follow-up changes.</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">8</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Once everything looks good, squash &amp; merge</p>
+                <p class="text-sm text-zinc-200">I delete the feature branch on GitHub to keep the repo clean.</p>
+              </div>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
+            <div class="flex gap-3">
+              <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 text-sm font-semibold text-black">9</span>
+              <div class="space-y-1">
+                <p class="text-sm font-semibold text-emerald-200">Deploy and verify in higher environments</p>
+                <p class="text-sm text-zinc-200">I keep AI away from production knobs and rely on observability to watch the system.</p>
+              </div>
+            </div>
+          </li>
+        </ol>
+
+        <p class="mt-6 text-sm text-zinc-300">
+          AI tools hallucinate less when the work is broken into small, well-scoped pieces. I use ChatGPT to slice the work,
+          CODEX to implement, and CodeRabbit to review—while I stay responsible for tests, deploys, and system health.
+        </p>
+      </section>
+
       <div class="relative mx-auto max-w-6xl px-6 pb-20">
         <div class="grid gap-10 lg:grid-cols-3">
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
