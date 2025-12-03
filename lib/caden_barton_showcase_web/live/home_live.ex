@@ -87,6 +87,49 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </div>
       </div>
 
+      <section id="ai-team" class="relative mx-auto max-w-6xl px-6 pb-16">
+        <div class="space-y-4">
+          <h2 class="text-3xl font-bold sm:text-4xl text-zinc-50">My AI team on this project</h2>
+          <p class="text-zinc-200">
+            I treat AI tools as collaborators, not replacements. For this site, I assembled a small AI team:
+          </p>
+        </div>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-emerald-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              ChatGPT
+            </div>
+            <h3 class="mt-3 text-xl font-semibold text-zinc-50">Project manager &amp; staff engineer</h3>
+            <p class="mt-3 text-sm text-zinc-200">Researches and explores options, helps me gather requirements, and breaks work into small, testable branches and prompts.</p>
+          </article>
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-emerald-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              CODEX
+            </div>
+            <h3 class="mt-3 text-xl font-semibold text-zinc-50">Implementation engineer</h3>
+            <p class="mt-3 text-sm text-zinc-200">Implements features from structured prompts. Writes the first draft of code while I keep architecture, edge cases, and tests in mind.</p>
+          </article>
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-emerald-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              CodeRabbit
+            </div>
+            <h3 class="mt-3 text-xl font-semibold text-zinc-50">Code reviewer</h3>
+            <p class="mt-3 text-sm text-zinc-200">Reviews my pull requests, surfaces risks and refactors, and generates follow-up prompts I can feed back into ChatGPT and CODEX.</p>
+          </article>
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-emerald-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              Me
+            </div>
+            <h3 class="mt-3 text-xl font-semibold text-zinc-50">The conductor</h3>
+            <p class="mt-3 text-sm text-zinc-200">I keep the architecture cohesive, write and own tests, manage CI/CD, and decide when to accept or override AI suggestions.</p>
+          </article>
+        </div>
+      </section>
+
       <div class="relative mx-auto max-w-6xl px-6 pb-20">
         <div class="grid gap-10 lg:grid-cols-3">
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
