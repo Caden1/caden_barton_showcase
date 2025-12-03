@@ -8,11 +8,33 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:16
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    env:
+      MIX_ENV: test
+      DB_HOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
     steps:
       - uses: actions/checkout@v4
       - uses: erlef/setup-beam@v1
         with:
           elixir-version: "1.15.7"
           otp-version: "26.2"
+      - run: mix local.hex --force
+      - run: mix local.rebar --force
       - run: mix deps.get
+      - run: mix ecto.create --quiet
+      - run: mix ecto.migrate --quiet
       - run: mix test
