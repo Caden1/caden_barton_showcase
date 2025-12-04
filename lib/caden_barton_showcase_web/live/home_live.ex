@@ -1,14 +1,25 @@
 defmodule CadenBartonShowcaseWeb.HomeLive do
   use CadenBartonShowcaseWeb, :live_view
 
+  @allowed_personas ~w(recruiter developer curious)
+
   import CadenBartonShowcaseWeb.PersonaSelectorComponent
 
   def mount(_params, _session, socket) do
     {:ok, assign(socket, :selected_persona, "recruiter")}
   end
 
-  def handle_event("select_persona", %{"persona" => persona}, socket) do
+  @impl true
+  def handle_event("select_persona", %{"persona" => persona} = _params, socket)
+      when persona in @allowed_personas do
     {:noreply, assign(socket, :selected_persona, persona)}
+  end
+
+  @impl true
+  def handle_event("select_persona", params, socket) do
+    require Logger
+    Logger.warn("Ignoring invalid persona selection: #{inspect(params)}")
+    {:noreply, socket}
   end
 
   def render(assigns) do
