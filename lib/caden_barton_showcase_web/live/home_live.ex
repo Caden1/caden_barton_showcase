@@ -43,6 +43,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
     ~H"""
     <section
       class="relative overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-900 to-black text-zinc-50"
+      id="home-page"
       phx-hook="ScrollToSection"
     >
       <div class="absolute inset-0 opacity-60 blur-3xl">
