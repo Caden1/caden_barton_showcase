@@ -14,9 +14,26 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponentTest do
 
     {:ok, doc} = Floki.parse_document(html)
 
-    assert html =~ "I’m a hiring manager"
-    assert html =~ "I’m a developer"
-    assert html =~ "I’m just curious"
+    recruiter_nodes =
+      doc
+      |> Floki.find("article[phx-value-persona='recruiter']")
+
+    assert length(recruiter_nodes) == 1
+    assert Floki.text(recruiter_nodes) =~ "I’m a hiring manager"
+
+    developer_nodes =
+      doc
+      |> Floki.find("article[phx-value-persona='developer']")
+
+    assert length(developer_nodes) == 1
+    assert Floki.text(developer_nodes) =~ "I’m a developer"
+
+    curious_nodes =
+      doc
+      |> Floki.find("article[phx-value-persona='curious']")
+
+    assert length(curious_nodes) == 1
+    assert Floki.text(curious_nodes) =~ "I’m just curious"
 
     recruiter_classes =
       doc
