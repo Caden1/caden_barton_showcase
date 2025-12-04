@@ -13,7 +13,19 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   @impl true
   def handle_event("select_persona", %{"persona" => persona} = _params, socket)
       when persona in @allowed_personas do
-    {:noreply, assign(socket, :selected_persona, persona)}
+    section_id =
+      case persona do
+        "recruiter" -> "section-how-i-work"
+        "developer" -> "section-projects"
+        "curious" -> "section-about-me"
+      end
+
+    socket =
+      socket
+      |> assign(:selected_persona, persona)
+      |> push_event("scroll_to_section", %{target_id: section_id})
+
+    {:noreply, socket}
   end
 
   @impl true
@@ -29,7 +41,11 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <section class="relative overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-900 to-black text-zinc-50">
+    <section
+      class="relative overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-900 to-black text-zinc-50"
+      id="home-page"
+      phx-hook="ScrollToSection"
+    >
       <div class="absolute inset-0 opacity-60 blur-3xl">
         <div class="absolute h-72 w-72 -left-16 top-10 rounded-full bg-indigo-600/30"></div>
         <div class="absolute h-80 w-80 right-10 -bottom-10 rounded-full bg-amber-500/20"></div>
@@ -52,7 +68,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </p>
           <div class="flex flex-wrap gap-3">
             <.link
-              navigate={~p"/#ai-conductor-workflow"}
+              navigate={~p"/#section-how-i-work"}
               class="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 via-cyan-500 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:from-emerald-400 hover:via-cyan-400 hover:to-fuchsia-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
             >
               See AI conductor workflow
@@ -157,7 +173,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </div>
       </section>
 
-      <section id="ai-conductor-workflow" class="relative mx-auto max-w-6xl px-6 pb-20">
+      <section id="section-how-i-work" class="relative mx-auto max-w-6xl px-6 pb-20">
         <div class="space-y-3">
           <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">WORKFLOW</p>
           <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">AI conductor workflow</h2>
@@ -256,7 +272,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </p>
       </section>
 
-      <section id="ai-case-study" class="relative mx-auto max-w-6xl px-6 pb-16">
+      <section id="section-about-me" class="relative mx-auto max-w-6xl px-6 pb-16">
         <div class="space-y-3">
           <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">CASE STUDY</p>
           <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">This site, built with an AI team</h2>
@@ -306,7 +322,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </div>
       </section>
 
-      <div class="relative mx-auto max-w-6xl px-6 pb-20">
+      <section id="section-projects" class="relative mx-auto max-w-6xl px-6 pb-20">
         <div class="grid gap-10 lg:grid-cols-3">
           <div class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
             <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">PROJECTS</p>
@@ -365,7 +381,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
             </ul>
           </div>
         </div>
-      </div>
+      </section>
 
       <section id="for-hiring-managers" class="relative mx-auto max-w-5xl px-6 pb-20">
         <div class="bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 p-[1px] rounded-3xl shadow-xl shadow-black/30">
