@@ -1,7 +1,6 @@
 defmodule CadenBartonShowcaseWeb.PersonaSelectorComponentTest do
   use CadenBartonShowcaseWeb.ConnCase, async: true
 
-  import Phoenix.Component
   import Phoenix.LiveViewTest
 
   alias CadenBartonShowcaseWeb.PersonaSelectorComponent
