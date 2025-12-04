@@ -1,10 +1,32 @@
 defmodule CadenBartonShowcaseWeb.HomeLive do
   use CadenBartonShowcaseWeb, :live_view
 
+  @allowed_personas ~w(recruiter developer curious)
+
+  import CadenBartonShowcaseWeb.PersonaSelectorComponent
+
+  @impl true
   def mount(_params, _session, socket) do
-    {:ok, socket}
+    {:ok, assign(socket, :selected_persona, "recruiter")}
   end
 
+  @impl true
+  def handle_event("select_persona", %{"persona" => persona} = _params, socket)
+      when persona in @allowed_personas do
+    {:noreply, assign(socket, :selected_persona, persona)}
+  end
+
+  @impl true
+  def handle_event("select_persona", params, socket) do
+    require Logger
+    Logger.warning(
+      "Ignoring invalid persona selection: #{inspect(params)}",
+      params: params
+    )
+    {:noreply, socket}
+  end
+
+  @impl true
   def render(assigns) do
     ~H"""
     <section class="relative overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-900 to-black text-zinc-50">
@@ -87,27 +109,10 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </div>
       </div>
 
-      <section id="start-here" class="relative mx-auto max-w-6xl px-6 pb-4">
-        <div class="space-y-3">
-          <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">Start here</h2>
-          <p class="text-zinc-200">Tell me who you are and I’ll show you what to read.</p>
-        </div>
-
-        <div class="mt-8 grid gap-4 sm:gap-6 md:grid-cols-3">
-          <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-lg shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/60 hover:shadow-emerald-500/20">
-            <p class="text-sm font-semibold text-emerald-200">I’m a hiring manager</p>
-            <p class="mt-2 text-sm text-zinc-200">Get a quick overview of how I work and what I’ve shipped.</p>
-          </article>
-          <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-lg shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/60 hover:shadow-emerald-500/20">
-            <p class="text-sm font-semibold text-emerald-200">I’m a developer</p>
-            <p class="mt-2 text-sm text-zinc-200">Dive into stack details, architecture, and code samples.</p>
-          </article>
-          <article class="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-lg shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/60 hover:shadow-emerald-500/20">
-            <p class="text-sm font-semibold text-emerald-200">I’m just curious</p>
-            <p class="mt-2 text-sm text-zinc-200">See a quick story, side projects, and music.</p>
-          </article>
-        </div>
-      </section>
+      <.persona_selector
+        id="start-here-selector"
+        selected_persona={@selected_persona}
+      />
 
       <section id="ai-team" class="relative mx-auto max-w-6xl px-6 pb-16">
         <div class="space-y-4">
