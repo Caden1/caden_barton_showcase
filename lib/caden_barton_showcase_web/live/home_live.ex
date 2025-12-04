@@ -5,6 +5,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
 
   import CadenBartonShowcaseWeb.PersonaSelectorComponent
 
+  @impl true
   def mount(_params, _session, socket) do
     {:ok, assign(socket, :selected_persona, "recruiter")}
   end
@@ -18,10 +19,14 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   @impl true
   def handle_event("select_persona", params, socket) do
     require Logger
-    Logger.warn("Ignoring invalid persona selection: #{inspect(params)}")
+    Logger.warning(
+      "Ignoring invalid persona selection: #{inspect(params)}",
+      params: params
+    )
     {:noreply, socket}
   end
 
+  @impl true
   def render(assigns) do
     ~H"""
     <section class="relative overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-900 to-black text-zinc-50">
