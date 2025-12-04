@@ -25,4 +25,31 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert has_element?(view, "a[href='#{~p"/#section-how-i-work"}']", "See AI conductor workflow")
     assert has_element?(view, "a[href='#{~p"/builds"}']", "Recent builds")
   end
+
+  test "renders start here persona selector", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    assert has_element?(view, "h2", "Start here")
+    assert has_element?(view, "article[phx-value-persona='recruiter']", "I’m a hiring manager")
+    assert has_element?(view, "article[phx-value-persona='developer']", "I’m a developer")
+    assert has_element?(view, "article[phx-value-persona='curious']", "I’m just curious")
+  end
+
+  test "clicking developer persona highlights selection and pushes scroll event", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    render_click(element(view, "article[phx-value-persona='developer']"))
+
+    html = render(view)
+
+    developer_classes =
+      html
+      |> Floki.parse_document!()
+      |> Floki.find("article[phx-value-persona='developer']")
+      |> Floki.attribute("class")
+      |> List.first()
+
+    assert developer_classes =~ "border-emerald-400/80"
+    assert_push_event(view, "scroll_to_section", %{target_id: "section-projects"})
+  end
 end
