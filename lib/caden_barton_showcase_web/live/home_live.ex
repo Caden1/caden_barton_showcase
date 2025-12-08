@@ -318,18 +318,76 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </p>
       </section>
 
-      <section id="section-about-me" class="relative mx-auto max-w-6xl px-6 pb-16">
+      <section id="case-study" class="relative mx-auto max-w-6xl px-6 pb-16">
         <div class="space-y-3">
           <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">CASE STUDY</p>
           <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">
             This site, built with an AI team
           </h2>
           <p class="text-zinc-200">
-            This portfolio is a live example of how I combine Elixir, Phoenix, and AI tools into a safe, repeatable workflow.
+            This portfolio runs on Elixir, Phoenix, and LiveView with Redpanda, ClickHouse, and Postgres—showing how I use an AI-assisted workflow to ship production systems.
           </p>
         </div>
 
         <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">PROJECTS</p>
+            <h3 class="mt-3 text-xl font-semibold font-display">Production systems I've shipped</h3>
+            <ul class="mt-4 space-y-3 text-sm text-zinc-200">
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                Real-time analytics pipelines on Redpanda &amp; ClickHouse, ingesting billions of telemetry events per day.
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                LiveView operational consoles with streaming updates, backpressure-aware subscriptions, and guardrails for operators.
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                Multi-tenant Postgres APIs with strict tenancy, reversible migrations, and safe rollout patterns.
+              </li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">TESTING &amp; AI</p>
+            <h3 class="mt-3 text-xl font-semibold font-display">Proof over promise</h3>
+            <ul class="mt-4 space-y-3 text-sm text-zinc-200">
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                Unit, LiveView, and property-style tests around behaviors, not implementation details.
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                GitHub Actions CI gate that runs <code class="text-xs">mix test</code>
+                on every PR and blocks merges on failures.
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                AI tools help with implementation, but I write and review the tests myself and use CodeRabbit as a second pair of eyes.
+              </li>
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
+            <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">HOW I KEEP CODE CLEAN</p>
+            <h3 class="mt-3 text-xl font-semibold font-display">Principles that prevent debt</h3>
+            <ul class="mt-4 space-y-3 text-sm text-zinc-200">
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                Clear ownership: contexts as seams, no "god modules".
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                Observability-first: telemetry events, structured logs, and budgeted latencies for critical paths.
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
+                Change safety: feature flags, reversible migrations, and backfills with circuit breakers.
+              </li>
+            </ul>
+          </article>
+
           <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
             <h3 class="font-display text-xl font-semibold text-zinc-50">CodeRabbit in the loop</h3>
             <ul class="mt-4 space-y-2 text-sm text-zinc-200">
@@ -353,6 +411,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               </li>
             </ul>
           </article>
+
           <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
             <h3 class="font-display text-xl font-semibold text-zinc-50">CI, tests, and AI limits</h3>
             <ul class="mt-4 space-y-2 text-sm text-zinc-200">
