@@ -10,7 +10,8 @@ defmodule CadenBartonShowcase.Application do
     children = [
       CadenBartonShowcaseWeb.Telemetry,
       CadenBartonShowcase.Repo,
-      {DNSCluster, query: Application.get_env(:caden_barton_showcase, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:caden_barton_showcase, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: CadenBartonShowcase.PubSub},
       # Start a worker by calling: CadenBartonShowcase.Worker.start_link(arg)
       # {CadenBartonShowcase.Worker, arg},

@@ -26,81 +26,122 @@ defmodule CadenBartonShowcaseWeb.HowIWorkLive do
               </p>
             </div>
             <div class="flex flex-wrap gap-2 text-sm text-emerald-200">
-              <span class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1">Resilient backends</span>
-              <span class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1">Thoughtful frontends</span>
-              <span class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1">Maintainable codebases</span>
+              <span class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1">
+                Resilient backends
+              </span>
+              <span class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1">
+                Thoughtful frontends
+              </span>
+              <span class="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1">
+                Maintainable codebases
+              </span>
             </div>
           </div>
         </div>
 
         <div class="grid gap-6 md:grid-cols-2">
-          <section id="principles-section" class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
+          <section
+            id="principles-section"
+            class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50"
+          >
             <div class="flex items-center justify-between">
               <h2 class="text-xl font-semibold text-emerald-200">Principles</h2>
-              <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">Guardrails first</span>
+              <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">
+                Guardrails first
+              </span>
             </div>
             <ul class="mt-4 space-y-3 text-sm text-zinc-200">
               <li class="flex gap-3">
                 <span class="mt-2 h-2 w-2 rounded-full bg-emerald-400"></span>
                 <div>
                   <p class="font-semibold text-zinc-50">Ownership</p>
-                  <p class="text-zinc-300">End-to-end accountability, shepherding features from discovery to production stability.</p>
+                  <p class="text-zinc-300">
+                    End-to-end accountability, shepherding features from discovery to production stability.
+                  </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="mt-2 h-2 w-2 rounded-full bg-emerald-400"></span>
                 <div>
                   <p class="font-semibold text-zinc-50">Clear boundaries</p>
-                  <p class="text-zinc-300">Contexts, boundary modules, and contracts that keep coupling low and intent readable.</p>
+                  <p class="text-zinc-300">
+                    Contexts, boundary modules, and contracts that keep coupling low and intent readable.
+                  </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="mt-2 h-2 w-2 rounded-full bg-emerald-400"></span>
                 <div>
                   <p class="font-semibold text-zinc-50">Observability-first</p>
-                  <p class="text-zinc-300">Telemetry, structured logs, and budgets for latency so issues surface before users feel them.</p>
+                  <p class="text-zinc-300">
+                    Telemetry, structured logs, and budgets for latency so issues surface before users feel them.
+                  </p>
                 </div>
               </li>
               <li class="flex gap-3">
                 <span class="mt-2 h-2 w-2 rounded-full bg-emerald-400"></span>
                 <div>
                   <p class="font-semibold text-zinc-50">Change safety</p>
-                  <p class="text-zinc-300">Feature flags, reversible migrations, and rollout plans that keep deploys boring.</p>
+                  <p class="text-zinc-300">
+                    Feature flags, reversible migrations, and rollout plans that keep deploys boring.
+                  </p>
                 </div>
               </li>
             </ul>
           </section>
 
-          <section id="engagement-section" class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
+          <section
+            id="engagement-section"
+            class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50"
+          >
             <div class="flex items-center justify-between">
               <h2 class="text-xl font-semibold text-emerald-200">Engagement</h2>
-              <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">Shipping rhythm</span>
+              <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">
+                Shipping rhythm
+              </span>
             </div>
             <div class="mt-4 space-y-3 text-sm text-zinc-200">
-              <p>Work moves in tight iterations with visible artifacts early—design notes, small PRs, and guardrail tests alongside code.</p>
-              <p>I keep feedback loops short with structured PR reviews, pairing when needed, and demoable increments that keep stakeholders in the loop.</p>
-              <p>Tests arrive with features, covering behaviors and LiveView flows so rollouts stay predictable.</p>
+              <p>
+                Work moves in tight iterations with visible artifacts early—design notes, small PRs, and guardrail tests alongside code.
+              </p>
+              <p>
+                I keep feedback loops short with structured PR reviews, pairing when needed, and demoable increments that keep stakeholders in the loop.
+              </p>
+              <p>
+                Tests arrive with features, covering behaviors and LiveView flows so rollouts stay predictable.
+              </p>
             </div>
           </section>
         </div>
 
-        <section id="tooling-section" class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50">
+        <section
+          id="tooling-section"
+          class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/50"
+        >
           <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold text-emerald-200">Tooling</h2>
-            <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">Built for speed &amp; signal</span>
+            <span class="rounded-full border border-zinc-700/70 bg-zinc-900 px-3 py-1 text-xs text-zinc-300">
+              Built for speed &amp; signal
+            </span>
           </div>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <div class="rounded-xl border border-zinc-800/80 bg-zinc-900/80 p-4">
               <p class="text-sm font-semibold text-zinc-50">Application layer</p>
-              <p class="mt-2 text-sm text-zinc-200">Phoenix &amp; LiveView for fast, real-time UX without frontend sprawl.</p>
+              <p class="mt-2 text-sm text-zinc-200">
+                Phoenix &amp; LiveView for fast, real-time UX without frontend sprawl.
+              </p>
             </div>
             <div class="rounded-xl border border-zinc-800/80 bg-zinc-900/80 p-4">
               <p class="text-sm font-semibold text-zinc-50">Data &amp; streaming</p>
-              <p class="mt-2 text-sm text-zinc-200">Redpanda + ClickHouse for event streams and analytics, Postgres for trusted state.</p>
+              <p class="mt-2 text-sm text-zinc-200">
+                Redpanda + ClickHouse for event streams and analytics, Postgres for trusted state.
+              </p>
             </div>
             <div class="rounded-xl border border-zinc-800/80 bg-zinc-900/80 p-4 sm:col-span-2">
               <p class="text-sm font-semibold text-zinc-50">AI-assisted workflow</p>
-              <p class="mt-2 text-sm text-zinc-200">ChatGPT for ideation, CODEX for flow, and PR bots to keep reviews sharp without losing human judgment.</p>
+              <p class="mt-2 text-sm text-zinc-200">
+                ChatGPT for ideation, CODEX for flow, and PR bots to keep reviews sharp without losing human judgment.
+              </p>
             </div>
           </div>
         </section>

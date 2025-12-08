@@ -36,6 +36,24 @@ const Hooks = {
       })
     },
   },
+  ScrollToSectionLink: {
+    mounted() {
+      this.handleClick = event => {
+        const targetId = this.el.dataset.scrollTarget
+        const targetEl = targetId && document.getElementById(targetId)
+
+        if (targetEl) {
+          event.preventDefault()
+          targetEl.scrollIntoView({behavior: "smooth", block: "start"})
+        }
+      }
+
+      this.el.addEventListener("click", this.handleClick)
+    },
+    destroyed() {
+      this.el.removeEventListener("click", this.handleClick)
+    },
+  },
 }
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")

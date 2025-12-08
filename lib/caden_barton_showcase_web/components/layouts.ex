@@ -37,19 +37,33 @@ defmodule CadenBartonShowcaseWeb.Layouts do
     ~H"""
     <header class="px-4 py-6 sm:px-6 lg:px-8">
       <div class="mx-auto flex max-w-6xl items-center justify-between">
-        <.link navigate={~p"/"} class="flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">CB</span>
+        <.link
+          navigate={~p"/"}
+          class="flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-zinc-50"
+        >
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300">
+            CB
+          </span>
           <span>Caden Barton</span>
         </.link>
 
         <nav class="flex items-center gap-4 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
-          <.link navigate={~p"/"} class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300">
+          <.link
+            navigate={~p"/"}
+            class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
+          >
             Home
           </.link>
-          <.link navigate={~p"/how-i-work"} class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300">
+          <.link
+            navigate={~p"/how-i-work"}
+            class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
+          >
             How I work
           </.link>
-          <.link navigate={~p"/builds"} class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300">
+          <.link
+            navigate={~p"/builds"}
+            class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
+          >
             Builds
           </.link>
           <.theme_toggle />

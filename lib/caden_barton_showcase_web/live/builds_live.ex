@@ -14,7 +14,9 @@ defmodule CadenBartonShowcaseWeb.BuildsLive do
         <div class="space-y-3">
           <p class="text-sm uppercase tracking-[0.2em] text-emerald-200">Portfolio</p>
           <h1 id="builds-heading" class="text-4xl font-bold leading-tight">Recent builds</h1>
-          <p class="text-zinc-200">Phoenix and LiveView work that pairs resilient backends with usable frontends.</p>
+          <p class="text-zinc-200">
+            Phoenix and LiveView work that pairs resilient backends with usable frontends.
+          </p>
         </div>
 
         <div id="builds-list" class="space-y-6">
@@ -42,11 +44,15 @@ defmodule CadenBartonShowcaseWeb.BuildsLive do
               </li>
               <li class="flex gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                <span><span class="font-semibold text-zinc-50">Problem:</span> {project.problem}</span>
+                <span>
+                  <span class="font-semibold text-zinc-50">Problem:</span> {project.problem}
+                </span>
               </li>
               <li class="flex gap-2">
                 <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-                <span><span class="font-semibold text-zinc-50">Outcome:</span> {project.outcome}</span>
+                <span>
+                  <span class="font-semibold text-zinc-50">Outcome:</span> {project.outcome}
+                </span>
               </li>
             </ul>
           </article>

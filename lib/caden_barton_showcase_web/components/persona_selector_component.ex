@@ -21,7 +21,9 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
           class={card_classes(@selected_persona == "recruiter")}
         >
           <p class="text-sm font-semibold text-emerald-200">I’m a hiring manager</p>
-          <p class="mt-2 text-sm text-zinc-200">Get a quick overview of how I work and what I’ve shipped.</p>
+          <p class="mt-2 text-sm text-zinc-200">
+            Get a quick overview of how I work and what I’ve shipped.
+          </p>
         </article>
         <article
           phx-click="select_persona"
@@ -30,7 +32,9 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
           class={card_classes(@selected_persona == "developer")}
         >
           <p class="text-sm font-semibold text-emerald-200">I’m a developer</p>
-          <p class="mt-2 text-sm text-zinc-200">Dive into stack details, architecture, and code samples.</p>
+          <p class="mt-2 text-sm text-zinc-200">
+            Dive into stack details, architecture, and code samples.
+          </p>
         </article>
         <article
           phx-click="select_persona"
