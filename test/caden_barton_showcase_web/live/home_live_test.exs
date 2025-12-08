@@ -69,7 +69,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert has_element?(view, "h2", "Start here")
     assert has_element?(view, "a[href='#for-hiring-managers']", "I’m a hiring manager")
     assert has_element?(view, "a[href='#section-projects']", "I’m a developer")
-    assert has_element?(view, "a[href='#section-about-me']", "I’m just curious")
+    assert has_element?(view, "a[href='#case-study']", "I’m just curious")
   end
 
   test "hiring manager section is present with correct id", %{conn: conn} do
@@ -94,5 +94,25 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
       |> Floki.find("section#section-how-i-work ol li")
 
     assert length(steps) == 9
+  end
+
+  test "case study section has correct id and card order", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    html = render(view)
+    doc = Floki.parse_document!(html)
+
+    assert has_element?(view, "section#case-study h2", "This site, built with an AI team")
+
+    headings =
+      doc
+      |> Floki.find("section#case-study article h3")
+      |> Enum.map(&Floki.text/1)
+
+    assert Enum.take(headings, 3) == [
+             "Production systems I've shipped",
+             "Proof over promise",
+             "Principles that prevent debt"
+           ]
   end
 end
