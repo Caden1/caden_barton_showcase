@@ -76,11 +76,21 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </p>
           <div class="flex flex-wrap gap-3">
             <a
+              id="cta-hiring-managers"
+              href="#for-hiring-managers"
+              phx-hook="ScrollToSectionLink"
+              data-scroll-target="for-hiring-managers"
+              class="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 via-cyan-500 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:from-emerald-400 hover:via-cyan-400 hover:to-fuchsia-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+            >
+              See what you get if you hire me
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+            <a
               id="cta-ai-conductor-workflow"
               href="#section-how-i-work"
               phx-hook="ScrollToSectionLink"
               data-scroll-target="section-how-i-work"
-              class="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 via-cyan-500 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:from-emerald-400 hover:via-cyan-400 hover:to-fuchsia-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+              class="group inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200"
             >
               See AI conductor workflow
               <span class="transition-transform group-hover:translate-x-1">→</span>
