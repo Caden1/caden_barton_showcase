@@ -10,8 +10,12 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponentTest do
 
     {:ok, doc} = Floki.parse_document(html)
 
-    recruiter_nodes = Floki.find(doc, "a[href='#for-hiring-managers'][phx-hook='ScrollToSectionLink']")
-    developer_nodes = Floki.find(doc, "a[href='#section-projects'][phx-hook='ScrollToSectionLink']")
+    recruiter_nodes =
+      Floki.find(doc, "a[href='#for-hiring-managers'][phx-hook='ScrollToSectionLink']")
+
+    developer_nodes =
+      Floki.find(doc, "a[href='#section-projects'][phx-hook='ScrollToSectionLink']")
+
     curious_nodes = Floki.find(doc, "a[href='#section-about-me'][phx-hook='ScrollToSectionLink']")
 
     assert length(recruiter_nodes) == 1
