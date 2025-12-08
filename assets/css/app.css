@@ -112,3 +112,17 @@
     "Segoe UI",
     sans-serif;
 }
+
+@layer base {
+  a,
+  button,
+  [role="button"],
+  [phx-click],
+  [data-phx-click],
+  [phx-submit],
+  [data-phx-submit],
+  [phx-change],
+  [data-phx-change] {
+    cursor: pointer;
+  }
+}
