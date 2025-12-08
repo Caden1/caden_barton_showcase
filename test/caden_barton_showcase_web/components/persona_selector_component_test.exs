@@ -5,59 +5,22 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponentTest do
 
   alias CadenBartonShowcaseWeb.PersonaSelectorComponent
 
-  test "renders labels and highlights recruiter persona" do
-    html =
-      render_component(&PersonaSelectorComponent.persona_selector/1,
-        id: "start-here",
-        selected_persona: "recruiter"
-      )
+  test "renders labels and links to the correct sections" do
+    html = render_component(&PersonaSelectorComponent.persona_selector/1, id: "start-here")
 
     {:ok, doc} = Floki.parse_document(html)
 
-    recruiter_nodes =
-      doc
-      |> Floki.find("article[phx-value-persona='recruiter']")
+    recruiter_nodes = Floki.find(doc, "a[href='#for-hiring-managers']")
+    developer_nodes = Floki.find(doc, "a[href='#section-projects']")
+    curious_nodes = Floki.find(doc, "a[href='#section-about-me']")
 
     assert length(recruiter_nodes) == 1
     assert Floki.text(recruiter_nodes) =~ "I’m a hiring manager"
 
-    developer_nodes =
-      doc
-      |> Floki.find("article[phx-value-persona='developer']")
-
     assert length(developer_nodes) == 1
     assert Floki.text(developer_nodes) =~ "I’m a developer"
 
-    curious_nodes =
-      doc
-      |> Floki.find("article[phx-value-persona='curious']")
-
     assert length(curious_nodes) == 1
     assert Floki.text(curious_nodes) =~ "I’m just curious"
-
-    recruiter_classes =
-      doc
-      |> Floki.find("article[phx-value-persona='recruiter']")
-      |> Floki.attribute("class")
-      |> List.first()
-
-    assert recruiter_classes =~ "border-emerald-400/80"
-  end
-
-  test "highlights developer when selected" do
-    html =
-      render_component(&PersonaSelectorComponent.persona_selector/1,
-        id: "start-here",
-        selected_persona: "developer"
-      )
-
-    developer_classes =
-      html
-      |> Floki.parse_document!()
-      |> Floki.find("article[phx-value-persona='developer']")
-      |> Floki.attribute("class")
-      |> List.first()
-
-    assert developer_classes =~ "border-emerald-400/80"
   end
 end

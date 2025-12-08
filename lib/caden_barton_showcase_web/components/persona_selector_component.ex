@@ -2,8 +2,6 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
   use Phoenix.Component
 
   attr :id, :string, required: true
-  attr :selected_persona, :string, default: "recruiter"
-  attr :target, :any, default: nil
 
   def persona_selector(assigns) do
     ~H"""
@@ -14,52 +12,32 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
       </div>
 
       <div class="mt-8 grid gap-4 sm:gap-6 md:grid-cols-3">
-        <article
-          phx-click="select_persona"
-          phx-value-persona="recruiter"
-          phx-target={@target}
-          class={card_classes(@selected_persona == "recruiter")}
-        >
+        <a href="#for-hiring-managers" class={card_classes()}>
           <p class="text-sm font-semibold text-emerald-200">I’m a hiring manager</p>
           <p class="mt-2 text-sm text-zinc-200">
             Get a quick overview of how I work and what I’ve shipped.
           </p>
-        </article>
-        <article
-          phx-click="select_persona"
-          phx-value-persona="developer"
-          phx-target={@target}
-          class={card_classes(@selected_persona == "developer")}
-        >
+        </a>
+        <a href="#section-projects" class={card_classes()}>
           <p class="text-sm font-semibold text-emerald-200">I’m a developer</p>
           <p class="mt-2 text-sm text-zinc-200">
             Dive into stack details, architecture, and code samples.
           </p>
-        </article>
-        <article
-          phx-click="select_persona"
-          phx-value-persona="curious"
-          phx-target={@target}
-          class={card_classes(@selected_persona == "curious")}
-        >
+        </a>
+        <a href="#section-about-me" class={card_classes()}>
           <p class="text-sm font-semibold text-emerald-200">I’m just curious</p>
           <p class="mt-2 text-sm text-zinc-200">See a quick story, side projects, and music.</p>
-        </article>
+        </a>
       </div>
     </section>
     """
   end
 
-  defp card_classes(true) do
+  defp card_classes do
     [
-      "group rounded-2xl border bg-zinc-900/90 p-6 shadow-lg shadow-emerald-500/20 backdrop-blur transition hover:-translate-y-1 hover:shadow-emerald-500/30",
-      "border-emerald-400/80"
-    ]
-  end
-
-  defp card_classes(false) do
-    [
-      "group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-emerald-400/60 hover:shadow-emerald-500/20"
+      "group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-lg shadow-black/30 backdrop-blur transition hover:-translate-y-1 hover:border-emerald-400/60 hover:shadow-emerald-500/20",
+      "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400",
+      "block"
     ]
   end
 end
