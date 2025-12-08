@@ -127,16 +127,18 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
 
       <.persona_selector id="start-here-selector" />
 
-      <section id="ai-team" class="relative mx-auto max-w-6xl px-6 pb-16">
-        <div class="space-y-4">
+      <section id="section-how-i-work" class="relative mx-auto max-w-6xl px-6 pb-20">
+        <div class="space-y-3">
+          <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">WORKFLOW</p>
           <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">
-            My AI team on this project
+            How I work with an AI team
           </h2>
           <p class="text-zinc-200">
-            I treat AI tools as collaborators, not replacements. For this site, I assembled a small AI team:
+            I treat AI tools as collaborators, not replacements. Here’s who’s on the team and how we ship production work safely.
           </p>
         </div>
-        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
           <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
             <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-emerald-300">
               <span class="h-2 w-2 rounded-full bg-emerald-400"></span> ChatGPT
@@ -166,30 +168,17 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               Reviews my pull requests, surfaces risks and refactors, and generates follow-up prompts I can feed back into ChatGPT and CODEX.
             </p>
           </article>
-          <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-emerald-300">
-              <span class="h-2 w-2 rounded-full bg-emerald-400"></span> Me
-            </div>
-            <h3 class="mt-3 text-xl font-semibold text-zinc-50">The conductor</h3>
-            <p class="mt-3 text-sm text-zinc-200">
-              I keep the architecture cohesive, write and own tests, manage CI/CD, and decide when to accept or override AI suggestions.
-            </p>
-          </article>
         </div>
-      </section>
 
-      <section id="section-how-i-work" class="relative mx-auto max-w-6xl px-6 pb-20">
-        <div class="space-y-3">
-          <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">WORKFLOW</p>
-          <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">
-            AI conductor workflow
-          </h2>
-          <p class="text-zinc-200">
-            How I built this site by orchestrating ChatGPT, CODEX, and CodeRabbit on small, safe branches.
+        <div class="mt-12 space-y-2">
+          <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Detailed workflow</p>
+          <h3 class="text-lg font-semibold text-zinc-100">Step-by-step delivery loop</h3>
+          <p class="text-sm text-zinc-300">
+            The nine-step loop I use to keep AI contributions scoped, reviewed, and production-safe.
           </p>
         </div>
 
-        <ol class="mt-8 space-y-4">
+        <ol class="mt-6 space-y-4">
           <li class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-lg shadow-black/30">
             <div class="flex gap-3">
               <span class="mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400/40 bg-emerald-500/10 text-sm font-semibold text-cyan-300">

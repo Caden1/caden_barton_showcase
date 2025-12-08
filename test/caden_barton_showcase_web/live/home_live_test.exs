@@ -77,4 +77,22 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert has_element?(view, "section#for-hiring-managers h2", "What you get if you hire me")
   end
+
+  test "combined AI workflow section renders roles and steps", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    html = render(view)
+    doc = Floki.parse_document!(html)
+
+    assert has_element?(view, "section#section-how-i-work h2", "How I work with an AI team")
+    assert has_element?(view, "section#section-how-i-work", "ChatGPT")
+    assert has_element?(view, "section#section-how-i-work", "CODEX")
+    assert has_element?(view, "section#section-how-i-work", "CodeRabbit")
+
+    steps =
+      doc
+      |> Floki.find("section#section-how-i-work ol li")
+
+    assert length(steps) == 9
+  end
 end
