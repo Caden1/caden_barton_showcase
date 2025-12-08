@@ -16,6 +16,12 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert has_element?(
              view,
+             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='for-hiring-managers'][href='#for-hiring-managers']",
+             "See what you get if you hire me"
+           )
+
+    assert has_element?(
+             view,
              "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-how-i-work'][href='#section-how-i-work']",
              "See AI conductor workflow"
            )
@@ -23,8 +29,13 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert has_element?(view, "a[href='#{~p"/builds"}']", "Recent builds")
   end
 
-  test "CTAs link to how I work and builds pages", %{conn: conn} do
+  test "CTAs link to hiring managers, how I work, and builds pages", %{conn: conn} do
     {:ok, view, _html} = live(conn, ~p"/")
+
+    assert has_element?(
+             view,
+             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='for-hiring-managers'][href='#for-hiring-managers']"
+           )
 
     assert has_element?(
              view,
@@ -36,6 +47,12 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
   test "global navigation shows primary links", %{conn: conn} do
     {:ok, view, _html} = live(conn, ~p"/")
+
+    assert has_element?(
+             view,
+             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='for-hiring-managers'][href='#for-hiring-managers']",
+             "See what you get if you hire me"
+           )
 
     assert has_element?(
              view,
@@ -53,6 +70,12 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert has_element?(view, "article[phx-value-persona='recruiter']", "I’m a hiring manager")
     assert has_element?(view, "article[phx-value-persona='developer']", "I’m a developer")
     assert has_element?(view, "article[phx-value-persona='curious']", "I’m just curious")
+  end
+
+  test "hiring manager section is present with correct id", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    assert has_element?(view, "section#for-hiring-managers h2", "What you get if you hire me")
   end
 
   test "clicking developer persona highlights selection and pushes scroll event", %{conn: conn} do
