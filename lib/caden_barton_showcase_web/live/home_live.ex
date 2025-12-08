@@ -1,44 +1,7 @@
 defmodule CadenBartonShowcaseWeb.HomeLive do
   use CadenBartonShowcaseWeb, :live_view
 
-  @allowed_personas ~w(recruiter developer curious)
-
   import CadenBartonShowcaseWeb.PersonaSelectorComponent
-
-  @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, :selected_persona, "recruiter")}
-  end
-
-  @impl true
-  def handle_event("select_persona", %{"persona" => persona} = _params, socket)
-      when persona in @allowed_personas do
-    section_id =
-      case persona do
-        "recruiter" -> "section-how-i-work"
-        "developer" -> "section-projects"
-        "curious" -> "section-about-me"
-      end
-
-    socket =
-      socket
-      |> assign(:selected_persona, persona)
-      |> push_event("scroll_to_section", %{target_id: section_id})
-
-    {:noreply, socket}
-  end
-
-  @impl true
-  def handle_event("select_persona", params, socket) do
-    require Logger
-
-    Logger.warning(
-      "Ignoring invalid persona selection: #{inspect(params)}",
-      params: params
-    )
-
-    {:noreply, socket}
-  end
 
   @impl true
   def render(assigns) do
@@ -162,10 +125,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </div>
       </div>
 
-      <.persona_selector
-        id="start-here-selector"
-        selected_persona={@selected_persona}
-      />
+      <.persona_selector id="start-here-selector" />
 
       <section id="ai-team" class="relative mx-auto max-w-6xl px-6 pb-16">
         <div class="space-y-4">

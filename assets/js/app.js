@@ -40,7 +40,8 @@ const Hooks = {
     mounted() {
       this.handleClick = event => {
         const targetId = this.el.dataset.scrollTarget
-        const targetEl = targetId && document.getElementById(targetId)
+        const normalizedId = targetId?.startsWith("#") ? targetId.slice(1) : targetId
+        const targetEl = normalizedId && document.getElementById(normalizedId)
 
         if (targetEl) {
           event.preventDefault()
