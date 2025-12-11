@@ -1,8 +1,10 @@
 defmodule CadenBartonShowcaseWeb.HomeLive do
   use CadenBartonShowcaseWeb, :live_view
 
+  alias CadenBartonShowcaseWeb.BuildsContent
   import CadenBartonShowcaseWeb.PersonaSelectorComponent
   import CadenBartonShowcaseWeb.HowIWorkComponent
+  import CadenBartonShowcaseWeb.BuildsIndexComponent
 
   @impl true
   def render(assigns) do
@@ -313,6 +315,10 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           AI tools work best when the tasks are small and well-scoped. I use ChatGPT to slice the work,
           CODEX to draft changes, and CodeRabbit to review—while I stay responsible for tests, deploys, and system health.
         </p>
+      </section>
+
+      <section id="section-builds" class="relative mx-auto max-w-6xl px-6 pb-20">
+        <.builds_index projects={BuildsContent.projects()} />
       </section>
 
       <section id="case-study" class="relative mx-auto max-w-6xl px-6 pb-16">
