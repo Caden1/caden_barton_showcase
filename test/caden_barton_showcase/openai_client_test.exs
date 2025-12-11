@@ -17,12 +17,44 @@ defmodule CadenBartonShowcase.OpenAIClientTest do
   test "ai_conductor_advice returns missing api key when unset or blank" do
     original = System.get_env("OPENAI_API_KEY")
 
+    on_exit(fn ->
+      case original do
+        nil -> System.delete_env("OPENAI_API_KEY")
+        _ -> System.put_env("OPENAI_API_KEY", original)
+      end
+    end)
+
     System.delete_env("OPENAI_API_KEY")
     assert {:error, :missing_api_key} = OpenAIClient.ai_conductor_advice("developer", "Test")
 
     System.put_env("OPENAI_API_KEY", "")
     assert {:error, :missing_api_key} = OpenAIClient.ai_conductor_advice("developer", "Test")
+  end
 
-    if original, do: System.put_env("OPENAI_API_KEY", original), else: System.delete_env("OPENAI_API_KEY")
+  test "extract_text handles output_text at top level" do
+    body = %{"output_text" => "answer"}
+    assert {:ok, "answer"} = OpenAIClient.extract_text(body)
+  end
+
+  test "extract_text handles output content array with output_text type" do
+    body = %{
+      "output" => [
+        %{
+          "content" => [
+            %{"type" => "output_text", "text" => "structured answer"}
+          ]
+        }
+      ]
+    }
+
+    assert {:ok, "structured answer"} = OpenAIClient.extract_text(body)
+  end
+
+  test "extract_text handles top-level text field" do
+    assert {:ok, "plain"} = OpenAIClient.extract_text(%{"text" => "plain"})
+  end
+
+  test "extract_text returns error when no text output found" do
+    assert {:error, :no_text_output} = OpenAIClient.extract_text(%{"output" => [%{"content" => [%{"type" => "other"}]}]})
   end
 end

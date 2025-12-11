@@ -28,7 +28,7 @@ defmodule CadenBartonShowcase.OpenAIClient do
                    json: body,
                    headers: headers(trimmed_key)
                  ),
-               {:ok, text} <- extract_output_text(response.body) do
+               {:ok, text} <- extract_text(response.body) do
             {:ok, text}
           else
             {:error, reason} ->
@@ -79,21 +79,34 @@ defmodule CadenBartonShowcase.OpenAIClient do
     ]
   end
 
-  defp extract_output_text(%{"output_text" => text}) when is_binary(text), do: {:ok, text}
+  @doc false
+  def extract_text(%{"output_text" => text}) when is_binary(text), do: {:ok, text}
 
-  defp extract_output_text(%{"output" => output}) do
-    text =
-      output
+  def extract_text(%{"text" => text}) when is_binary(text), do: {:ok, text}
+
+  def extract_text(%{"output" => output}) do
+    output
+    |> List.wrap()
+    |> Enum.find_value(fn item ->
+      item
+      |> Map.get("content")
       |> List.wrap()
       |> Enum.find_value(fn
-        %{"content" => %{"text" => %{"value" => val}}} when is_binary(val) -> val
-        %{"text" => %{"value" => val}} when is_binary(val) -> val
-        %{"value" => val} when is_binary(val) -> val
-        _ -> nil
-      end)
+        %{"text" => text, "type" => type} when is_binary(text) and (is_nil(type) or type == "output_text") ->
+          text
 
-    if is_binary(text), do: {:ok, text}, else: {:error, :no_text_output}
+        %{"text" => text} when is_binary(text) ->
+          text
+
+        _ ->
+          nil
+      end)
+    end)
+    |> case do
+      text when is_binary(text) -> {:ok, text}
+      _ -> {:error, :no_text_output}
+    end
   end
 
-  defp extract_output_text(_), do: {:error, :no_text_output}
+  def extract_text(_), do: {:error, :no_text_output}
 end
