@@ -26,16 +26,10 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
             Caden Barton
           </p>
           <h1 class="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-            I conduct
-            <span class="bg-gradient-to-r from-emerald-400 via-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
-              AI-powered
-            </span>
-            engineering teams that ship resilient systems.
+            I ship resilient Elixir systems with an AI-assisted workflow I trust.
           </h1>
           <p class="text-lg text-zinc-200">
-            I build production systems with Elixir, Phoenix, LiveView, Redpanda, ClickHouse, and Postgres. I orchestrate ChatGPT,
-            CODEX, and CodeRabbit as an AI team—while I own architecture, testing, and shipping—to keep codebases clear,
-            observable, and low-maintenance.
+            I build production systems on Elixir, Phoenix, LiveView, Redpanda, ClickHouse, and Postgres. I use ChatGPT, CODEX, and CodeRabbit as a small AI crew—while I stay in charge of design, tests, and deployments—so the code stays understandable, observable, and easy to change. Think of me as an AI workflow conductor for your codebase.
           </p>
           <div class="flex flex-wrap gap-3">
             <a
@@ -55,7 +49,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               data-scroll-target="section-how-i-work"
               class="group inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200"
             >
-              See AI conductor workflow
+              See my AI-assisted workflow
               <span class="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <.link
@@ -86,7 +80,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               <div class="space-y-1">
                 <p class="text-sm font-semibold text-slate-50">Caden Barton</p>
                 <p class="text-xs uppercase tracking-[0.2em] text-emerald-400">
-                  ELIXIR &amp; PHOENIX ENGINEER · AI CONDUCTOR
+                  ELIXIR &amp; PHOENIX ENGINEER · AI-ASSISTED DELIVERY
                 </p>
                 <p class="text-xs text-slate-400">
                   Shipping resilient products with observability, telemetry, and AI-assisted delivery.
@@ -97,27 +91,25 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
                 <p class="text-sm font-semibold text-emerald-200">AI team orchestration</p>
                 <p class="text-sm text-zinc-200">
-                  ChatGPT as PM, CODEX as pair engineer, CodeRabbit as reviewer. I break work into small branches and prompts so each agent stays focused and hallucinations stay low.
+                  ChatGPT as PM, CODEX as pair engineer, CodeRabbit as reviewer. I slice work into small branches so each tool has one narrow job and I stay accountable for the result.
                 </p>
               </article>
               <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
                 <p class="text-sm font-semibold text-emerald-200">Production-grade Elixir systems</p>
                 <p class="text-sm text-zinc-200">
-                  Phoenix &amp; LiveView backends on Redpanda, ClickHouse, and multi-tenant Postgres, designed for clarity, predictable latency, and safe rollbacks.
+                  Phoenix + LiveView backends on Redpanda, ClickHouse, and multi-tenant Postgres, designed for clear observability, predictable latency, and safe rollbacks.
                 </p>
               </article>
               <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
                 <p class="text-sm font-semibold text-emerald-200">Testing &amp; CI you can trust</p>
                 <p class="text-sm text-zinc-200">
-                  Unit, LiveView, and property-style tests owned by me—not AI—plus GitHub Actions that run
-                  <code class="text-xs">mix test</code>
-                  on every PR.
+                  Unit, LiveView, and property-style tests I write and maintain myself, plus GitHub Actions that run mix test on every PR and block merges on failures.
                 </p>
               </article>
               <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
                 <p class="text-sm font-semibold text-emerald-200">Technical debt prevention</p>
                 <p class="text-sm text-zinc-200">
-                  Domain-driven contexts, explicit boundaries, and migrations planned with guardrails so future changes stay boring and safe.
+                  Domain-driven contexts, explicit boundaries, and migrations planned with guardrails so future changes stay boring instead of risky.
                 </p>
               </article>
             </div>
