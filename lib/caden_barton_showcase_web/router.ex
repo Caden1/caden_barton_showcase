@@ -18,8 +18,8 @@ defmodule CadenBartonShowcaseWeb.Router do
     pipe_through :browser
 
     live "/", HomeLive, :index
-    live "/how-i-work", HowIWorkLive, :show
-    live "/builds", BuildsLive, :index
+    get "/how-i-work", PageController, :how_i_work
+    get "/builds", PageController, :builds
     live "/builds/:slug", BuildShowLive, :show
   end
 

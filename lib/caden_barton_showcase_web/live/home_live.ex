@@ -55,12 +55,15 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               See my AI-assisted workflow
               <span class="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <.link
-              navigate={~p"/builds"}
+            <a
+              id="cta-builds"
+              href="/#section-builds"
+              phx-hook="ScrollToSectionLink"
+              data-scroll-target="section-builds"
               class="inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200"
             >
               Recent builds
-            </.link>
+            </a>
           </div>
         </div>
 
