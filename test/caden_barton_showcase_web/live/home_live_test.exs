@@ -96,6 +96,16 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert length(steps) == 9
   end
 
+  test "home page shows recent builds section with links to case studies", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    assert has_element?(view, "#section-builds")
+    assert has_element?(view, "#builds-list [data-role='build-card']")
+    assert has_element?(view, "a[href='#{~p"/builds/realtime-ops-console"}']", "Read more →")
+    assert has_element?(view, "a[href='#{~p"/builds/event-pipeline"}']", "Read more →")
+    assert has_element?(view, "a[href='#{~p"/builds/multitenant-api"}']", "Read more →")
+  end
+
   test "case study section has correct id and card order", %{conn: conn} do
     {:ok, view, _html} = live(conn, ~p"/")
 
