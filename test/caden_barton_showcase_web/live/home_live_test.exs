@@ -26,7 +26,11 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
              "See my AI-assisted workflow"
            )
 
-    assert has_element?(view, "a[href='#{~p"/builds"}']", "Recent builds")
+    assert has_element?(
+             view,
+             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-builds'][href='#section-builds']",
+             "Recent builds"
+           )
   end
 
   test "CTAs link to hiring managers, how I work, and builds pages", %{conn: conn} do
@@ -42,25 +46,10 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
              "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-how-i-work'][href='#section-how-i-work']"
            )
 
-    assert has_element?(view, "a[href='#{~p"/builds"}']")
-  end
-
-  test "global navigation shows primary links", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
-
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='for-hiring-managers'][href='#for-hiring-managers']",
-             "See what you get if you hire me"
+             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-builds'][href='#section-builds']"
            )
-
-    assert has_element?(
-             view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-how-i-work'][href='#section-how-i-work']",
-             "See my AI-assisted workflow"
-           )
-
-    assert has_element?(view, "a[href='#{~p"/builds"}']", "Recent builds")
   end
 
   test "renders start here persona selector", %{conn: conn} do

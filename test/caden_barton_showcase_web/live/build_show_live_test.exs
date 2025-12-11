@@ -13,8 +13,8 @@ defmodule CadenBartonShowcaseWeb.BuildShowLiveTest do
     assert has_element?(view, "#build-approach-section")
     assert has_element?(view, "#build-outcome-section")
     assert has_element?(view, "header a[href='#{~p"/"}']")
-    assert has_element?(view, "a[href='#{~p"/how-i-work"}']")
-    assert has_element?(view, "a[href='#{~p"/builds"}']")
+    assert has_element?(view, "a[href='/#section-how-i-work']")
+    assert has_element?(view, "a[href='/#section-builds']")
   end
 
   test "build show renders not-found view for unknown slug", %{conn: conn} do
@@ -22,6 +22,6 @@ defmodule CadenBartonShowcaseWeb.BuildShowLiveTest do
 
     assert has_element?(view, "#build-not-found")
     assert has_element?(view, "#builds-back-link")
-    assert has_element?(view, "#builds-back-link[href='#{~p"/builds"}']")
+    assert has_element?(view, "#builds-back-link[href='/#section-builds']")
   end
 end
