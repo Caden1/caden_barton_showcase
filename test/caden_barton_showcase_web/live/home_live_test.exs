@@ -11,7 +11,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert has_element?(
              view,
              "h1",
-             "I conduct AI-powered engineering teams that ship resilient systems."
+             "I ship resilient Elixir systems with an AI-assisted workflow I trust."
            )
 
     assert has_element?(
@@ -23,7 +23,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert has_element?(
              view,
              "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-how-i-work'][href='#section-how-i-work']",
-             "See AI conductor workflow"
+             "See my AI-assisted workflow"
            )
 
     assert has_element?(view, "a[href='#{~p"/builds"}']", "Recent builds")
@@ -57,7 +57,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert has_element?(
              view,
              "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-how-i-work'][href='#section-how-i-work']",
-             "See AI conductor workflow"
+             "See my AI-assisted workflow"
            )
 
     assert has_element?(view, "a[href='#{~p"/builds"}']", "Recent builds")
