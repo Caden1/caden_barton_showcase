@@ -1,0 +1,99 @@
+defmodule CadenBartonShowcase.OpenAIClient do
+  @moduledoc false
+
+  require Logger
+
+  @responses_url "https://api.openai.com/v1/responses"
+
+  @spec ai_conductor_advice(String.t(), String.t()) :: {:ok, String.t()} | {:error, term()}
+  def ai_conductor_advice(persona, idea_text) do
+    case System.get_env("OPENAI_API_KEY") do
+      key when is_binary(key) ->
+        trimmed_key = String.trim(key)
+
+        if trimmed_key == "" do
+          {:error, :missing_api_key}
+        else
+          prompt = build_ai_conductor_prompt(persona, idea_text)
+
+          body = %{
+            "model" => "gpt-5.2",
+            "input" => prompt
+          }
+
+          with {:ok, response} <-
+                 Req.request(
+                   url: @responses_url,
+                   method: :post,
+                   json: body,
+                   headers: headers(trimmed_key)
+                 ),
+               {:ok, text} <- extract_output_text(response.body) do
+            {:ok, text}
+          else
+            {:error, reason} ->
+              Logger.debug(fn -> "OpenAI Responses request failed: #{inspect(reason)}" end)
+              {:error, reason}
+
+            {:ok, %Req.Response{status: status} = resp} when status >= 400 ->
+              Logger.debug(fn ->
+                "OpenAI Responses non-200: #{inspect(status)}, body: #{inspect(resp.body)}"
+              end)
+
+              {:error, {:http_error, status}}
+          end
+        end
+
+      _ ->
+        {:error, :missing_api_key}
+    end
+  end
+
+  @doc false
+  @spec build_ai_conductor_prompt(String.t(), String.t()) :: String.t()
+  def build_ai_conductor_prompt(persona, idea_text) do
+    persona_label =
+      case persona do
+        "hiring_manager" -> "Hiring manager"
+        "developer" -> "Developer"
+        "just_curious" -> "Just curious visitor"
+        _ -> "Visitor"
+      end
+
+    """
+    You are the AI Conductor behind Caden Barton’s portfolio website.
+    The visitor persona: #{persona_label}.
+    Their idea or situation: #{idea_text}.
+
+    Please respond in three short sections with Markdown headings, under 250 words total:
+    1) What you’re trying to do
+    2) How I’d orchestrate AI for you
+    3) Where this matches my workflow
+    """
+  end
+
+  defp headers(api_key) do
+    [
+      {"content-type", "application/json"},
+      {"authorization", "Bearer " <> api_key}
+    ]
+  end
+
+  defp extract_output_text(%{"output_text" => text}) when is_binary(text), do: {:ok, text}
+
+  defp extract_output_text(%{"output" => output}) do
+    text =
+      output
+      |> List.wrap()
+      |> Enum.find_value(fn
+        %{"content" => %{"text" => %{"value" => val}}} when is_binary(val) -> val
+        %{"text" => %{"value" => val}} when is_binary(val) -> val
+        %{"value" => val} when is_binary(val) -> val
+        _ -> nil
+      end)
+
+    if is_binary(text), do: {:ok, text}, else: {:error, :no_text_output}
+  end
+
+  defp extract_output_text(_), do: {:error, :no_text_output}
+end
