@@ -5,7 +5,7 @@ defmodule CadenBartonShowcaseWeb.PageControllerTest do
     conn = get(conn, ~p"/")
     html = html_response(conn, 200)
 
-    assert html =~ "AI-powered"
-    assert html =~ "engineering teams that ship resilient systems."
+    assert html =~ "AI-assisted workflow I trust."
+    assert html =~ "resilient Elixir systems"
   end
 end
