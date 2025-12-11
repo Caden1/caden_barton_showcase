@@ -28,7 +28,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-builds'][href='/#section-builds']",
+             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-builds'][href='#section-builds']",
              "Recent builds"
            )
   end
@@ -48,7 +48,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-builds'][href='/#section-builds']"
+             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-builds'][href='#section-builds']"
            )
   end
 
