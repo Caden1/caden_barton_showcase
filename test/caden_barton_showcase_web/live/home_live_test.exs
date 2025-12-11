@@ -84,14 +84,14 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     html = render(view)
     doc = Floki.parse_document!(html)
 
-    assert has_element?(view, "section#section-how-i-work h2", "How I work with an AI team")
-    assert has_element?(view, "section#section-how-i-work", "ChatGPT")
-    assert has_element?(view, "section#section-how-i-work", "CODEX")
-    assert has_element?(view, "section#section-how-i-work", "CodeRabbit")
+    assert has_element?(view, "#section-how-i-work")
+    assert has_element?(view, "#principles-section")
+    assert has_element?(view, "#engagement-section")
+    assert has_element?(view, "#tooling-section")
 
     steps =
       doc
-      |> Floki.find("section#section-how-i-work ol li")
+      |> Floki.find("section#section-ai-delivery-loop ol li")
 
     assert length(steps) == 9
   end

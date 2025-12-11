@@ -2,6 +2,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   use CadenBartonShowcaseWeb, :live_view
 
   import CadenBartonShowcaseWeb.PersonaSelectorComponent
+  import CadenBartonShowcaseWeb.HowIWorkComponent
 
   @impl true
   def render(assigns) do
@@ -120,6 +121,10 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
       <.persona_selector id="start-here-selector" />
 
       <section id="section-how-i-work" class="relative mx-auto max-w-6xl px-6 pb-20">
+        <.how_i_work />
+      </section>
+
+      <section id="section-ai-delivery-loop" class="relative mx-auto max-w-6xl px-6 pb-20">
         <div class="space-y-3">
           <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">WORKFLOW</p>
           <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">
