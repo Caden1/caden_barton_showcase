@@ -19,6 +19,22 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   end
 
   @impl true
+  def handle_params(params, _url, socket) do
+    unlock =
+      case params do
+        %{"unlock" => "incident_winner"} -> "incident-winner"
+        _ -> nil
+      end
+
+    if unlock do
+      new_state = Map.update!(socket.assigns.quest_state, :unlocked_ids, &MapSet.put(&1, unlock))
+      {:noreply, assign_and_save(socket, new_state)}
+    else
+      {:noreply, socket}
+    end
+  end
+
+  @impl true
   def render(assigns) do
     ~H"""
     <section

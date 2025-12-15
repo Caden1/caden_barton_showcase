@@ -24,6 +24,14 @@ defmodule CadenBartonShowcaseWeb.ProofUnlocksComponent do
       body:
         "A walkthrough of this site’s build and how I use ChatGPT, CODEX, and CodeRabbit together.",
       link: %{label: "Read the case study", href: "#case-study"}
+    },
+    %{
+      id: "incident-winner",
+      title: "Incident simulator",
+      hint: "Beat the incident simulator to unlock",
+      body:
+        "Simulated hotfix with metrics, flags, and rollback guarded by a small state machine.",
+      link: %{label: "Run the simulator", href: "/simulator/incident"}
     }
   ]
 

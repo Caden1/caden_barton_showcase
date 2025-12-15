@@ -189,4 +189,10 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert has_element?(view, "#proof-card-proof-signals [data-status='unlocked']", "Unlocked")
   end
+
+  test "incident simulator unlock param unlocks proof card", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/?unlock=incident_winner")
+
+    assert has_element?(view, "#proof-card-incident-winner [data-status='unlocked']", "Unlocked")
+  end
 end
