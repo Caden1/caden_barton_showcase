@@ -4,6 +4,7 @@ defmodule CadenBartonShowcase.OpenAIClient do
   require Logger
 
   @responses_url "https://api.openai.com/v1/responses"
+  @openai_model "gpt-5-mini"
 
   @spec ai_conductor_advice(String.t(), String.t()) :: {:ok, String.t()} | {:error, term()}
   def ai_conductor_advice(persona, idea_text) do
@@ -17,7 +18,7 @@ defmodule CadenBartonShowcase.OpenAIClient do
           prompt = build_ai_conductor_prompt(persona, idea_text)
 
           body = %{
-            "model" => "gpt-5.2",
+            "model" => @openai_model,
             "input" => prompt
           }
 
