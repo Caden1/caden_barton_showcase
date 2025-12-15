@@ -150,4 +150,23 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert progress1 =~ "1/5"
   end
+
+  test "quest state loaded event restores quest overlay", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+    refute has_element?(view, "#quest-overlay")
+
+    render_hook(view, "QuestPersistence", %{
+      "state" => %{
+        "active?" => true,
+        "quest_id" => "developer",
+        "completed_step_ids" => ["dev-workflow"],
+        "unlocked_ids" => ["dev-workflow", "invalid"]
+      }
+    })
+
+    html = render(view)
+    assert has_element?(view, "#quest-overlay")
+    assert html =~ "Pair with the stack"
+    assert html =~ "1/4"
+  end
 end
