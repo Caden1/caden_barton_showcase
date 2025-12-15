@@ -27,7 +27,7 @@ defmodule CadenBartonShowcaseWeb.QuestContent do
           label: "Dive into the AI delivery loop",
           target_id: "section-ai-delivery-loop"
         },
-        %{id: "dev-projects", label: "Scan projects", target_id: "section-projects"},
+        %{id: "dev-projects", label: "Scan projects", target_id: "case-study"},
         %{id: "dev-builds", label: "See the builds gallery", target_id: "section-builds"}
       ]
     },
@@ -43,7 +43,7 @@ defmodule CadenBartonShowcaseWeb.QuestContent do
         %{id: "curious-work", label: "How I work", target_id: "section-how-i-work"},
         %{id: "curious-loop", label: "AI delivery loop", target_id: "section-ai-delivery-loop"},
         %{id: "curious-case", label: "Case study", target_id: "case-study"},
-        %{id: "curious-projects", label: "Projects list", target_id: "section-projects"}
+        %{id: "curious-projects", label: "Projects list", target_id: "section-builds"}
       ]
     }
   }

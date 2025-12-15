@@ -57,8 +57,8 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert has_element?(view, "h2", "Start here")
     assert has_element?(view, "a[href='#for-hiring-managers']", "I’m a hiring manager")
-    assert has_element?(view, "a[href='#section-projects']", "I’m a developer")
-    assert has_element?(view, "a[href='#case-study']", "I’m just curious")
+    assert has_element?(view, "a[href='#case-study']", "I’m a developer")
+    assert has_element?(view, "a[href='#section-builds']", "I’m just curious")
   end
 
   test "hiring manager section is present with correct id", %{conn: conn} do
