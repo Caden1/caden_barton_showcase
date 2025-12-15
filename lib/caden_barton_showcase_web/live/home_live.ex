@@ -2,9 +2,20 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   use CadenBartonShowcaseWeb, :live_view
 
   alias CadenBartonShowcaseWeb.BuildsContent
+  alias CadenBartonShowcaseWeb.QuestContent
+  alias CadenBartonShowcaseWeb.QuestState
   import CadenBartonShowcaseWeb.PersonaSelectorComponent
   import CadenBartonShowcaseWeb.HowIWorkComponent
   import CadenBartonShowcaseWeb.BuildsIndexComponent
+  import CadenBartonShowcaseWeb.QuestOverlayComponent
+
+  @impl true
+  def mount(_params, _session, socket) do
+    {:ok,
+     socket
+     |> assign(:quest_state, QuestState.new())
+     |> assign(:quests, QuestContent.quests())}
+  end
 
   @impl true
   def render(assigns) do
@@ -124,6 +135,46 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
       </div>
 
       <.persona_selector id="start-here-selector" />
+
+      <section id="quest-mode" class="relative mx-auto max-w-6xl px-6 pb-8">
+        <div class="rounded-3xl border border-emerald-900/60 bg-emerald-900/10 p-6 shadow-lg shadow-emerald-800/20 backdrop-blur">
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div class="space-y-1">
+              <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Quest Mode</p>
+              <h2 class="text-2xl font-semibold text-emerald-100">Guided paths for each visitor</h2>
+              <p class="text-sm text-emerald-100/80">
+                Pick a path and I’ll guide you through the sections that match what you’re looking for.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <button
+                id="quest-start-hiring-manager"
+                class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-950 shadow hover:-translate-y-0.5 hover:bg-emerald-400 transition"
+                phx-click="quest_start"
+                phx-value-quest_id="hiring_manager"
+              >
+                Hiring manager path
+              </button>
+              <button
+                id="quest-start-developer"
+                class="rounded-lg border border-emerald-500/60 px-4 py-2 text-sm font-semibold text-emerald-100 shadow hover:-translate-y-0.5 hover:border-emerald-400 transition"
+                phx-click="quest_start"
+                phx-value-quest_id="developer"
+              >
+                Developer path
+              </button>
+              <button
+                id="quest-start-curious"
+                class="rounded-lg border border-emerald-500/60 px-4 py-2 text-sm font-semibold text-emerald-100 shadow hover:-translate-y-0.5 hover:border-emerald-400 transition"
+                phx-click="quest_start"
+                phx-value-quest_id="curious"
+              >
+                Curious tour
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="section-how-i-work" class="relative mx-auto max-w-6xl px-6 pb-20">
         <.how_i_work />
@@ -533,7 +584,29 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           </div>
         </div>
       </section>
+
+      <.quest_overlay quest_state={@quest_state} quests={@quests} />
     </section>
     """
+  end
+
+  @impl true
+  def handle_event("quest_start", %{"quest_id" => quest_id}, socket) do
+    {:noreply,
+     assign(socket, :quest_state, QuestState.start(socket.assigns.quest_state, quest_id))}
+  end
+
+  def handle_event("quest_toggle_step", %{"step_id" => step_id}, socket) do
+    {:noreply,
+     assign(socket, :quest_state, QuestState.toggle_step(socket.assigns.quest_state, step_id))}
+  end
+
+  def handle_event("quest_reset", _params, socket) do
+    {:noreply, assign(socket, :quest_state, QuestState.reset(socket.assigns.quest_state))}
+  end
+
+  def handle_event("quest_close", _params, socket) do
+    state = Map.put(socket.assigns.quest_state, :active?, false)
+    {:noreply, assign(socket, :quest_state, state)}
   end
 end
