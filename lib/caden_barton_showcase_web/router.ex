@@ -17,11 +17,14 @@ defmodule CadenBartonShowcaseWeb.Router do
   scope "/", CadenBartonShowcaseWeb do
     pipe_through :browser
 
-    live "/", HomeLive, :index
-    live "/simulator/incident", IncidentSimulatorLive, :show
+    live_session :public, on_mount: [{CadenBartonShowcaseWeb.QuestHooks, :public}] do
+      live "/", HomeLive, :index
+      live "/simulator/incident", IncidentSimulatorLive, :show
+      live "/builds/:slug", BuildShowLive, :show
+    end
+
     get "/how-i-work", PageController, :how_i_work
     get "/builds", PageController, :builds
-    live "/builds/:slug", BuildShowLive, :show
   end
 
   # Other scopes may use custom stacks.

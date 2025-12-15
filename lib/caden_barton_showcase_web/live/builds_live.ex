@@ -10,7 +10,7 @@ defmodule CadenBartonShowcaseWeb.BuildsLive do
 
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} quest_state={@quest_state} quests={@quests}>
       <.builds_index projects={@projects} />
     </Layouts.app>
     """

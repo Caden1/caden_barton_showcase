@@ -9,7 +9,7 @@ defmodule CadenBartonShowcaseWeb.HowIWorkLive do
 
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} quest_state={@quest_state} quests={@quests}>
       <.how_i_work />
     </Layouts.app>
     """
