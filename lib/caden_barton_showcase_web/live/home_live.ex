@@ -30,6 +30,15 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         <div class="absolute h-80 w-80 right-10 -bottom-10 rounded-full bg-amber-500/20"></div>
       </div>
       <div id="quest-persistence-hook" phx-hook="QuestPersistence" class="hidden"></div>
+      <div
+        id="quest-progress-observer"
+        phx-hook="QuestProgressObserver"
+        data-quest-targets={
+          Enum.map_join(@quests[@quest_state.quest_id][:steps] || [], ",", & &1.target_id)
+        }
+        class="hidden"
+      >
+      </div>
 
       <div class="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 py-16 lg:flex-row lg:items-start lg:py-24">
         <div class="flex-1 space-y-6">
@@ -612,6 +621,11 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
     {:noreply, assign_and_save(socket, state)}
   end
 
+  def handle_event("quest_step_seen", %{"target_id" => target_id}, socket) do
+    new_state = maybe_mark_step_seen(socket.assigns.quest_state, target_id, socket.assigns.quests)
+    {:noreply, assign_and_save(socket, new_state)}
+  end
+
   def handle_event("quest_state_loaded", %{"state" => state}, socket) do
     new_state = QuestState.sanitize_loaded(state)
     {:noreply, assign_and_save(socket, new_state)}
@@ -639,5 +653,23 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
     state
     |> Map.update!(:completed_step_ids, &MapSet.to_list/1)
     |> Map.update!(:unlocked_ids, &MapSet.to_list/1)
+  end
+
+  defp maybe_mark_step_seen(%{quest_id: nil} = state, _target_id, _quests), do: state
+
+  defp maybe_mark_step_seen(%{quest_id: quest_id} = state, target_id, quests) do
+    case QuestState.step_id_for_target(quests, quest_id, target_id) do
+      nil ->
+        state
+
+      step_id ->
+        if MapSet.member?(state.completed_step_ids, step_id) do
+          state
+        else
+          state
+          |> Map.update!(:completed_step_ids, &MapSet.put(&1, step_id))
+          |> Map.update!(:unlocked_ids, &MapSet.put(&1, step_id))
+        end
+    end
   end
 end

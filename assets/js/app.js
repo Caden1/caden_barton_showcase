@@ -78,6 +78,41 @@ const Hooks = {
       })
     },
   },
+  QuestProgressObserver: {
+    mounted() {
+      this.observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const targetId = entry.target.id
+              if (targetId) {
+                this.pushEvent("quest_step_seen", {target_id: targetId})
+              }
+            }
+          })
+        },
+        {threshold: 0.5},
+      )
+
+      this.registerTargets()
+    },
+    updated() {
+      this.registerTargets()
+    },
+    destroyed() {
+      this.observer?.disconnect()
+    },
+    registerTargets() {
+      const targetIds = (this.el.dataset.questTargets || "").split(",").filter(Boolean)
+      this.observer?.disconnect()
+      targetIds.forEach(id => {
+        const el = document.getElementById(id)
+        if (el) {
+          this.observer.observe(el)
+        }
+      })
+    },
+  },
 }
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")

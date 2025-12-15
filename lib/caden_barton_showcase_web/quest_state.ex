@@ -35,6 +35,18 @@ defmodule CadenBartonShowcaseWeb.QuestState do
 
   def reset(_state), do: new()
 
+  def step_id_for_target(quests, quest_id, target_id) when is_binary(target_id) do
+    quests
+    |> Map.get(quest_id, %{})
+    |> Map.get(:steps, [])
+    |> Enum.find_value(fn
+      %{target_id: ^target_id, id: id} -> id
+      _ -> nil
+    end)
+  end
+
+  def step_id_for_target(_quests, _quest_id, _target_id), do: nil
+
   def sanitize_loaded(map) when is_map(map) do
     quest_id = fetch_quest_id(map)
     allowed_steps = step_ids_for(quest_id)
