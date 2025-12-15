@@ -55,6 +55,29 @@ const Hooks = {
       this.el.removeEventListener("click", this.handleClick)
     },
   },
+  QuestPersistence: {
+    mounted() {
+      this.storageKey = "cbs:quest_state:v1"
+
+      try {
+        const raw = localStorage.getItem(this.storageKey)
+        if (raw) {
+          const parsed = JSON.parse(raw)
+          this.pushEvent("quest_state_loaded", {state: parsed})
+        }
+      } catch (_error) {
+        // ignore malformed data
+      }
+
+      this.handleEvent("quest_state_save", ({state}) => {
+        try {
+          localStorage.setItem(this.storageKey, JSON.stringify(state))
+        } catch (_error) {
+          // ignore storage errors
+        }
+      })
+    },
+  },
 }
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")

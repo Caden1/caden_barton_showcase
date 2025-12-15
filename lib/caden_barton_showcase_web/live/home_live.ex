@@ -29,6 +29,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         <div class="absolute h-72 w-72 -left-16 top-10 rounded-full bg-indigo-600/30"></div>
         <div class="absolute h-80 w-80 right-10 -bottom-10 rounded-full bg-amber-500/20"></div>
       </div>
+      <div id="quest-persistence-hook" phx-hook="QuestPersistence" class="hidden"></div>
 
       <div class="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 py-16 lg:flex-row lg:items-start lg:py-24">
         <div class="flex-1 space-y-6">
@@ -592,21 +593,51 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
 
   @impl true
   def handle_event("quest_start", %{"quest_id" => quest_id}, socket) do
-    {:noreply,
-     assign(socket, :quest_state, QuestState.start(socket.assigns.quest_state, quest_id))}
+    new_state = QuestState.start(socket.assigns.quest_state, quest_id)
+    {:noreply, assign_and_save(socket, new_state)}
   end
 
   def handle_event("quest_toggle_step", %{"step_id" => step_id}, socket) do
-    {:noreply,
-     assign(socket, :quest_state, QuestState.toggle_step(socket.assigns.quest_state, step_id))}
+    new_state = QuestState.toggle_step(socket.assigns.quest_state, step_id)
+    {:noreply, assign_and_save(socket, new_state)}
   end
 
   def handle_event("quest_reset", _params, socket) do
-    {:noreply, assign(socket, :quest_state, QuestState.reset(socket.assigns.quest_state))}
+    new_state = QuestState.reset(socket.assigns.quest_state)
+    {:noreply, assign_and_save(socket, new_state)}
   end
 
   def handle_event("quest_close", _params, socket) do
     state = Map.put(socket.assigns.quest_state, :active?, false)
-    {:noreply, assign(socket, :quest_state, state)}
+    {:noreply, assign_and_save(socket, state)}
+  end
+
+  def handle_event("quest_state_loaded", %{"state" => state}, socket) do
+    new_state = QuestState.sanitize_loaded(state)
+    {:noreply, assign_and_save(socket, new_state)}
+  end
+
+  def handle_event("QuestPersistence", %{"state" => state}, socket) do
+    handle_event("quest_state_loaded", %{"state" => state}, socket)
+  end
+
+  def handle_event("event", %{"state" => state}, socket) do
+    handle_event("quest_state_loaded", %{"state" => state}, socket)
+  end
+
+  defp assign_and_save(socket, state) do
+    socket
+    |> assign(:quest_state, state)
+    |> push_quest_state_save()
+  end
+
+  defp push_quest_state_save(%{assigns: %{quest_state: state}} = socket) do
+    push_event(socket, "quest_state_save", %{state: quest_state_payload(state)})
+  end
+
+  defp quest_state_payload(state) do
+    state
+    |> Map.update!(:completed_step_ids, &MapSet.to_list/1)
+    |> Map.update!(:unlocked_ids, &MapSet.to_list/1)
   end
 end
