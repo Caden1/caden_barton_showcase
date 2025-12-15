@@ -21,7 +21,7 @@ defmodule CadenBartonShowcase.OpenAIClient do
             "input" => prompt
           }
 
-          with {:ok, response} <-
+          with {:ok, %Req.Response{status: status} = response} when status in 200..299 <-
                  Req.request(
                    url: @responses_url,
                    method: :post,
@@ -31,16 +31,20 @@ defmodule CadenBartonShowcase.OpenAIClient do
                {:ok, text} <- extract_text(response.body) do
             {:ok, text}
           else
+            {:ok, %Req.Response{status: status} = resp} ->
+              Logger.debug(fn ->
+                "OpenAI Responses non-success status: #{inspect(status)}, body: #{inspect(resp.body)}"
+              end)
+
+              {:error, {:http_error, status}}
+
             {:error, reason} ->
               Logger.debug(fn -> "OpenAI Responses request failed: #{inspect(reason)}" end)
               {:error, reason}
 
-            {:ok, %Req.Response{status: status} = resp} when status >= 400 ->
-              Logger.debug(fn ->
-                "OpenAI Responses non-200: #{inspect(status)}, body: #{inspect(resp.body)}"
-              end)
-
-              {:error, {:http_error, status}}
+            other ->
+              Logger.debug(fn -> "OpenAI Responses unexpected result: #{inspect(other)}" end)
+              {:error, :unexpected_openai_response}
           end
         end
 
