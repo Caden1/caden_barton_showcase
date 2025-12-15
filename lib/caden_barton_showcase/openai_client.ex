@@ -97,7 +97,8 @@ defmodule CadenBartonShowcase.OpenAIClient do
       |> Map.get("content")
       |> List.wrap()
       |> Enum.find_value(fn
-        %{"text" => text, "type" => type} when is_binary(text) and (is_nil(type) or type == "output_text") ->
+        %{"text" => text, "type" => type}
+        when is_binary(text) and (is_nil(type) or type == "output_text") ->
           text
 
         %{"text" => text} when is_binary(text) ->

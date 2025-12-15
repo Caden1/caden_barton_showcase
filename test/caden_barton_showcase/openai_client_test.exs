@@ -55,6 +55,7 @@ defmodule CadenBartonShowcase.OpenAIClientTest do
   end
 
   test "extract_text returns error when no text output found" do
-    assert {:error, :no_text_output} = OpenAIClient.extract_text(%{"output" => [%{"content" => [%{"type" => "other"}]}]})
+    assert {:error, :no_text_output} =
+             OpenAIClient.extract_text(%{"output" => [%{"content" => [%{"type" => "other"}]}]})
   end
 end
