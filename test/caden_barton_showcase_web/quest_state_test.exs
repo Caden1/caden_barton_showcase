@@ -48,4 +48,19 @@ defmodule CadenBartonShowcaseWeb.QuestStateTest do
       assert QuestState.toggle_step(state, "missing-step") == state
     end
   end
+
+  describe "step_id_for_target/3" do
+    test "finds a step id for a target id" do
+      quests = CadenBartonShowcaseWeb.QuestContent.quests()
+
+      assert QuestState.step_id_for_target(quests, "hiring_manager", "section-ai-delivery-loop") ==
+               "hm-ai-loop"
+    end
+
+    test "returns nil for unknown target" do
+      quests = CadenBartonShowcaseWeb.QuestContent.quests()
+
+      assert QuestState.step_id_for_target(quests, "hiring_manager", "missing-section") == nil
+    end
+  end
 end
