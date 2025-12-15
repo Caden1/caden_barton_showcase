@@ -8,6 +8,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   import CadenBartonShowcaseWeb.HowIWorkComponent
   import CadenBartonShowcaseWeb.BuildsIndexComponent
   import CadenBartonShowcaseWeb.QuestOverlayComponent
+  import CadenBartonShowcaseWeb.ProofUnlocksComponent
 
   @impl true
   def mount(_params, _session, socket) do
@@ -183,6 +184,8 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               </button>
             </div>
           </div>
+
+          <.proof_unlocks unlocked_ids={@quest_state.unlocked_ids} />
         </div>
       </section>
 
@@ -607,7 +610,11 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   end
 
   def handle_event("quest_toggle_step", %{"step_id" => step_id}, socket) do
-    new_state = QuestState.toggle_step(socket.assigns.quest_state, step_id)
+    new_state =
+      socket.assigns.quest_state
+      |> QuestState.toggle_step(step_id)
+      |> add_unlocks_for_progress(socket.assigns.quests)
+
     {:noreply, assign_and_save(socket, new_state)}
   end
 
@@ -622,7 +629,11 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   end
 
   def handle_event("quest_step_seen", %{"target_id" => target_id}, socket) do
-    new_state = maybe_mark_step_seen(socket.assigns.quest_state, target_id, socket.assigns.quests)
+    new_state =
+      socket.assigns.quest_state
+      |> maybe_mark_step_seen(target_id, socket.assigns.quests)
+      |> add_unlocks_for_progress(socket.assigns.quests)
+
     {:noreply, assign_and_save(socket, new_state)}
   end
 
@@ -640,6 +651,8 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   end
 
   defp assign_and_save(socket, state) do
+    state = add_unlocks_for_progress(state, socket.assigns.quests)
+
     socket
     |> assign(:quest_state, state)
     |> push_quest_state_save()
@@ -654,6 +667,30 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
     |> Map.update!(:completed_step_ids, &MapSet.to_list/1)
     |> Map.update!(:unlocked_ids, &MapSet.to_list/1)
   end
+
+  defp add_unlocks_for_progress(%{quest_id: nil} = state, _quests), do: state
+
+  defp add_unlocks_for_progress(%{quest_id: quest_id} = state, quests) do
+    completed_count = MapSet.size(state.completed_step_ids)
+
+    total_steps =
+      quests
+      |> Map.get(quest_id, %{})
+      |> Map.get(:steps, [])
+      |> length()
+
+    unlocks =
+      state.unlocked_ids
+      |> MapSet.new()
+      |> maybe_put_unlock(completed_count >= 2, "proof-signals")
+      |> maybe_put_unlock(completed_count >= 4, "proof-workflow")
+      |> maybe_put_unlock(total_steps > 0 && completed_count >= total_steps, "proof-case-study")
+
+    %{state | unlocked_ids: unlocks}
+  end
+
+  defp maybe_put_unlock(unlocks, true, id), do: MapSet.put(unlocks, id)
+  defp maybe_put_unlock(unlocks, false, _id), do: unlocks
 
   defp maybe_mark_step_seen(%{quest_id: nil} = state, _target_id, _quests), do: state
 
