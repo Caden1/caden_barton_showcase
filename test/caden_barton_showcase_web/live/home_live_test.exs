@@ -114,4 +114,40 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
              "Principles that prevent debt"
            ]
   end
+
+  test "quest mode can be started and steps toggled", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    refute has_element?(view, "#quest-overlay")
+
+    view
+    |> element("#quest-start-hiring-manager")
+    |> render_click()
+
+    assert has_element?(view, "#quest-overlay")
+
+    progress0 =
+      view
+      |> render()
+      |> Floki.parse_document!()
+      |> Floki.find("#quest-progress")
+      |> Floki.text()
+      |> String.trim()
+
+    assert progress0 =~ "0/5"
+
+    view
+    |> element("#quest-step-toggle-hm-fit")
+    |> render_click()
+
+    progress1 =
+      view
+      |> render()
+      |> Floki.parse_document!()
+      |> Floki.find("#quest-progress")
+      |> Floki.text()
+      |> String.trim()
+
+    assert progress1 =~ "1/5"
+  end
 end
