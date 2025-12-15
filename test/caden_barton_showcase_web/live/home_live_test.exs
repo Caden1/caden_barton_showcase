@@ -169,4 +169,24 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     assert html =~ "Pair with the stack"
     assert html =~ "1/4"
   end
+
+  test "proof cards unlock after completing steps", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/")
+
+    assert has_element?(view, "#proof-card-proof-signals [data-status='locked']", "Locked")
+
+    view
+    |> element("#quest-start-hiring-manager")
+    |> render_click()
+
+    view
+    |> element("#quest-step-toggle-hm-fit")
+    |> render_click()
+
+    view
+    |> element("#quest-step-toggle-hm-workflow")
+    |> render_click()
+
+    assert has_element?(view, "#proof-card-proof-signals [data-status='unlocked']", "Unlocked")
+  end
 end
