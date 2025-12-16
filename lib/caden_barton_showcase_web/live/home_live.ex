@@ -22,9 +22,9 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           <div class="absolute h-80 w-80 right-10 -bottom-10 rounded-full bg-amber-500/20"></div>
         </div>
 
-        <div class="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 py-16 lg:flex-row lg:items-start lg:py-24">
-          <div class="flex-1 space-y-6">
-            <p class="inline-flex items-center gap-2 rounded-full bg-zinc-800/70 px-3 py-1 text-sm font-medium text-zinc-100 ring-1 ring-zinc-700/60 backdrop-blur transition hover:-translate-y-0.5 hover:ring-zinc-500/60">
+        <div class="relative mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 py-16 text-center lg:py-24">
+          <div class="w-full max-w-3xl space-y-6">
+            <p class="mx-auto inline-flex items-center gap-2 rounded-full bg-zinc-800/70 px-3 py-1 text-sm font-medium text-zinc-100 ring-1 ring-zinc-700/60 backdrop-blur transition hover:-translate-y-0.5 hover:ring-zinc-500/60">
               <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
               ELIXIR &amp; PHOENIX · AI-ASSISTED DELIVERY
             </p>
@@ -37,7 +37,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
             <p class="text-lg text-zinc-200">
               I build production systems on Elixir, Phoenix, LiveView, Redpanda, ClickHouse, and Postgres. I use ChatGPT, CODEX, and CodeRabbit as a small AI crew - while I stay in charge of design, tests, and deployments - so the code stays understandable, observable, and easy to change. Think of me as an AI workflow conductor for your codebase.
             </p>
-            <div class="flex flex-wrap gap-3">
+            <div class="flex flex-wrap items-center justify-center gap-3">
               <.link
                 id="cta-hiring-managers"
                 navigate={~p"/hiring-manager"}
@@ -64,7 +64,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
             </div>
           </div>
 
-          <div class="w-full max-w-xl bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 p-[1px] rounded-3xl">
+          <div class="w-full max-w-xl mx-auto text-left bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 p-[1px] rounded-3xl">
             <div class="space-y-4 rounded-3xl border border-zinc-800 bg-zinc-900/80 p-6 shadow-xl shadow-black/30 backdrop-blur">
               <div class="flex items-center justify-between">
                 <h2 class="text-xl font-semibold text-emerald-200">Engineering signals</h2>
