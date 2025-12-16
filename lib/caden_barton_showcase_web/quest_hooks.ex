@@ -45,6 +45,22 @@ defmodule CadenBartonShowcaseWeb.QuestHooks do
     {:halt, assign_and_save(socket, QuestState.reset(socket.assigns.quest_state))}
   end
 
+  defp handle_event("quest_open", _params, socket) do
+    %{quest_state: quest_state, quests: quests} = socket.assigns
+
+    case quest_state.quest_id do
+      nil ->
+        {:cont, socket}
+
+      quest_id ->
+        if Map.has_key?(quests, quest_id) do
+          {:halt, assign_and_save(socket, Map.put(quest_state, :active?, true))}
+        else
+          {:cont, socket}
+        end
+    end
+  end
+
   defp handle_event("quest_close", _params, socket) do
     {:halt, assign_and_save(socket, Map.put(socket.assigns.quest_state, :active?, false))}
   end
