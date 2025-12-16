@@ -2,20 +2,22 @@ defmodule CadenBartonShowcaseWeb.ProofUnlocksComponent do
   @moduledoc false
   use CadenBartonShowcaseWeb, :html
 
+  alias CadenBartonShowcaseWeb.QuestContent
+
   @cards [
     %{
       id: "proof-signals",
       title: "Hiring signals",
       hint: "Complete 2 quest steps to unlock my hiring signals",
       body: "What hiring managers get, the guardrails I set, and how I keep risk low.",
-      link: %{label: "View hiring signals", href: "#for-hiring-managers"}
+      link: %{label: "View hiring signals", target_id: "for-hiring-managers"}
     },
     %{
       id: "proof-workflow",
       title: "Delivery workflow",
       hint: "Complete 4 steps to unlock workflow proof",
       body: "Step-by-step AI-assisted delivery loop with observable, reversible changes.",
-      link: %{label: "See the workflow", href: "#section-ai-delivery-loop"}
+      link: %{label: "See the workflow", target_id: "section-ai-delivery-loop"}
     },
     %{
       id: "proof-case-study",
@@ -23,7 +25,7 @@ defmodule CadenBartonShowcaseWeb.ProofUnlocksComponent do
       hint: "Finish the quest to unlock the case study",
       body:
         "A walkthrough of this site’s build and how I use ChatGPT, CODEX, and CodeRabbit together.",
-      link: %{label: "Read the case study", href: "#case-study"}
+      link: %{label: "Read the case study", target_id: "case-study"}
     },
     %{
       id: "incident-winner",
@@ -31,7 +33,7 @@ defmodule CadenBartonShowcaseWeb.ProofUnlocksComponent do
       hint: "Beat the incident simulator to unlock",
       body:
         "Simulated hotfix with metrics, flags, and rollback guarded by a small state machine.",
-      link: %{label: "Run the simulator", href: "/simulator/incident"}
+      link: %{label: "Run the simulator", navigate: "/simulator/incident"}
     }
   ]
 
@@ -42,6 +44,7 @@ defmodule CadenBartonShowcaseWeb.ProofUnlocksComponent do
       assigns
       |> assign(:cards, @cards)
       |> assign(:unlocked, MapSet.new(assigns.unlocked_ids))
+      |> assign(:target_paths, QuestContent.target_paths())
 
     ~H"""
     <div id="proof-unlocks" class="mt-6 grid gap-4 md:grid-cols-3">
@@ -89,17 +92,21 @@ defmodule CadenBartonShowcaseWeb.ProofUnlocksComponent do
         </div>
         <div class="mt-3 space-y-2 text-sm text-emerald-100/90">
           <%= if MapSet.member?(@unlocked, card.id) do %>
+            <% link_path =
+              case card.link do
+                %{navigate: navigate} -> navigate
+                %{target_id: target_id} -> Map.get(@target_paths, target_id)
+              end %>
             <p>{card.body}</p>
-            <a
+            <.link
+              :if={link_path}
               id={"proof-card-link-#{card.id}"}
-              href={card.link.href}
+              navigate={link_path}
               class="inline-flex items-center gap-1 text-emerald-300 underline underline-offset-4 hover:text-emerald-100"
-              phx-hook="ScrollToSectionLink"
-              data-scroll-target={String.trim_leading(card.link.href, "#")}
             >
               {card.link.label}
               <span>→</span>
-            </a>
+            </.link>
           <% else %>
             <div class="flex items-center gap-2 text-emerald-200/80">
               <.icon name="hero-lock-closed" class="h-4 w-4" />

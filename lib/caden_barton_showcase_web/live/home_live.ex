@@ -16,21 +16,10 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
       <section
         class="relative overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-900 to-black text-zinc-50"
         id="home-page"
-        phx-hook="ScrollToSection"
       >
         <div class="absolute inset-0 opacity-60 blur-3xl">
           <div class="absolute h-72 w-72 -left-16 top-10 rounded-full bg-indigo-600/30"></div>
           <div class="absolute h-80 w-80 right-10 -bottom-10 rounded-full bg-amber-500/20"></div>
-        </div>
-        <div
-          id="quest-progress-observer"
-          phx-hook="QuestProgressObserver"
-          data-quest-targets={
-            steps = get_in(@quests, [@quest_state && @quest_state.quest_id, :steps]) || []
-            Enum.map_join(steps, ",", & &1.target_id)
-          }
-          class="hidden"
-        >
         </div>
 
         <div class="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 py-16 lg:flex-row lg:items-start lg:py-24">

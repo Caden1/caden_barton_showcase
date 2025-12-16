@@ -26,35 +26,6 @@ import {hooks as colocatedHooks} from "phoenix-colocated/caden_barton_showcase"
 import topbar from "../vendor/topbar"
 
 const Hooks = {
-  ScrollToSection: {
-    mounted() {
-      this.handleEvent("scroll_to_section", ({target_id}) => {
-        const el = document.getElementById(target_id)
-        if (el) {
-          el.scrollIntoView({behavior: "smooth", block: "start"})
-        }
-      })
-    },
-  },
-  ScrollToSectionLink: {
-    mounted() {
-      this.handleClick = event => {
-        const targetId = this.el.dataset.scrollTarget
-        const normalizedId = targetId?.startsWith("#") ? targetId.slice(1) : targetId
-        const targetEl = normalizedId && document.getElementById(normalizedId)
-
-        if (targetEl) {
-          event.preventDefault()
-          targetEl.scrollIntoView({behavior: "smooth", block: "start"})
-        }
-      }
-
-      this.el.addEventListener("click", this.handleClick)
-    },
-    destroyed() {
-      this.el.removeEventListener("click", this.handleClick)
-    },
-  },
   Typewriter: {
     mounted() {
       this.text = this.el.dataset.text || ""
@@ -120,41 +91,6 @@ const Hooks = {
           localStorage.setItem(this.storageKey, JSON.stringify(state))
         } catch (_error) {
           // ignore storage errors
-        }
-      })
-    },
-  },
-  QuestProgressObserver: {
-    mounted() {
-      this.observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const targetId = entry.target.id
-              if (targetId) {
-                this.pushEvent("quest_step_seen", {target_id: targetId})
-              }
-            }
-          })
-        },
-        {threshold: 0.5},
-      )
-
-      this.registerTargets()
-    },
-    updated() {
-      this.registerTargets()
-    },
-    destroyed() {
-      this.observer?.disconnect()
-    },
-    registerTargets() {
-      const targetIds = (this.el.dataset.questTargets || "").split(",").filter(Boolean)
-      this.observer?.disconnect()
-      targetIds.forEach(id => {
-        const el = document.getElementById(id)
-        if (el) {
-          this.observer.observe(el)
         }
       })
     },
