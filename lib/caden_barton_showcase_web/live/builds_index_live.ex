@@ -1,16 +1,20 @@
-defmodule CadenBartonShowcaseWeb.HowIWorkLive do
+defmodule CadenBartonShowcaseWeb.BuildsIndexLive do
   use CadenBartonShowcaseWeb, :live_view
 
-  import CadenBartonShowcaseWeb.HowIWorkComponent
+  alias CadenBartonShowcaseWeb.BuildsContent
+  import CadenBartonShowcaseWeb.BuildsIndexComponent
 
-  @impl true
+  def mount(_params, _session, socket) do
+    {:ok, assign(socket, builds: BuildsContent.builds())}
+  end
+
   def render(assigns) do
     ~H"""
     <Layouts.app flash={@flash} quest_state={@quest_state} quests={@quests}>
       <div class="flex items-center justify-between pb-6">
         <div>
-          <p class="text-xs uppercase tracking-[0.2em] text-emerald-200">Workflow</p>
-          <h1 class="font-display text-3xl font-bold text-zinc-50">How I work</h1>
+          <p class="text-xs uppercase tracking-[0.2em] text-emerald-200">Portfolio</p>
+          <h1 class="font-display text-3xl font-bold text-zinc-50">Recent builds</h1>
         </div>
         <.link
           navigate={~p"/"}
@@ -20,7 +24,7 @@ defmodule CadenBartonShowcaseWeb.HowIWorkLive do
         </.link>
       </div>
 
-      <.how_i_work />
+      <.builds_index builds={@builds} />
     </Layouts.app>
     """
   end

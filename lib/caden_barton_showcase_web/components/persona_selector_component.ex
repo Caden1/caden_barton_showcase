@@ -1,5 +1,5 @@
 defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
-  use Phoenix.Component
+  use CadenBartonShowcaseWeb, :html
 
   attr :id, :string, required: true
 
@@ -12,40 +12,34 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
       </div>
 
       <div class="mt-8 grid gap-4 sm:gap-6 md:grid-cols-3">
-        <a
+        <.link
           id="persona-link-hiring-manager"
-          href="#for-hiring-managers"
-          phx-hook="ScrollToSectionLink"
-          data-scroll-target="#for-hiring-managers"
+          navigate={~p"/hiring-manager"}
           class={card_classes()}
         >
           <p class="text-sm font-semibold text-emerald-200">I'm a hiring manager</p>
           <p class="mt-2 text-sm text-zinc-200">
             Get a quick overview of how I work and what I've shipped.
           </p>
-        </a>
-        <a
+        </.link>
+        <.link
           id="persona-link-developer"
-          href="#case-study"
-          phx-hook="ScrollToSectionLink"
-          data-scroll-target="#case-study"
+          navigate={~p"/case-study"}
           class={card_classes()}
         >
           <p class="text-sm font-semibold text-emerald-200">I'm a developer</p>
           <p class="mt-2 text-sm text-zinc-200">
             Dive into stack details, architecture, and code samples.
           </p>
-        </a>
-        <a
+        </.link>
+        <.link
           id="persona-link-curious"
-          href="#section-builds"
-          phx-hook="ScrollToSectionLink"
-          data-scroll-target="#section-builds"
+          navigate={~p"/projects"}
           class={card_classes()}
         >
           <p class="text-sm font-semibold text-emerald-200">I'm just curious</p>
           <p class="mt-2 text-sm text-zinc-200">See a quick story, side projects, and music.</p>
-        </a>
+        </.link>
       </div>
     </section>
     """

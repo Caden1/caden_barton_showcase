@@ -1,6 +1,8 @@
 defmodule CadenBartonShowcaseWeb.PageControllerTest do
   use CadenBartonShowcaseWeb.ConnCase
 
+  import Phoenix.LiveViewTest
+
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")
     html = html_response(conn, 200)
@@ -9,15 +11,17 @@ defmodule CadenBartonShowcaseWeb.PageControllerTest do
     assert html =~ "Skip intro"
   end
 
-  test "GET /how-i-work redirects to home section", %{conn: conn} do
-    conn = get(conn, ~p"/how-i-work")
+  test "GET /how-i-work renders workflow page", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/how-i-work")
 
-    assert redirected_to(conn, 301) == "/home#section-how-i-work"
+    assert has_element?(view, "h1", "How I work")
+    assert has_element?(view, "a[href='#{~p"/"}']", "Back to Home")
   end
 
-  test "GET /builds redirects to home builds section", %{conn: conn} do
-    conn = get(conn, ~p"/builds")
+  test "GET /builds renders builds index", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/builds")
 
-    assert redirected_to(conn, 301) == "/home#section-builds"
+    assert has_element?(view, "#builds-list [data-role='build-card']")
+    assert has_element?(view, "a[href='#{~p"/"}']", "Back to Home")
   end
 end
