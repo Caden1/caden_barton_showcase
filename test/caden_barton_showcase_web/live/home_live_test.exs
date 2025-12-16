@@ -16,19 +16,19 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='for-hiring-managers'][href='#for-hiring-managers']",
+             "a[href='#{~p"/hiring-manager"}']",
              "See what you get if you hire me"
            )
 
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-how-i-work'][href='#section-how-i-work']",
+             "a[href='#{~p"/how-i-work"}']",
              "See my AI-assisted workflow"
            )
 
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-builds'][href='#section-builds']",
+             "a[href='#{~p"/builds"}']",
              "Recent builds"
            )
   end
@@ -38,17 +38,17 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
 
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='for-hiring-managers'][href='#for-hiring-managers']"
+             "a[href='#{~p"/hiring-manager"}']"
            )
 
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-how-i-work'][href='#section-how-i-work']"
+             "a[href='#{~p"/how-i-work"}']"
            )
 
     assert has_element?(
              view,
-             "a[phx-hook='ScrollToSectionLink'][data-scroll-target='section-builds'][href='#section-builds']"
+             "a[href='#{~p"/builds"}']"
            )
   end
 
@@ -56,63 +56,9 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
     {:ok, view, _html} = live(conn, home_path())
 
     assert has_element?(view, "h2", "Start here")
-    assert has_element?(view, "a[href='#for-hiring-managers']", "I'm a hiring manager")
-    assert has_element?(view, "a[href='#case-study']", "I'm a developer")
-    assert has_element?(view, "a[href='#section-builds']", "I'm just curious")
-  end
-
-  test "hiring manager section is present with correct id", %{conn: conn} do
-    {:ok, view, _html} = live(conn, home_path())
-
-    assert has_element?(view, "section#for-hiring-managers h2", "What you get if you hire me")
-  end
-
-  test "combined AI workflow section renders roles and steps", %{conn: conn} do
-    {:ok, view, _html} = live(conn, home_path())
-
-    html = render(view)
-    doc = Floki.parse_document!(html)
-
-    assert has_element?(view, "#section-how-i-work")
-    assert has_element?(view, "#principles-section")
-    assert has_element?(view, "#engagement-section")
-    assert has_element?(view, "#tooling-section")
-
-    steps =
-      doc
-      |> Floki.find("section#section-ai-delivery-loop ol li")
-
-    assert length(steps) == 9
-  end
-
-  test "home page shows recent builds section with links to case studies", %{conn: conn} do
-    {:ok, view, _html} = live(conn, home_path())
-
-    assert has_element?(view, "#section-builds")
-    assert has_element?(view, "#builds-list [data-role='build-card']")
-    assert has_element?(view, "a[href='#{~p"/builds/realtime-ops-console"}']", "Read more →")
-    assert has_element?(view, "a[href='#{~p"/builds/event-pipeline"}']", "Read more →")
-    assert has_element?(view, "a[href='#{~p"/builds/multitenant-api"}']", "Read more →")
-  end
-
-  test "case study section has correct id and card order", %{conn: conn} do
-    {:ok, view, _html} = live(conn, home_path())
-
-    html = render(view)
-    doc = Floki.parse_document!(html)
-
-    assert has_element?(view, "section#case-study h2", "This site, built with an AI team")
-
-    headings =
-      doc
-      |> Floki.find("section#case-study article h3")
-      |> Enum.map(&Floki.text/1)
-
-    assert Enum.take(headings, 3) == [
-             "Production systems I've shipped",
-             "Proof over promise",
-             "Principles that prevent debt"
-           ]
+    assert has_element?(view, "a[href='#{~p"/hiring-manager"}']", "I'm a hiring manager")
+    assert has_element?(view, "a[href='#{~p"/case-study"}']", "I'm a developer")
+    assert has_element?(view, "a[href='#{~p"/projects"}']", "I'm just curious")
   end
 
   test "quest mode can be started and steps toggled", %{conn: conn} do

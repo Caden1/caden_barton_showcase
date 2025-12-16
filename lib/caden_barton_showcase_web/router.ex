@@ -20,13 +20,15 @@ defmodule CadenBartonShowcaseWeb.Router do
     live_session :public, on_mount: [{CadenBartonShowcaseWeb.QuestHooks, :public}] do
       live "/", WelcomeLive, :index
       live "/home", HomeLive, :index
-      live "/hiring-manager", HomeLive, :index
+      live "/hiring-manager", HiringManagerLive, :index
+      live "/how-i-work", HowIWorkLive, :index
+      live "/ai-delivery-loop", AiDeliveryLoopLive, :index
+      live "/case-study", CaseStudyLive, :index
+      live "/projects", ProjectsLive, :index
+      live "/builds", BuildsIndexLive, :index
       live "/simulator/incident", IncidentSimulatorLive, :show
       live "/builds/:slug", BuildShowLive, :show
     end
-
-    get "/how-i-work", PageController, :how_i_work
-    get "/builds", PageController, :builds
   end
 
   # Other scopes may use custom stacks.

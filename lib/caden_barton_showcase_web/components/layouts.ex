@@ -65,30 +65,26 @@ defmodule CadenBartonShowcaseWeb.Layouts do
           </.link>
 
           <nav class="flex items-center gap-4 text-sm font-semibold text-zinc-700 dark:text-zinc-200">
-            <a
-              href={~p"/"}
+            <.link
+              navigate={~p"/"}
               class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
             >
               Home
-            </a>
-            <a
+            </.link>
+            <.link
               id="nav-how-i-work"
-              href="/home#section-how-i-work"
-              phx-hook="ScrollToSectionLink"
-              data-scroll-target="section-how-i-work"
+              navigate={~p"/how-i-work"}
               class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
             >
               How I work
-            </a>
-            <a
+            </.link>
+            <.link
               id="nav-builds"
-              href="/home#section-builds"
-              phx-hook="ScrollToSectionLink"
-              data-scroll-target="section-builds"
+              navigate={~p"/builds"}
               class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
             >
               Builds
-            </a>
+            </.link>
             <.theme_toggle />
           </nav>
         </div>

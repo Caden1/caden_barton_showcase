@@ -129,7 +129,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                   <button
                     id="persona-curious"
                     type="button"
-                    phx-click={persona_action("curious", ~p"/hiring-manager")}
+                    phx-click={persona_action("curious", ~p"/projects")}
                     class="group flex flex-col items-start gap-3 rounded-2xl border border-fuchsia-400/50 bg-fuchsia-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-fuchsia-200 hover:bg-fuchsia-400/15 md:col-span-2"
                   >
                     <span class="inline-flex items-center gap-2 rounded-full bg-fuchsia-400/15 px-3 py-1 text-xs font-semibold text-fuchsia-100">

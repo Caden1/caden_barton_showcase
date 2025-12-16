@@ -1,7 +1,7 @@
 defmodule CadenBartonShowcaseWeb.BuildsContent do
   @moduledoc false
 
-  def projects do
+  def builds do
     [
       %{
         slug: "realtime-ops-console",
@@ -37,7 +37,9 @@ defmodule CadenBartonShowcaseWeb.BuildsContent do
     ]
   end
 
+  def projects, do: builds()
+
   def get_project(slug) do
-    Enum.find(projects(), &(&1.slug == slug))
+    Enum.find(builds(), &(&1.slug == slug))
   end
 end

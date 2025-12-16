@@ -15,17 +15,17 @@ defmodule CadenBartonShowcaseWeb.BuildsIndexComponent do
 
       <div id="builds-list" class="space-y-6">
         <article
-          :for={project <- @projects}
+          :for={build <- @builds}
           data-role="build-card"
           class="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1 hover:border-emerald-400/60"
         >
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div class="space-y-1">
-              <h2 class="text-2xl font-semibold">{project.name}</h2>
-              <p class="text-sm text-zinc-300">{project.summary}</p>
+              <h2 class="text-2xl font-semibold">{build.name}</h2>
+              <p class="text-sm text-zinc-300">{build.summary}</p>
             </div>
             <.link
-              navigate={~p"/builds/#{project.slug}"}
+              navigate={~p"/builds/#{build.slug}"}
               class="inline-flex items-center gap-2 rounded-lg border border-emerald-400/40 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-50"
             >
               Read more →
@@ -34,18 +34,18 @@ defmodule CadenBartonShowcaseWeb.BuildsIndexComponent do
           <ul class="mt-4 space-y-2 text-sm text-zinc-200">
             <li class="flex gap-2">
               <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
-              <span><span class="font-semibold text-zinc-50">Role:</span> {project.role}</span>
+              <span><span class="font-semibold text-zinc-50">Role:</span> {build.role}</span>
             </li>
             <li class="flex gap-2">
               <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
               <span>
-                <span class="font-semibold text-zinc-50">Problem:</span> {project.problem}
+                <span class="font-semibold text-zinc-50">Problem:</span> {build.problem}
               </span>
             </li>
             <li class="flex gap-2">
               <span class="mt-1 h-2 w-2 rounded-full bg-emerald-400"></span>
               <span>
-                <span class="font-semibold text-zinc-50">Outcome:</span> {project.outcome}
+                <span class="font-semibold text-zinc-50">Outcome:</span> {build.outcome}
               </span>
             </li>
           </ul>
