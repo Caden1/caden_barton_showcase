@@ -26,9 +26,9 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
         </a>
         <a
           id="persona-link-developer"
-          href="#section-projects"
+          href="#case-study"
           phx-hook="ScrollToSectionLink"
-          data-scroll-target="#section-projects"
+          data-scroll-target="#case-study"
           class={card_classes()}
         >
           <p class="text-sm font-semibold text-emerald-200">I’m a developer</p>
@@ -38,9 +38,9 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
         </a>
         <a
           id="persona-link-curious"
-          href="#case-study"
+          href="#section-builds"
           phx-hook="ScrollToSectionLink"
-          data-scroll-target="#case-study"
+          data-scroll-target="#section-builds"
           class={card_classes()}
         >
           <p class="text-sm font-semibold text-emerald-200">I’m just curious</p>
