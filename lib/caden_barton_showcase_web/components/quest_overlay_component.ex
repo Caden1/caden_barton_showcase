@@ -15,7 +15,7 @@ defmodule CadenBartonShowcaseWeb.QuestOverlayComponent do
     <%= if @quest_state.active? && @quest do %>
       <div
         id="quest-overlay"
-        class="fixed bottom-6 right-6 w-full max-w-sm rounded-3xl border border-emerald-900/60 bg-zinc-950/90 p-4 shadow-2xl shadow-emerald-900/30 backdrop-blur"
+        class="fixed bottom-6 right-6 z-50 w-full max-w-sm rounded-3xl border border-emerald-900/60 bg-zinc-950/90 p-4 shadow-2xl shadow-emerald-900/30 backdrop-blur"
       >
         <div class="flex items-start justify-between gap-3">
           <div>
@@ -99,7 +99,7 @@ defmodule CadenBartonShowcaseWeb.QuestOverlayComponent do
         id="quest-open"
         type="button"
         phx-click="quest_open"
-        class="group fixed bottom-6 right-6 inline-flex items-center gap-3 rounded-full border border-emerald-800/70 bg-zinc-950/90 px-4 py-3 text-sm font-semibold text-emerald-100 shadow-xl shadow-emerald-900/30 backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-500/70 hover:shadow-emerald-700/40"
+        class="group fixed bottom-6 right-6 z-50 inline-flex items-center gap-3 rounded-full border border-emerald-800/70 bg-zinc-950/90 px-4 py-3 text-sm font-semibold text-emerald-100 shadow-xl shadow-emerald-900/30 backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-500/70 hover:shadow-emerald-700/40"
       >
         <span class="flex items-center gap-2">
           Quest
