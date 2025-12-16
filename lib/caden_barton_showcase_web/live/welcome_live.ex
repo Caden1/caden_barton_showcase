@@ -157,7 +157,6 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
   end
 
   defp persona_action(quest_id, path) do
-    JS.push("quest_start", value: %{quest_id: quest_id})
-    |> JS.navigate(path)
+    JS.navigate("#{path}?quest_id=#{quest_id}")
   end
 end

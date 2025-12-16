@@ -22,6 +22,7 @@ defmodule CadenBartonShowcaseWeb.QuestHooks do
   defp handle_params(params, _uri, socket) do
     socket =
       socket
+      |> maybe_start_quest_from_params(params)
       |> assign(:pending_unlock, unlock_from_params(params))
       |> maybe_apply_pending_unlock()
 
@@ -148,6 +149,23 @@ defmodule CadenBartonShowcaseWeb.QuestHooks do
 
   defp unlock_from_params(%{"unlock" => "incident_winner"}), do: "incident-winner"
   defp unlock_from_params(_params), do: nil
+
+  defp maybe_start_quest_from_params(socket, %{"quest_id" => quest_id}) do
+    %{quest_state: quest_state, quests: quests} = socket.assigns
+
+    cond do
+      !Map.has_key?(quests, quest_id) ->
+        socket
+
+      quest_state.quest_id != quest_id ->
+        assign_and_save(socket, QuestState.start(quest_state, quest_id))
+
+      true ->
+        assign_and_save(socket, Map.put(quest_state, :active?, true))
+    end
+  end
+
+  defp maybe_start_quest_from_params(socket, _params), do: socket
 
   defp maybe_apply_pending_unlock(%{assigns: %{pending_unlock: nil}} = socket), do: socket
 
