@@ -48,5 +48,18 @@ defmodule CadenBartonShowcaseWeb.QuestContent do
     }
   }
 
+  @target_paths %{
+    "for-hiring-managers" => "/hiring-manager",
+    "section-how-i-work" => "/how-i-work",
+    "section-ai-delivery-loop" => "/ai-delivery-loop",
+    "case-study" => "/case-study",
+    "section-projects" => "/projects",
+    "section-builds" => "/builds"
+  }
+
   def quests, do: @quests
+
+  def target_paths, do: @target_paths
+
+  def target_path(target_id), do: Map.get(@target_paths, target_id)
 end

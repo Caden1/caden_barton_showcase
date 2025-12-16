@@ -2,11 +2,14 @@ defmodule CadenBartonShowcaseWeb.QuestOverlayComponent do
   @moduledoc false
   use CadenBartonShowcaseWeb, :html
 
+  alias CadenBartonShowcaseWeb.QuestContent
+
   def quest_overlay(assigns) do
     assigns =
       assigns
       |> assign(:quest, Map.get(assigns.quests, assigns.quest_state.quest_id))
       |> assign(:completed_count, MapSet.size(assigns.quest_state.completed_step_ids))
+      |> assign(:target_paths, QuestContent.target_paths())
 
     ~H"""
     <%= if @quest_state.active? && @quest do %>
@@ -55,15 +58,13 @@ defmodule CadenBartonShowcaseWeb.QuestOverlayComponent do
               <div>
                 <p class="text-sm font-semibold text-emerald-100">{step.label}</p>
                 <div class="flex items-center gap-2 text-xs text-emerald-200/80">
-                  <a
+                  <.link
                     id={"quest-step-link-#{step.id}"}
-                    href={"##{step.target_id}"}
-                    phx-hook="ScrollToSectionLink"
-                    data-scroll-target={step.target_id}
+                    navigate={Map.get(@target_paths, step.target_id, "/")}
                     class="inline-flex items-center gap-1 text-emerald-300 underline underline-offset-4 hover:text-emerald-200"
                   >
                     Go
-                  </a>
+                  </.link>
                   <span>·</span>
                   <span>{step.target_id}</span>
                 </div>
