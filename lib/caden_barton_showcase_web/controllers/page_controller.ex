@@ -8,12 +8,12 @@ defmodule CadenBartonShowcaseWeb.PageController do
   def how_i_work(conn, _params) do
     conn
     |> put_status(:moved_permanently)
-    |> redirect(external: "/#section-how-i-work")
+    |> redirect(external: "/home#section-how-i-work")
   end
 
   def builds(conn, _params) do
     conn
     |> put_status(:moved_permanently)
-    |> redirect(external: "/#section-builds")
+    |> redirect(external: "/home#section-builds")
   end
 end

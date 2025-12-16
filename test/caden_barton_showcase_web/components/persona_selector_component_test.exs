@@ -19,14 +19,14 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponentTest do
 
     assert length(recruiter_nodes) == 1
     assert Floki.attribute(recruiter_nodes, "data-scroll-target") == ["#for-hiring-managers"]
-    assert Floki.text(recruiter_nodes) =~ "I’m a hiring manager"
+    assert Floki.text(recruiter_nodes) =~ "I'm a hiring manager"
 
     assert length(developer_nodes) == 1
     assert Floki.attribute(developer_nodes, "data-scroll-target") == ["#case-study"]
-    assert Floki.text(developer_nodes) =~ "I’m a developer"
+    assert Floki.text(developer_nodes) =~ "I'm a developer"
 
     assert length(curious_nodes) == 1
     assert Floki.attribute(curious_nodes, "data-scroll-target") == ["#section-builds"]
-    assert Floki.text(curious_nodes) =~ "I’m just curious"
+    assert Floki.text(curious_nodes) =~ "I'm just curious"
   end
 end

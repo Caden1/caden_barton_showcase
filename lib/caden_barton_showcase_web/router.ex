@@ -18,7 +18,9 @@ defmodule CadenBartonShowcaseWeb.Router do
     pipe_through :browser
 
     live_session :public, on_mount: [{CadenBartonShowcaseWeb.QuestHooks, :public}] do
-      live "/", HomeLive, :index
+      live "/", WelcomeLive, :index
+      live "/home", HomeLive, :index
+      live "/hiring-manager", HomeLive, :index
       live "/simulator/incident", IncidentSimulatorLive, :show
       live "/builds/:slug", BuildShowLive, :show
     end

@@ -4,7 +4,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   import Phoenix.LiveViewTest
 
   test "home page renders hero content", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     assert has_element?(view, "p", "ELIXIR & PHOENIX · AI-ASSISTED DELIVERY")
 
@@ -34,7 +34,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   end
 
   test "CTAs link to hiring managers, how I work, and builds pages", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     assert has_element?(
              view,
@@ -53,22 +53,22 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   end
 
   test "renders start here persona selector", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     assert has_element?(view, "h2", "Start here")
-    assert has_element?(view, "a[href='#for-hiring-managers']", "I’m a hiring manager")
-    assert has_element?(view, "a[href='#case-study']", "I’m a developer")
-    assert has_element?(view, "a[href='#section-builds']", "I’m just curious")
+    assert has_element?(view, "a[href='#for-hiring-managers']", "I'm a hiring manager")
+    assert has_element?(view, "a[href='#case-study']", "I'm a developer")
+    assert has_element?(view, "a[href='#section-builds']", "I'm just curious")
   end
 
   test "hiring manager section is present with correct id", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     assert has_element?(view, "section#for-hiring-managers h2", "What you get if you hire me")
   end
 
   test "combined AI workflow section renders roles and steps", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     html = render(view)
     doc = Floki.parse_document!(html)
@@ -86,7 +86,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   end
 
   test "home page shows recent builds section with links to case studies", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     assert has_element?(view, "#section-builds")
     assert has_element?(view, "#builds-list [data-role='build-card']")
@@ -96,7 +96,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   end
 
   test "case study section has correct id and card order", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     html = render(view)
     doc = Floki.parse_document!(html)
@@ -116,7 +116,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   end
 
   test "quest mode can be started and steps toggled", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     refute has_element?(view, "#quest-overlay")
 
@@ -152,7 +152,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   end
 
   test "quest state loaded event restores quest overlay", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
     refute has_element?(view, "#quest-overlay")
 
     render_hook(view, "QuestPersistence", %{
@@ -171,7 +171,7 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   end
 
   test "proof cards unlock after completing steps", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/")
+    {:ok, view, _html} = live(conn, home_path())
 
     assert has_element?(view, "#proof-card-proof-signals [data-status='locked']", "Locked")
 
@@ -191,8 +191,10 @@ defmodule CadenBartonShowcaseWeb.HomeLiveTest do
   end
 
   test "incident simulator unlock param unlocks proof card", %{conn: conn} do
-    {:ok, view, _html} = live(conn, ~p"/?unlock=incident_winner")
+    {:ok, view, _html} = live(conn, ~p"/home?unlock=incident_winner")
 
     assert has_element?(view, "#proof-card-incident-winner [data-status='unlocked']", "Unlocked")
   end
+
+  defp home_path, do: ~p"/home"
 end
