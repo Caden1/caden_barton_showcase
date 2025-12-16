@@ -14,6 +14,7 @@ defmodule CadenBartonShowcaseWeb.SplitPagesTest do
     {:ok, view, _html} = live(conn, ~p"/ai-delivery-loop")
 
     assert has_element?(view, "h1", "How I work with an AI team")
+    assert has_element?(view, "a[href='#{~p"/"}']", "Back to Home")
 
     html = render(view)
     {:ok, doc} = Floki.parse_document(html)
@@ -34,6 +35,22 @@ defmodule CadenBartonShowcaseWeb.SplitPagesTest do
     {:ok, view, _html} = live(conn, ~p"/projects")
 
     assert has_element?(view, "h1", "Selected projects")
+    assert has_element?(view, "a[href='#{~p"/"}']", "Back to Home")
     assert has_element?(view, "#builds-list [data-role='build-card']")
+  end
+
+  test "how I work page renders and links back home", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/how-i-work")
+
+    assert has_element?(view, "h1", "How I work")
+    assert has_element?(view, "a[href='#{~p"/"}']", "Back to Home")
+  end
+
+  test "builds index page renders and links back home", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/builds")
+
+    assert has_element?(view, "h1", "Recent builds")
+    assert has_element?(view, "#builds-list [data-role='build-card']")
+    assert has_element?(view, "a[href='#{~p"/"}']", "Back to Home")
   end
 end
