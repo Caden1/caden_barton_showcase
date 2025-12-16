@@ -29,7 +29,8 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
           id="quest-progress-observer"
           phx-hook="QuestProgressObserver"
           data-quest-targets={
-            Enum.map_join(@quests[@quest_state.quest_id][:steps] || [], ",", & &1.target_id)
+            steps = get_in(@quests, [@quest_state && @quest_state.quest_id, :steps]) || []
+            Enum.map_join(steps, ",", & &1.target_id)
           }
           class="hidden"
         >
@@ -181,7 +182,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               </div>
             </div>
 
-            <.proof_unlocks unlocked_ids={@quest_state.unlocked_ids} />
+            <.proof_unlocks unlocked_ids={Map.get(@quest_state || %{}, :unlocked_ids, MapSet.new())} />
           </div>
         </section>
 
