@@ -168,7 +168,7 @@ defmodule CadenBartonShowcaseWeb.AiDeliveryLoopLive do
                   Once everything looks good, squash &amp; merge
                 </p>
                 <p class="text-sm text-zinc-200">
-                  Once everything looks good, I squash and merge to keep the history tidy and future debugging simple.
+                  I squash and merge to keep the history tidy and simplify future debugging.
                 </p>
               </div>
             </div>
