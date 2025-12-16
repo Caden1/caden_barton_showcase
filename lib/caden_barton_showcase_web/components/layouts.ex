@@ -73,7 +73,7 @@ defmodule CadenBartonShowcaseWeb.Layouts do
             </a>
             <a
               id="nav-how-i-work"
-              href="/#section-how-i-work"
+              href="/home#section-how-i-work"
               phx-hook="ScrollToSectionLink"
               data-scroll-target="section-how-i-work"
               class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
@@ -82,7 +82,7 @@ defmodule CadenBartonShowcaseWeb.Layouts do
             </a>
             <a
               id="nav-builds"
-              href="/#section-builds"
+              href="/home#section-builds"
               phx-hook="ScrollToSectionLink"
               data-scroll-target="section-builds"
               class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"

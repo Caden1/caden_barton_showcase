@@ -55,6 +55,52 @@ const Hooks = {
       this.el.removeEventListener("click", this.handleClick)
     },
   },
+  Typewriter: {
+    mounted() {
+      this.text = this.el.dataset.text || ""
+      this.index = 0
+      this.active = true
+      this.el.textContent = ""
+
+      if (this.text.length === 0) {
+        this.pushEvent("welcome_typed", {})
+        return
+      }
+
+      this.typeNext()
+    },
+    destroyed() {
+      this.active = false
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+    },
+    typeNext() {
+      if (!this.active) return
+
+      if (this.index >= this.text.length) {
+        this.active = false
+        this.pushEvent("welcome_typed", {})
+        return
+      }
+
+      this.el.textContent = this.text.slice(0, this.index + 1)
+      const currentChar = this.text[this.index]
+      this.index += 1
+      const delay = this.delayFor(currentChar)
+
+      this.timer = setTimeout(() => this.typeNext(), delay)
+    },
+    delayFor(char) {
+      const fast = 40 + Math.random() * 40
+
+      if (".!?".includes(char)) return 380 + Math.random() * 200
+      if (",;:".includes(char)) return 220 + Math.random() * 160
+      if (char === " ") return 50 + Math.random() * 70
+
+      return fast
+    },
+  },
   QuestPersistence: {
     mounted() {
       this.storageKey = "cbs:quest_state:v1"

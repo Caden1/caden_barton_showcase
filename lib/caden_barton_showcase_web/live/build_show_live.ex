@@ -49,7 +49,7 @@ defmodule CadenBartonShowcaseWeb.BuildShowLive do
               <p class="mt-3 text-sm text-zinc-200">{@project.outcome}</p>
               <a
                 id="builds-back-link"
-                href="/#section-builds"
+                href="/home#section-builds"
                 phx-hook="ScrollToSectionLink"
                 data-scroll-target="section-builds"
                 class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition hover:translate-x-1"
@@ -65,7 +65,7 @@ defmodule CadenBartonShowcaseWeb.BuildShowLive do
           <p class="text-zinc-300">We couldn’t find that build. Check the link and try again.</p>
           <a
             id="builds-back-link"
-            href="/#section-builds"
+            href="/home#section-builds"
             phx-hook="ScrollToSectionLink"
             data-scroll-target="section-builds"
             class="inline-flex items-center gap-2 rounded-lg border border-emerald-400/40 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:text-emerald-50"

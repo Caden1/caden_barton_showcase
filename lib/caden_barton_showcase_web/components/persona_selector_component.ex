@@ -8,7 +8,7 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
     <section id={@id} class="relative mx-auto max-w-6xl px-6 pb-4">
       <div class="space-y-3">
         <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">Start here</h2>
-        <p class="text-zinc-200">Tell me who you are and I’ll show you what to read.</p>
+        <p class="text-zinc-200">Tell me who you are and I'll show you what to read.</p>
       </div>
 
       <div class="mt-8 grid gap-4 sm:gap-6 md:grid-cols-3">
@@ -19,9 +19,9 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
           data-scroll-target="#for-hiring-managers"
           class={card_classes()}
         >
-          <p class="text-sm font-semibold text-emerald-200">I’m a hiring manager</p>
+          <p class="text-sm font-semibold text-emerald-200">I'm a hiring manager</p>
           <p class="mt-2 text-sm text-zinc-200">
-            Get a quick overview of how I work and what I’ve shipped.
+            Get a quick overview of how I work and what I've shipped.
           </p>
         </a>
         <a
@@ -31,7 +31,7 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
           data-scroll-target="#case-study"
           class={card_classes()}
         >
-          <p class="text-sm font-semibold text-emerald-200">I’m a developer</p>
+          <p class="text-sm font-semibold text-emerald-200">I'm a developer</p>
           <p class="mt-2 text-sm text-zinc-200">
             Dive into stack details, architecture, and code samples.
           </p>
@@ -43,7 +43,7 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
           data-scroll-target="#section-builds"
           class={card_classes()}
         >
-          <p class="text-sm font-semibold text-emerald-200">I’m just curious</p>
+          <p class="text-sm font-semibold text-emerald-200">I'm just curious</p>
           <p class="mt-2 text-sm text-zinc-200">See a quick story, side projects, and music.</p>
         </a>
       </div>
