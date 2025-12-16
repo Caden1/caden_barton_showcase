@@ -36,7 +36,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
           <div class="flex-1 space-y-8">
             <div class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200 ring-1 ring-emerald-400/30 backdrop-blur">
               <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Live introduction
+              Introduction
             </div>
             <div class="space-y-4 rounded-3xl border border-emerald-500/30 bg-zinc-900/60 p-8 shadow-[0_25px_120px_-40px_rgba(16,185,129,0.45)] backdrop-blur-lg">
               <p class="text-sm font-semibold text-emerald-200">Welcome</p>
