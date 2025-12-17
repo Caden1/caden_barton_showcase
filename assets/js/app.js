@@ -119,9 +119,15 @@ const Hooks = {
         }
       })
 
-      window.addEventListener("cbs:theme-changed", ({detail}) => {
+      this.themeListener = ({detail}) => {
         this.pushEvent("tour_theme_changed", {theme: detail.theme})
-      })
+      }
+      window.addEventListener("cbs:theme-changed", this.themeListener)
+    },
+    destroyed() {
+      if (this.themeListener) {
+        window.removeEventListener("cbs:theme-changed", this.themeListener)
+      }
     },
   },
 }

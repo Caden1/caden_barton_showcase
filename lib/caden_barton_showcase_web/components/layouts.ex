@@ -48,7 +48,9 @@ defmodule CadenBartonShowcaseWeb.Layouts do
         :tour_steps,
         assigns[:tour_steps] || CadenBartonShowcaseWeb.HiringManagerTourContent.steps()
       )
-      |> assign(:tour_progress, build_progress(assigns[:tour_state], assigns[:tour_steps]))
+
+    assigns =
+      assign(assigns, :tour_progress, build_progress(assigns.tour_state, assigns.tour_steps))
 
     ~H"""
     <%= if @full_bleed do %>
