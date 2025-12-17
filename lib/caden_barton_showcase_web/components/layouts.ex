@@ -163,8 +163,7 @@ defmodule CadenBartonShowcaseWeb.Layouts do
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="synthwave"
       >
-        <.icon name="hero-sparkles" class="size-4 opacity-80" />
-        Synthwave
+        <.icon name="hero-sparkles" class="size-4 opacity-80" /> Synthwave
       </button>
 
       <button
@@ -172,8 +171,7 @@ defmodule CadenBartonShowcaseWeb.Layouts do
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="dark-synth"
       >
-        <.icon name="hero-bolt" class="size-4 opacity-80" />
-        Dark Synth
+        <.icon name="hero-bolt" class="size-4 opacity-80" /> Dark Synth
       </button>
 
       <button
@@ -181,8 +179,7 @@ defmodule CadenBartonShowcaseWeb.Layouts do
         phx-click={JS.dispatch("phx:set-theme")}
         data-phx-theme="cyberpunk"
       >
-        <.icon name="hero-cpu-chip" class="size-4 opacity-80" />
-        Cyberpunk
+        <.icon name="hero-cpu-chip" class="size-4 opacity-80" /> Cyberpunk
       </button>
     </div>
     """

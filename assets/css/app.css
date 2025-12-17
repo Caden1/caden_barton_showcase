@@ -17,34 +17,6 @@
   themes: false;
 }
 
-@font-face {
-  font-family: "Synthwave Display";
-  src: url("/fonts/synthwave.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Dark Synth Display";
-  src: url("/fonts/dark-synth.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Cyberpunk Display";
-  src: url("/fonts/cyberpunk.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-:root {
-  --font-display: "Dark Synth Display", "Dark Synth Fallback";
-}
-
 /* daisyUI theme plugin. You can update this file by fetching the latest version with:
   curl -sLO https://github.com/saadeghi/daisyui/releases/latest/download/daisyui-theme.js
   We ship with two themes, a light one inspired on Phoenix colors and a dark one inspired
@@ -74,7 +46,6 @@
   --border: 1.5px;
   --depth: 1;
   --noise: 0;
-  --font-display: "Synthwave Display", "Synthwave Fallback";
 }
 
 @plugin "../vendor/daisyui-theme" {
@@ -102,7 +73,6 @@
   --border: 1.5px;
   --depth: 1;
   --noise: 0;
-  --font-display: "Dark Synth Display", "Dark Synth Fallback";
 }
 
 @plugin "../vendor/daisyui-theme" {
@@ -130,7 +100,18 @@
   --border: 1.5px;
   --depth: 1;
   --noise: 0;
-  --font-display: "Cyberpunk Display", "Cyberpunk Fallback";
+}
+
+:root[data-theme="synthwave"] {
+  --cbs-font-display: ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="dark-synth"] {
+  --cbs-font-display: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="cyberpunk"] {
+  --cbs-font-display: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 /* Add variants based on LiveView classes */
@@ -147,13 +128,7 @@
 /* This file is for your main application CSS */
 .font-display {
   font-family:
-    var(--font-display),
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    sans-serif;
+    var(--cbs-font-display, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif);
 }
 
 @layer base {
