@@ -17,7 +17,7 @@ defmodule CadenBartonShowcaseWeb.Router do
   scope "/", CadenBartonShowcaseWeb do
     pipe_through :browser
 
-    live_session :public do
+    live_session :public, on_mount: [{CadenBartonShowcaseWeb.HiringManagerTourHooks, :public}] do
       live "/", WelcomeLive, :index
       live "/home", HomeLive, :index
       live "/hiring-manager", HiringManagerLive, :index

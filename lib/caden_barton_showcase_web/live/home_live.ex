@@ -11,7 +11,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} full_bleed>
+    <Layouts.app flash={@flash} tour_state={@tour_state} tour_steps={@tour_steps} full_bleed>
       <section
         class="relative overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-900 to-black text-zinc-50"
         id="home-page"

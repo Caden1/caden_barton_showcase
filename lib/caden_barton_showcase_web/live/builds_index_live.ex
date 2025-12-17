@@ -10,7 +10,7 @@ defmodule CadenBartonShowcaseWeb.BuildsIndexLive do
 
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} tour_state={@tour_state} tour_steps={@tour_steps}>
       <div class="flex items-center justify-between pb-6">
         <div>
           <p class="text-xs uppercase tracking-[0.2em] text-emerald-200">Portfolio</p>

@@ -13,7 +13,7 @@ defmodule CadenBartonShowcaseWeb.BuildShowLive do
 
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} tour_state={@tour_state} tour_steps={@tour_steps}>
       <%= if @project do %>
         <section class="space-y-8 text-zinc-50">
           <div class="space-y-3">

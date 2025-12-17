@@ -22,7 +22,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} full_bleed>
+    <Layouts.app flash={@flash} tour_state={@tour_state} tour_steps={@tour_steps} full_bleed>
       <section class="relative isolate min-h-screen overflow-hidden bg-gradient-to-b from-slate-950 via-zinc-950 to-black text-zinc-50">
         <div class="absolute inset-0">
           <div class="absolute -left-24 top-10 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl">
