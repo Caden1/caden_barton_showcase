@@ -25,6 +25,31 @@ import {LiveSocket} from "phoenix_live_view"
 import {hooks as colocatedHooks} from "phoenix-colocated/caden_barton_showcase"
 import topbar from "../vendor/topbar"
 
+const themeStorageKey = "phx:theme"
+const allowedThemes = ["dark", "light"]
+
+const normalizeTheme = theme => allowedThemes.includes(theme) ? theme : "dark"
+
+const setTheme = theme => {
+  const next = normalizeTheme(theme)
+  localStorage.setItem(themeStorageKey, next)
+  document.documentElement.setAttribute("data-theme", next)
+  window.dispatchEvent(new CustomEvent("cbs:theme-changed", {detail: {theme: next}}))
+}
+
+const initialTheme = normalizeTheme(localStorage.getItem(themeStorageKey))
+setTheme(initialTheme)
+
+window.addEventListener("storage", event => {
+  if (event.key === themeStorageKey) {
+    setTheme(event.newValue)
+  }
+})
+
+window.addEventListener("phx:set-theme", event => {
+  setTheme(event.target.dataset.phxTheme)
+})
+
 const Hooks = {
   Typewriter: {
     mounted() {
