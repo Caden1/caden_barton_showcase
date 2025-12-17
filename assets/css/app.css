@@ -22,73 +22,96 @@
   We ship with two themes, a light one inspired on Phoenix colors and a dark one inspired
   on Elixir colors. Build your own at: https://daisyui.com/theme-generator/ */
 @plugin "../vendor/daisyui-theme" {
-  name: "dark";
+  name: "synthwave";
   default: false;
-  prefersdark: true;
-  color-scheme: "dark";
-  --color-base-100: oklch(30.33% 0.016 252.42);
-  --color-base-200: oklch(25.26% 0.014 253.1);
-  --color-base-300: oklch(20.15% 0.012 254.09);
-  --color-base-content: oklch(97.807% 0.029 256.847);
-  --color-primary: oklch(58% 0.233 277.117);
-  --color-primary-content: oklch(96% 0.018 272.314);
-  --color-secondary: oklch(58% 0.233 277.117);
-  --color-secondary-content: oklch(96% 0.018 272.314);
-  --color-accent: oklch(60% 0.25 292.717);
-  --color-accent-content: oklch(96% 0.016 293.756);
-  --color-neutral: oklch(37% 0.044 257.287);
-  --color-neutral-content: oklch(98% 0.003 247.858);
-  --color-info: oklch(58% 0.158 241.966);
-  --color-info-content: oklch(97% 0.013 236.62);
-  --color-success: oklch(60% 0.118 184.704);
-  --color-success-content: oklch(98% 0.014 180.72);
-  --color-warning: oklch(66% 0.179 58.318);
-  --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(58% 0.253 17.585);
-  --color-error-content: oklch(96% 0.015 12.422);
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
-  --size-selector: 0.21875rem;
-  --size-field: 0.21875rem;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(95% 0.04 320);
+  --color-base-200: oklch(91% 0.05 316);
+  --color-base-300: oklch(86% 0.06 310);
+  --color-base-content: oklch(21% 0.09 305);
+  --color-primary: oklch(68% 0.25 320);
+  --color-primary-content: oklch(12% 0.04 305);
+  --color-secondary: oklch(72% 0.26 250);
+  --color-secondary-content: oklch(14% 0.03 250);
+  --color-accent: oklch(78% 0.24 60);
+  --color-accent-content: oklch(16% 0.04 60);
+  --color-neutral: oklch(34% 0.04 270);
+  --color-neutral-content: oklch(96% 0.02 280);
+  --radius-selector: 0.35rem;
+  --radius-field: 0.35rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
   --border: 1.5px;
   --depth: 1;
   --noise: 0;
 }
 
 @plugin "../vendor/daisyui-theme" {
-  name: "light";
+  name: "dark-synth";
   default: true;
-  prefersdark: false;
-  color-scheme: "light";
-  --color-base-100: oklch(98% 0 0);
-  --color-base-200: oklch(96% 0.001 286.375);
-  --color-base-300: oklch(92% 0.004 286.32);
-  --color-base-content: oklch(21% 0.006 285.885);
-  --color-primary: oklch(70% 0.213 47.604);
-  --color-primary-content: oklch(98% 0.016 73.684);
-  --color-secondary: oklch(55% 0.027 264.364);
-  --color-secondary-content: oklch(98% 0.002 247.839);
-  --color-accent: oklch(0% 0 0);
-  --color-accent-content: oklch(100% 0 0);
-  --color-neutral: oklch(44% 0.017 285.786);
-  --color-neutral-content: oklch(98% 0 0);
-  --color-info: oklch(62% 0.214 259.815);
-  --color-info-content: oklch(97% 0.014 254.604);
-  --color-success: oklch(70% 0.14 182.503);
-  --color-success-content: oklch(98% 0.014 180.72);
-  --color-warning: oklch(66% 0.179 58.318);
-  --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(58% 0.253 17.585);
-  --color-error-content: oklch(96% 0.015 12.422);
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
-  --size-selector: 0.21875rem;
-  --size-field: 0.21875rem;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: oklch(18% 0.03 270);
+  --color-base-200: oklch(14% 0.03 270);
+  --color-base-300: oklch(10% 0.03 270);
+  --color-base-content: oklch(94% 0.02 280);
+  --color-primary: oklch(58% 0.25 315);
+  --color-primary-content: oklch(97% 0.02 300);
+  --color-secondary: oklch(64% 0.24 230);
+  --color-secondary-content: oklch(14% 0.02 230);
+  --color-accent: oklch(72% 0.22 70);
+  --color-accent-content: oklch(16% 0.03 70);
+  --color-neutral: oklch(32% 0.04 280);
+  --color-neutral-content: oklch(94% 0.02 280);
+  --radius-selector: 0.35rem;
+  --radius-field: 0.35rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
   --border: 1.5px;
   --depth: 1;
   --noise: 0;
+}
+
+@plugin "../vendor/daisyui-theme" {
+  name: "cyberpunk";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0.05 270);
+  --color-base-200: oklch(11% 0.05 270);
+  --color-base-300: oklch(8% 0.05 270);
+  --color-base-content: oklch(95% 0.02 280);
+  --color-primary: oklch(74% 0.3 98);
+  --color-primary-content: oklch(15% 0.04 100);
+  --color-secondary: oklch(68% 0.28 200);
+  --color-secondary-content: oklch(16% 0.03 200);
+  --color-accent: oklch(80% 0.25 40);
+  --color-accent-content: oklch(20% 0.05 40);
+  --color-neutral: oklch(36% 0.05 280);
+  --color-neutral-content: oklch(95% 0.03 290);
+  --radius-selector: 0.35rem;
+  --radius-field: 0.35rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 1;
+  --noise: 0;
+}
+
+:root[data-theme="synthwave"] {
+  --cbs-font-display: ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="dark-synth"] {
+  --cbs-font-display: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="cyberpunk"] {
+  --cbs-font-display: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 /* Add variants based on LiveView classes */
@@ -97,7 +120,7 @@
 @custom-variant phx-change-loading (.phx-change-loading&, .phx-change-loading &);
 
 /* Use the data attribute for dark mode  */
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where([data-theme=dark-synth], [data-theme=dark-synth] *, [data-theme=cyberpunk], [data-theme=cyberpunk] *));
 
 /* Make LiveView wrapper divs transparent for layout */
 [data-phx-session], [data-phx-teleported-src] { display: contents }
@@ -105,12 +128,7 @@
 /* This file is for your main application CSS */
 .font-display {
   font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    sans-serif;
+    var(--cbs-font-display, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif);
 }
 
 @layer base {

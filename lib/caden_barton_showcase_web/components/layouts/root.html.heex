@@ -12,19 +12,26 @@
     </script>
     <script>
       (() => {
+        const themes = ["synthwave", "dark-synth", "cyberpunk"];
+        const fallbackTheme = "dark-synth";
+        const storageKey = "phx:theme";
+
+        const normalizeTheme = (value) =>
+          themes.includes(value || "") ? value : fallbackTheme;
+
         const setTheme = (theme) => {
-          if (theme === "system") {
-            localStorage.removeItem("phx:theme");
-            document.documentElement.removeAttribute("data-theme");
-          } else {
-            localStorage.setItem("phx:theme", theme);
-            document.documentElement.setAttribute("data-theme", theme);
-          }
+          const next = normalizeTheme(theme);
+          localStorage.setItem(storageKey, next);
+          document.documentElement.setAttribute("data-theme", next);
         };
+
         if (!document.documentElement.hasAttribute("data-theme")) {
-          setTheme(localStorage.getItem("phx:theme") || "system");
+          setTheme(localStorage.getItem(storageKey) || fallbackTheme);
         }
-        window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
+
+        window.addEventListener("storage", (e) => {
+          if (e.key === storageKey) setTheme(e.newValue || fallbackTheme);
+        });
 
         window.addEventListener("phx:set-theme", (e) => setTheme(e.target.dataset.phxTheme));
       })();
