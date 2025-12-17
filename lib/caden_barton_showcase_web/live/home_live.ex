@@ -32,16 +32,17 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               Caden Barton
             </p>
             <h1 class="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              I ship resilient Elixir systems with an AI-assisted workflow I trust.
+              I ship resilient <span class="kw-highlight">Elixir</span>
+              systems with an AI-assisted workflow I trust.
             </h1>
             <p class="text-lg text-zinc-200">
-              I build production systems on Elixir, Phoenix, LiveView, Redpanda, ClickHouse, and Postgres. I use ChatGPT, CODEX, and CodeRabbit as a small AI crew - while I stay in charge of design, tests, and deployments - so the code stays understandable, observable, and easy to change. Think of me as an AI workflow conductor for your codebase.
+              I build production systems on <span class="kw-highlight">Elixir</span>, <span class="kw-highlight">Phoenix</span>, <span class="kw-highlight">LiveView</span>, Redpanda, ClickHouse, and Postgres. I use ChatGPT, CODEX, and CodeRabbit as a small AI crew - while I stay in charge of design, tests, and deployments - so the code stays understandable, <span class="kw-highlight">observable</span>, and easy to change. Think of me as an AI workflow conductor for your codebase.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-3">
               <.link
                 id="cta-hiring-managers"
                 navigate={~p"/hiring-manager"}
-                class="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 via-cyan-500 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:from-emerald-400 hover:via-cyan-400 hover:to-fuchsia-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                class="btn-game group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 via-cyan-500 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:from-emerald-400 hover:via-cyan-400 hover:to-fuchsia-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
               >
                 See what you get if you hire me
                 <span class="transition-transform group-hover:translate-x-1">→</span>
@@ -49,7 +50,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               <.link
                 id="cta-ai-conductor-workflow"
                 navigate={~p"/how-i-work"}
-                class="group inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200"
+                class="btn-game group inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200"
               >
                 See my AI-assisted workflow
                 <span class="transition-transform group-hover:translate-x-1">→</span>
@@ -57,7 +58,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               <.link
                 id="cta-builds"
                 navigate={~p"/builds"}
-                class="inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200"
+                class="btn-game inline-flex items-center gap-2 rounded-lg border border-zinc-600 px-5 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-200"
               >
                 Recent builds
               </.link>
@@ -102,19 +103,25 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
                     Production-grade Elixir systems
                   </p>
                   <p class="text-sm text-zinc-200">
-                    Phoenix + LiveView backends on Redpanda, ClickHouse, and multi-tenant Postgres, designed for clear observability, predictable latency, and safe rollbacks.
+                    <span class="kw-highlight">Phoenix</span>
+                    + <span class="kw-highlight">LiveView</span>
+                    backends on Redpanda, ClickHouse, and multi-tenant Postgres, designed for clear <span class="kw-highlight">observability</span>, predictable latency, and <span class="kw-highlight">safe rollbacks</span>.
                   </p>
                 </article>
                 <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
-                  <p class="text-sm font-semibold text-emerald-200">Testing &amp; CI you can trust</p>
+                  <p class="text-sm font-semibold text-emerald-200">
+                    <span class="kw-highlight">Testing</span>
+                    &amp; <span class="kw-highlight">CI</span>
+                    you can trust
+                  </p>
                   <p class="text-sm text-zinc-200">
-                    Unit, LiveView, and property-style tests I write and maintain myself, plus GitHub Actions that run mix test on every PR and block merges on failures.
+                    Unit, <span class="kw-highlight">LiveView</span>, and property-style tests I write and maintain myself, plus GitHub Actions that run mix test on every PR and block merges on failures.
                   </p>
                 </article>
                 <article class="rounded-xl border border-zinc-800 bg-zinc-950/60 p-4 transition hover:-translate-y-1 hover:border-emerald-400/60">
                   <p class="text-sm font-semibold text-emerald-200">Technical debt prevention</p>
                   <p class="text-sm text-zinc-200">
-                    Domain-driven contexts, explicit boundaries, and migrations planned with guardrails so future changes stay boring instead of risky.
+                    Domain-driven contexts, explicit boundaries, and migrations planned with guardrails so future changes stay boring instead of risky with <span class="kw-highlight">safe rollbacks</span>.
                   </p>
                 </article>
               </div>
@@ -137,7 +144,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
               <div class="flex flex-wrap gap-3">
                 <button
                   id="quest-start-hiring-manager"
-                  class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-950 shadow hover:-translate-y-0.5 hover:bg-emerald-400 transition"
+                  class="btn-game rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-950 shadow hover:-translate-y-0.5 hover:bg-emerald-400 transition"
                   phx-click="quest_start"
                   phx-value-quest_id="hiring_manager"
                 >
@@ -145,7 +152,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
                 </button>
                 <button
                   id="quest-start-developer"
-                  class="rounded-lg border border-emerald-500/60 px-4 py-2 text-sm font-semibold text-emerald-100 shadow hover:-translate-y-0.5 hover:border-emerald-400 transition"
+                  class="btn-game rounded-lg border border-emerald-500/60 px-4 py-2 text-sm font-semibold text-emerald-100 shadow hover:-translate-y-0.5 hover:border-emerald-400 transition"
                   phx-click="quest_start"
                   phx-value-quest_id="developer"
                 >
@@ -153,7 +160,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
                 </button>
                 <button
                   id="quest-start-curious"
-                  class="rounded-lg border border-emerald-500/60 px-4 py-2 text-sm font-semibold text-emerald-100 shadow hover:-translate-y-0.5 hover:border-emerald-400 transition"
+                  class="btn-game rounded-lg border border-emerald-500/60 px-4 py-2 text-sm font-semibold text-emerald-100 shadow hover:-translate-y-0.5 hover:border-emerald-400 transition"
                   phx-click="quest_start"
                   phx-value-quest_id="curious"
                 >
