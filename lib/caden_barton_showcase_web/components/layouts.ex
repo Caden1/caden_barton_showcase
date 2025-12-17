@@ -5,11 +5,6 @@ defmodule CadenBartonShowcaseWeb.Layouts do
   """
   use CadenBartonShowcaseWeb, :html
 
-  alias CadenBartonShowcaseWeb.QuestContent
-  alias CadenBartonShowcaseWeb.QuestState
-
-  import CadenBartonShowcaseWeb.QuestOverlayComponent
-
   # Embed all files in layouts/* within this module.
   # The default root.html.heex file contains the HTML
   # skeleton of your application, namely HTML headers
@@ -36,18 +31,11 @@ defmodule CadenBartonShowcaseWeb.Layouts do
     default: nil,
     doc: "the current [scope](https://hexdocs.pm/phoenix/scopes.html)"
 
-  attr :quest_state, :map, default: nil
-  attr :quests, :map, default: nil
   attr :full_bleed, :boolean, default: false
 
   slot :inner_block, required: true
 
   def app(assigns) do
-    assigns =
-      assigns
-      |> assign(:quest_state, assigns[:quest_state] || QuestState.new())
-      |> assign(:quests, assigns[:quests] || QuestContent.quests())
-
     ~H"""
     <%= if @full_bleed do %>
       {render_slot(@inner_block)}
@@ -96,10 +84,6 @@ defmodule CadenBartonShowcaseWeb.Layouts do
         </div>
       </main>
     <% end %>
-
-    <div id="quest-persistence-hook" phx-hook="QuestPersistence" class="hidden"></div>
-
-    <.quest_overlay quest_state={@quest_state} quests={@quests} />
 
     <.flash_group flash={@flash} />
     """

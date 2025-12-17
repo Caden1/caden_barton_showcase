@@ -2,7 +2,6 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   use CadenBartonShowcaseWeb, :live_view
 
   import CadenBartonShowcaseWeb.PersonaSelectorComponent
-  import CadenBartonShowcaseWeb.ProofUnlocksComponent
 
   @impl true
   def mount(_params, _session, socket) do
@@ -12,7 +11,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} quest_state={@quest_state} quests={@quests} full_bleed>
+    <Layouts.app flash={@flash} full_bleed>
       <section
         class="relative overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-900 to-black text-zinc-50"
         id="home-page"
@@ -130,48 +129,6 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
         </div>
 
         <.persona_selector id="start-here-selector" />
-
-        <section id="quest-mode" class="relative mx-auto max-w-6xl px-6 pb-8">
-          <div class="rounded-3xl border border-emerald-900/60 bg-emerald-900/10 p-6 shadow-lg shadow-emerald-800/20 backdrop-blur">
-            <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-              <div class="space-y-1">
-                <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Quest Mode</p>
-                <h2 class="text-2xl font-semibold text-emerald-100">Guided paths for each visitor</h2>
-                <p class="text-sm text-emerald-100/80">
-                  Pick a path and I'll guide you through the sections that match what you're looking for.
-                </p>
-              </div>
-              <div class="flex flex-wrap gap-3">
-                <button
-                  id="quest-start-hiring-manager"
-                  class="btn-game rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-950 shadow hover:-translate-y-0.5 hover:bg-emerald-400 transition"
-                  phx-click="quest_start"
-                  phx-value-quest_id="hiring_manager"
-                >
-                  Hiring manager path
-                </button>
-                <button
-                  id="quest-start-developer"
-                  class="btn-game rounded-lg border border-emerald-500/60 px-4 py-2 text-sm font-semibold text-emerald-100 shadow hover:-translate-y-0.5 hover:border-emerald-400 transition"
-                  phx-click="quest_start"
-                  phx-value-quest_id="developer"
-                >
-                  Developer path
-                </button>
-                <button
-                  id="quest-start-curious"
-                  class="btn-game rounded-lg border border-emerald-500/60 px-4 py-2 text-sm font-semibold text-emerald-100 shadow hover:-translate-y-0.5 hover:border-emerald-400 transition"
-                  phx-click="quest_start"
-                  phx-value-quest_id="curious"
-                >
-                  Curious tour
-                </button>
-              </div>
-            </div>
-
-            <.proof_unlocks unlocked_ids={Map.get(@quest_state || %{}, :unlocked_ids, MapSet.new())} />
-          </div>
-        </section>
       </section>
     </Layouts.app>
     """

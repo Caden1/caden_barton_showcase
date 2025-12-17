@@ -22,7 +22,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} quest_state={@quest_state} quests={@quests} full_bleed>
+    <Layouts.app flash={@flash} full_bleed>
       <section class="relative isolate min-h-screen overflow-hidden bg-gradient-to-b from-slate-950 via-zinc-950 to-black text-zinc-50">
         <div class="absolute inset-0">
           <div class="absolute -left-24 top-10 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl">
@@ -86,7 +86,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
               <p class="text-xs uppercase tracking-[0.3em] text-emerald-200">Orientation</p>
               <p class="mt-2 text-2xl font-semibold text-white">What brings you here?</p>
               <p class="mt-2 text-sm text-zinc-200">
-                Pick the vibe that matches your visit - each path triggers a short quest with hand-picked sections.
+                Pick the vibe that matches your visit and I'll jump you to the sections that fit.
               </p>
 
               <%= if @intro_done do %>
@@ -94,7 +94,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                   <button
                     id="persona-hiring-manager"
                     type="button"
-                    phx-click={persona_action("hiring_manager", ~p"/hiring-manager")}
+                    phx-click={persona_action(~p"/hiring-manager")}
                     class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-emerald-500/50 bg-emerald-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-400/15"
                   >
                     <span class="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-100">
@@ -104,14 +104,14 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                       See delivery signals, decision-making, and proof I'm reliable under pressure.
                     </p>
                     <span class="text-xs font-semibold text-emerald-200 opacity-80 transition group-hover:translate-x-1">
-                      Start quest →
+                      View the signals →
                     </span>
                   </button>
 
                   <button
                     id="persona-developer"
                     type="button"
-                    phx-click={persona_action("developer", ~p"/how-i-work")}
+                    phx-click={persona_action(~p"/how-i-work")}
                     class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-cyan-400/40 bg-cyan-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-cyan-200 hover:bg-cyan-400/15"
                   >
                     <span class="inline-flex items-center gap-2 rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-semibold text-cyan-100">
@@ -121,14 +121,14 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                       Jump to the systems, patterns, and AI-assisted workflows powering my builds.
                     </p>
                     <span class="text-xs font-semibold text-cyan-200 opacity-80 transition group-hover:translate-x-1">
-                      Start quest →
+                      Jump to workflow →
                     </span>
                   </button>
 
                   <button
                     id="persona-curious"
                     type="button"
-                    phx-click={persona_action("curious", ~p"/projects")}
+                    phx-click={persona_action(~p"/projects")}
                     class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-fuchsia-400/50 bg-fuchsia-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-fuchsia-200 hover:bg-fuchsia-400/15 md:col-span-2"
                   >
                     <span class="inline-flex items-center gap-2 rounded-full bg-fuchsia-400/15 px-3 py-1 text-xs font-semibold text-fuchsia-100">
@@ -138,7 +138,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                       Take the scenic route with highlights from builds, process, and playful experiments.
                     </p>
                     <span class="text-xs font-semibold text-fuchsia-200 opacity-80 transition group-hover:translate-x-1">
-                      Start quest →
+                      Explore projects →
                     </span>
                   </button>
                 </div>
@@ -155,7 +155,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
     """
   end
 
-  defp persona_action(quest_id, path) do
-    JS.navigate("#{path}?quest_id=#{quest_id}")
+  defp persona_action(path) do
+    JS.navigate(path)
   end
 end

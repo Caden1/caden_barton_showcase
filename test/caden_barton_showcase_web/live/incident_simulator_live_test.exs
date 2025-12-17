@@ -19,6 +19,6 @@ defmodule CadenBartonShowcaseWeb.IncidentSimulatorLiveTest do
     |> render_click()
 
     assert has_element?(view, "h2", "Victory! Incident contained.")
-    assert has_element?(view, "a", "Return home")
+    assert has_element?(view, "a", "Return to overview")
   end
 end
