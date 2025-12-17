@@ -95,7 +95,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                     id="persona-hiring-manager"
                     type="button"
                     phx-click={persona_action("hiring_manager", ~p"/hiring-manager")}
-                    class="group flex flex-col items-start gap-3 rounded-2xl border border-emerald-500/50 bg-emerald-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-400/15"
+                    class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-emerald-500/50 bg-emerald-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-400/15"
                   >
                     <span class="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-100">
                       <.icon name="hero-briefcase" class="h-4 w-4" /> Hiring Manager
@@ -112,7 +112,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                     id="persona-developer"
                     type="button"
                     phx-click={persona_action("developer", ~p"/how-i-work")}
-                    class="group flex flex-col items-start gap-3 rounded-2xl border border-cyan-400/40 bg-cyan-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-cyan-200 hover:bg-cyan-400/15"
+                    class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-cyan-400/40 bg-cyan-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-cyan-200 hover:bg-cyan-400/15"
                   >
                     <span class="inline-flex items-center gap-2 rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-semibold text-cyan-100">
                       <.icon name="hero-code-bracket" class="h-4 w-4" /> Developer
@@ -129,7 +129,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                     id="persona-curious"
                     type="button"
                     phx-click={persona_action("curious", ~p"/projects")}
-                    class="group flex flex-col items-start gap-3 rounded-2xl border border-fuchsia-400/50 bg-fuchsia-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-fuchsia-200 hover:bg-fuchsia-400/15 md:col-span-2"
+                    class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-fuchsia-400/50 bg-fuchsia-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-fuchsia-200 hover:bg-fuchsia-400/15 md:col-span-2"
                   >
                     <span class="inline-flex items-center gap-2 rounded-full bg-fuchsia-400/15 px-3 py-1 text-xs font-semibold text-fuchsia-100">
                       <.icon name="hero-sparkles" class="h-4 w-4" /> Just Curious
