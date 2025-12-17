@@ -79,7 +79,12 @@ defmodule CadenBartonShowcaseWeb.IncidentSimulatorLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app current_scope={@current_scope} flash={@flash}>
+    <Layouts.app
+      current_scope={@current_scope}
+      flash={@flash}
+      tour_state={@tour_state}
+      tour_steps={@tour_steps}
+    >
       <section class="mx-auto max-w-5xl px-6 py-10 space-y-8">
         <header class="flex items-center justify-between">
           <div>

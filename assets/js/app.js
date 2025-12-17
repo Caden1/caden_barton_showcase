@@ -97,6 +97,33 @@ const Hooks = {
       return fast
     },
   },
+  HiringManagerTourPersistence: {
+    mounted() {
+      this.storageKey = "cbs:hiring_manager_tour:v1"
+
+      try {
+        const raw = localStorage.getItem(this.storageKey)
+        if (raw) {
+          const parsed = JSON.parse(raw)
+          this.pushEvent("tour_state_loaded", {state: parsed})
+        }
+      } catch (_error) {
+        // ignore malformed data
+      }
+
+      this.handleEvent("tour_state_save", ({state}) => {
+        try {
+          localStorage.setItem(this.storageKey, JSON.stringify(state))
+        } catch (_error) {
+          // ignore storage errors
+        }
+      })
+
+      window.addEventListener("cbs:theme-changed", ({detail}) => {
+        this.pushEvent("tour_theme_changed", {theme: detail.theme})
+      })
+    },
+  },
 }
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")

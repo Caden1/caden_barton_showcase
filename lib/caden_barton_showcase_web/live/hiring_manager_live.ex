@@ -4,7 +4,7 @@ defmodule CadenBartonShowcaseWeb.HiringManagerLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash}>
+    <Layouts.app flash={@flash} tour_state={@tour_state} tour_steps={@tour_steps}>
       <div class="space-y-6">
         <div class="flex items-center justify-between">
           <div class="space-y-2">
@@ -14,12 +14,22 @@ defmodule CadenBartonShowcaseWeb.HiringManagerLive do
               I combine production-grade Elixir systems with an AI-assisted workflow that stays accountable and observable.
             </p>
           </div>
-          <.link
-            navigate={~p"/"}
-            class="inline-flex items-center gap-2 rounded-lg border border-emerald-400/60 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300"
-          >
-            Back to Home
-          </.link>
+          <div class="flex items-center gap-3">
+            <button
+              id="start-hiring-manager-tour"
+              type="button"
+              class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-950 shadow hover:bg-emerald-400 transition"
+              phx-click="tour_start"
+            >
+              Start guided tour
+            </button>
+            <.link
+              navigate={~p"/"}
+              class="inline-flex items-center gap-2 rounded-lg border border-emerald-400/60 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300"
+            >
+              Back to Home
+            </.link>
+          </div>
         </div>
 
         <div class="bg-gradient-to-tr from-emerald-500 via-cyan-500 to-fuchsia-500 p-[1px] rounded-3xl shadow-xl shadow-black/30">
