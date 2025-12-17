@@ -11,4 +11,12 @@ defmodule CadenBartonShowcaseWeb.HiringManagerTourContent do
   ]
 
   def steps, do: @steps
+
+  def path_for(step_id) do
+    @steps
+    |> Enum.find_value(fn
+      %{id: ^step_id, path: path} -> path
+      _ -> nil
+    end)
+  end
 end
