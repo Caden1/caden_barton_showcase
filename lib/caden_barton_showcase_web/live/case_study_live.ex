@@ -44,6 +44,21 @@ defmodule CadenBartonShowcaseWeb.CaseStudyLive do
             </ul>
           </article>
 
+          <div
+            id="tour-decision-log"
+            class="hidden rounded-2xl border border-fuchsia-400/40 bg-fuchsia-900/20 p-6 shadow-xl shadow-fuchsia-500/20"
+          >
+            <p class="text-xs uppercase tracking-[0.2em] text-fuchsia-200">Decision log</p>
+            <h3 class="mt-2 text-lg font-semibold text-fuchsia-100">Key delivery calls</h3>
+            <ul class="mt-3 space-y-2 text-sm text-fuchsia-100/90">
+              <li>
+                Picked LiveView to keep UI + state consistent without heavy frontend dependencies.
+              </li>
+              <li>Invested in telemetry upfront so AI-assisted changes stay observable.</li>
+              <li>Kept migrations reversible and behind flags to protect deploys.</li>
+            </ul>
+          </div>
+
           <article class="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-xl shadow-black/30 transition hover:-translate-y-1">
             <p class="text-xs uppercase tracking-[0.2em] text-emerald-300">Testing &amp; AI</p>
             <h3 class="mt-3 text-xl font-semibold font-display">Proof over promise</h3>

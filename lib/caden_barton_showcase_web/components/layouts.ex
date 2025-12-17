@@ -5,6 +5,8 @@ defmodule CadenBartonShowcaseWeb.Layouts do
   """
   use CadenBartonShowcaseWeb, :html
 
+  import CadenBartonShowcaseWeb.HiringManagerTourComponent
+
   # Embed all files in layouts/* within this module.
   # The default root.html.heex file contains the HTML
   # skeleton of your application, namely HTML headers
@@ -53,63 +55,65 @@ defmodule CadenBartonShowcaseWeb.Layouts do
       assign(assigns, :tour_progress, build_progress(assigns.tour_state, assigns.tour_steps))
 
     ~H"""
+    <%= if @tour_state.active? do %>
+      <div class="sticky top-0 z-50 border-b border-emerald-900/40 bg-emerald-950/80 backdrop-blur">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200">
+              Hiring Manager Tour
+            </span>
+            <div class="flex items-center gap-2 text-xs text-emerald-100/80">
+              <%= for step <- @tour_progress do %>
+                <div class={[
+                  "flex items-center gap-1 rounded-full border px-2 py-1",
+                  step.status == :completed &&
+                    "border-emerald-500/60 bg-emerald-900/40 text-emerald-100",
+                  step.status == :current && "border-amber-400/60 bg-amber-900/30 text-amber-100",
+                  step.status == :upcoming &&
+                    "border-emerald-800/60 bg-emerald-950/40 text-emerald-200/70"
+                ]}>
+                  <div class={[
+                    "h-2 w-2 rounded-full",
+                    step.status == :completed && "bg-emerald-400",
+                    step.status == :current && "bg-amber-300",
+                    step.status == :upcoming && "bg-emerald-700"
+                  ]} />
+                  <.link
+                    navigate={step.path}
+                    class="text-[11px] font-semibold transition hover:text-emerald-100"
+                  >
+                    {step.label}
+                  </.link>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              class="rounded-lg border border-emerald-500/60 px-3 py-1.5 text-xs font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300"
+              phx-click="tour_skip"
+            >
+              Skip step
+            </button>
+            <button
+              type="button"
+              class="rounded-lg bg-emerald-500 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:bg-emerald-400"
+              phx-click="tour_exit"
+            >
+              Exit tour
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <.current_step_panel tour_state={@tour_state} tour_steps={@tour_steps} />
+    <% end %>
+
     <%= if @full_bleed do %>
       {render_slot(@inner_block)}
     <% else %>
-      <%= if @tour_state.active? do %>
-        <div class="sticky top-0 z-50 border-b border-emerald-900/40 bg-emerald-950/80 backdrop-blur">
-          <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center justify-center rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200">
-                Hiring Manager Tour
-              </span>
-              <div class="flex items-center gap-2 text-xs text-emerald-100/80">
-                <%= for step <- @tour_progress do %>
-                  <div class={[
-                    "flex items-center gap-1 rounded-full border px-2 py-1",
-                    step.status == :completed &&
-                      "border-emerald-500/60 bg-emerald-900/40 text-emerald-100",
-                    step.status == :current && "border-amber-400/60 bg-amber-900/30 text-amber-100",
-                    step.status == :upcoming &&
-                      "border-emerald-800/60 bg-emerald-950/40 text-emerald-200/70"
-                  ]}>
-                    <div class={[
-                      "h-2 w-2 rounded-full",
-                      step.status == :completed && "bg-emerald-400",
-                      step.status == :current && "bg-amber-300",
-                      step.status == :upcoming && "bg-emerald-700"
-                    ]} />
-                    <.link
-                      navigate={step.path}
-                      class="text-[11px] font-semibold transition hover:text-emerald-100"
-                    >
-                      {step.label}
-                    </.link>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-2">
-              <button
-                type="button"
-                class="rounded-lg border border-emerald-500/60 px-3 py-1.5 text-xs font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-300"
-                phx-click="tour_skip"
-              >
-                Skip step
-              </button>
-              <button
-                type="button"
-                class="rounded-lg bg-emerald-500 px-3 py-1.5 text-xs font-semibold text-emerald-950 shadow hover:bg-emerald-400"
-                phx-click="tour_exit"
-              >
-                Exit tour
-              </button>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
       <header class="px-4 py-6 sm:px-6 lg:px-8">
         <div class="mx-auto flex max-w-6xl items-center justify-between">
           <.link
@@ -236,9 +240,17 @@ defmodule CadenBartonShowcaseWeb.Layouts do
   defp build_progress(%{active?: true} = state, steps) do
     Enum.map(steps, fn step ->
       cond do
-        MapSet.member?(state.completed_step_ids, step.id) -> Map.put(step, :status, :completed)
-        step.id == state.current_step_id -> Map.put(step, :status, :current)
-        true -> Map.put(step, :status, :upcoming)
+        MapSet.member?(state.completed_step_ids, step.id) ->
+          Map.put(step, :status, :completed)
+
+        MapSet.member?(state.skipped_step_ids, step.id) ->
+          Map.put(step, :status, :completed)
+
+        step.id == state.current_step_id ->
+          Map.put(step, :status, :current)
+
+        true ->
+          Map.put(step, :status, :upcoming)
       end
     end)
   end

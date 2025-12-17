@@ -130,6 +130,26 @@ const Hooks = {
       }
     },
   },
+  TourChecklistCopy: {
+    mounted() {
+      this.stepId = this.el.dataset.stepId || "ai_loop"
+      this.checklist = this.el.dataset.checklist || ""
+      this.clickHandler = async () => {
+        try {
+          await navigator.clipboard.writeText(this.checklist)
+          this.pushEvent("tour_action_completed", {step_id: this.stepId})
+        } catch (_error) {
+          // ignore clipboard errors
+        }
+      }
+      this.el.addEventListener("click", this.clickHandler)
+    },
+    destroyed() {
+      if (this.clickHandler) {
+        this.el.removeEventListener("click", this.clickHandler)
+      }
+    },
+  },
 }
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
