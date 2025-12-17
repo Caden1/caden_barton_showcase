@@ -79,12 +79,7 @@ defmodule CadenBartonShowcaseWeb.IncidentSimulatorLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app
-      current_scope={@current_scope}
-      flash={@flash}
-      quest_state={@quest_state}
-      quests={@quests}
-    >
+    <Layouts.app current_scope={@current_scope} flash={@flash}>
       <section class="mx-auto max-w-5xl px-6 py-10 space-y-8">
         <header class="flex items-center justify-between">
           <div>
@@ -154,14 +149,14 @@ defmodule CadenBartonShowcaseWeb.IncidentSimulatorLive do
           <div class="rounded-3xl border border-emerald-500/50 bg-emerald-900/20 p-6 text-emerald-50">
             <h2 class="text-2xl font-semibold">Victory! Incident contained.</h2>
             <p class="mt-2 text-sm text-emerald-100/80">
-              You followed the guardrails in the right order. Head back home to claim your unlock.
+              You followed the guardrails in the right order. Head back to the hiring manager overview for more delivery signals.
             </p>
             <div class="mt-4">
               <.link
-                navigate={~p"/?unlock=incident_winner"}
+                navigate={~p"/hiring-manager"}
                 class="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-950 shadow hover:bg-emerald-400"
               >
-                Return home <span>→</span>
+                Return to overview <span>→</span>
               </.link>
             </div>
           </div>

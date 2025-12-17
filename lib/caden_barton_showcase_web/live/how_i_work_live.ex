@@ -6,7 +6,7 @@ defmodule CadenBartonShowcaseWeb.HowIWorkLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} quest_state={@quest_state} quests={@quests}>
+    <Layouts.app flash={@flash}>
       <div class="flex items-center justify-between pb-6">
         <div>
           <p class="text-xs uppercase tracking-[0.2em] text-emerald-200">Workflow</p>

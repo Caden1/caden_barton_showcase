@@ -12,7 +12,7 @@ defmodule CadenBartonShowcaseWeb.ProjectsLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <Layouts.app flash={@flash} quest_state={@quest_state} quests={@quests}>
+    <Layouts.app flash={@flash}>
       <div class="space-y-6">
         <div class="flex items-center justify-between">
           <div>
