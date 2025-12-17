@@ -8,20 +8,19 @@ defmodule CadenBartonShowcaseWeb.WelcomeLiveTest do
 
     assert has_element?(view, "#welcome-typewriter[phx-hook='Typewriter'][aria-live='polite']")
     assert has_element?(view, "#skip-intro", "Skip intro")
-    assert has_element?(view, "p", "What brings you here?")
+    assert has_element?(view, "p", "Ready to see how I deliver?")
   end
 
-  test "reveals persona options after skipping intro", %{conn: conn} do
+  test "shows CTAs after skipping intro", %{conn: conn} do
     {:ok, view, _html} = live(conn, ~p"/")
 
-    refute has_element?(view, "#persona-hiring-manager")
+    assert has_element?(view, "#cta-hiring-manager-tour")
 
     view
     |> element("#skip-intro")
     |> render_click()
 
-    assert has_element?(view, "#persona-hiring-manager", "Hiring Manager")
-    assert has_element?(view, "#persona-developer", "Developer")
-    assert has_element?(view, "#persona-curious", "Just Curious")
+    assert has_element?(view, "#cta-hiring-manager-tour", "Hiring Manager Guided Tour")
+    assert has_element?(view, "#cta-browse-builds", "Browse builds")
   end
 end

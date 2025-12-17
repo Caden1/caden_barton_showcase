@@ -43,7 +43,7 @@ defmodule CadenBartonShowcaseWeb.HomeLive do
                 navigate={~p"/hiring-manager"}
                 class="btn-game group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 via-cyan-500 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:from-emerald-400 hover:via-cyan-400 hover:to-fuchsia-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
               >
-                See what you get if you hire me
+                Start Hiring Manager Guided Tour
                 <span class="transition-transform group-hover:translate-x-1">→</span>
               </.link>
               <.link

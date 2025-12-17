@@ -1,9 +1,7 @@
 defmodule CadenBartonShowcaseWeb.WelcomeLive do
   use CadenBartonShowcaseWeb, :live_view
 
-  alias Phoenix.LiveView.JS
-
-  @greeting "Hey, I'm Caden. I build calm, resilient Elixir systems with an AI crew that ships on schedule."
+  @greeting "I'm Caden. I ship resilient Elixir systems with clear guardrails, telemetry, and a tight AI-assisted workflow you can trust."
 
   @impl true
   def mount(_params, _session, socket) do
@@ -59,7 +57,7 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                   </p>
                 <% end %>
                 <p class="text-lg text-emerald-100/80">
-                  I'll keep it brief and tailored, then point you at the most relevant pieces of my work.
+                  I'll keep this concise and show you how I deliver safely, fast, and with full accountability.
                 </p>
               </div>
               <div class="flex flex-wrap items-center gap-4">
@@ -73,8 +71,8 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
                 </button>
                 <p class="text-sm text-emerald-100/70">
                   {if(@intro_done,
-                    do: "Thanks for letting me dive right in.",
-                    else: "I'll type this out like I speak - feel free to jump ahead."
+                    do: "Let's dive into how I deliver.",
+                    else: "Want to skip? I'll jump to the tour."
                   )}
                 </p>
               </div>
@@ -84,78 +82,32 @@ defmodule CadenBartonShowcaseWeb.WelcomeLive do
           <div class="w-full max-w-xl space-y-4">
             <div class="rounded-3xl border border-zinc-800 bg-zinc-900/70 p-6 shadow-xl shadow-black/30">
               <p class="text-xs uppercase tracking-[0.3em] text-emerald-200">Orientation</p>
-              <p class="mt-2 text-2xl font-semibold text-white">What brings you here?</p>
+              <p class="mt-2 text-2xl font-semibold text-white">Ready to see how I deliver?</p>
               <p class="mt-2 text-sm text-zinc-200">
-                Pick the vibe that matches your visit and I'll jump you to the sections that fit.
+                Start with the guided tour for hiring managers or jump straight to recent builds.
               </p>
 
-              <%= if @intro_done do %>
-                <div class="mt-6 grid gap-4 md:grid-cols-2">
-                  <button
-                    id="persona-hiring-manager"
-                    type="button"
-                    phx-click={persona_action(~p"/hiring-manager")}
-                    class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-emerald-500/50 bg-emerald-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-400/15"
-                  >
-                    <span class="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-100">
-                      <.icon name="hero-briefcase" class="h-4 w-4" /> Hiring Manager
-                    </span>
-                    <p class="text-sm text-emerald-50">
-                      See delivery signals, decision-making, and proof I'm reliable under pressure.
-                    </p>
-                    <span class="text-xs font-semibold text-emerald-200 opacity-80 transition group-hover:translate-x-1">
-                      View the signals →
-                    </span>
-                  </button>
-
-                  <button
-                    id="persona-developer"
-                    type="button"
-                    phx-click={persona_action(~p"/how-i-work")}
-                    class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-cyan-400/40 bg-cyan-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-cyan-200 hover:bg-cyan-400/15"
-                  >
-                    <span class="inline-flex items-center gap-2 rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-semibold text-cyan-100">
-                      <.icon name="hero-code-bracket" class="h-4 w-4" /> Developer
-                    </span>
-                    <p class="text-sm text-cyan-50">
-                      Jump to the systems, patterns, and AI-assisted workflows powering my builds.
-                    </p>
-                    <span class="text-xs font-semibold text-cyan-200 opacity-80 transition group-hover:translate-x-1">
-                      Jump to workflow →
-                    </span>
-                  </button>
-
-                  <button
-                    id="persona-curious"
-                    type="button"
-                    phx-click={persona_action(~p"/projects")}
-                    class="btn-game group flex flex-col items-start gap-3 rounded-2xl border border-fuchsia-400/50 bg-fuchsia-500/10 p-4 text-left transition hover:-translate-y-1 hover:border-fuchsia-200 hover:bg-fuchsia-400/15 md:col-span-2"
-                  >
-                    <span class="inline-flex items-center gap-2 rounded-full bg-fuchsia-400/15 px-3 py-1 text-xs font-semibold text-fuchsia-100">
-                      <.icon name="hero-sparkles" class="h-4 w-4" /> Just Curious
-                    </span>
-                    <p class="text-sm text-fuchsia-50">
-                      Take the scenic route with highlights from builds, process, and playful experiments.
-                    </p>
-                    <span class="text-xs font-semibold text-fuchsia-200 opacity-80 transition group-hover:translate-x-1">
-                      Explore projects →
-                    </span>
-                  </button>
-                </div>
-              <% else %>
-                <div class="mt-6 rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/60 p-4 text-sm text-zinc-300">
-                  Hang tight - typing the greeting now. You can always tap "Skip intro" to jump straight into the paths.
-                </div>
-              <% end %>
+              <div class="mt-6 flex flex-col gap-3">
+                <.link
+                  id="cta-hiring-manager-tour"
+                  navigate={~p"/hiring-manager"}
+                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-emerald-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 hover:bg-emerald-400"
+                >
+                  Start Hiring Manager Guided Tour <span>→</span>
+                </.link>
+                <.link
+                  id="cta-browse-builds"
+                  navigate={~p"/builds"}
+                  class="inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-700 px-4 py-3 text-sm font-semibold text-zinc-100 transition hover:-translate-y-0.5 hover:border-emerald-300"
+                >
+                  Browse builds
+                </.link>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </Layouts.app>
     """
-  end
-
-  defp persona_action(path) do
-    JS.navigate(path)
   end
 end

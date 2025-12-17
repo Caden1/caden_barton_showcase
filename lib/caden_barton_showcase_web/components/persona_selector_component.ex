@@ -7,8 +7,8 @@ defmodule CadenBartonShowcaseWeb.PersonaSelectorComponent do
     ~H"""
     <section id={@id} class="relative mx-auto max-w-6xl px-6 pb-4">
       <div class="space-y-3">
-        <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">Start here</h2>
-        <p class="text-zinc-200">Tell me who you are and I'll show you what to read.</p>
+        <h2 class="font-display text-3xl font-bold sm:text-4xl text-zinc-50">Explore the work</h2>
+        <p class="text-zinc-200">Choose where to start based on what you want to see.</p>
       </div>
 
       <div class="mt-8 grid gap-4 sm:gap-6 md:grid-cols-3">

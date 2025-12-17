@@ -134,6 +134,13 @@ defmodule CadenBartonShowcaseWeb.Layouts do
               Home
             </.link>
             <.link
+              id="nav-hiring-tour"
+              navigate={~p"/hiring-manager"}
+              class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
+            >
+              Hiring manager tour
+            </.link>
+            <.link
               id="nav-how-i-work"
               navigate={~p"/how-i-work"}
               class="rounded-md px-3 py-2 transition hover:-translate-y-0.5 hover:text-emerald-300"
